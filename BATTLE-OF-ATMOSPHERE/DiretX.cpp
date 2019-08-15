@@ -7,7 +7,7 @@
 #pragma comment (lib,"dxguid.lib")
 #pragma comment (lib,"dinput8.lib")
 
-HRESULT DirectX::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
+HRESULT DIRECTX::BuildDxDevice(HWND hWnd, CONST TCHAR* filepath)
 {
 	if (FAILED(InitD3Device(hWnd, filepath))) {
 		return E_FAIL;
@@ -31,7 +31,7 @@ HRESULT DirectX::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
 	return S_OK;
 }
 
-HRESULT DirectX::InitD3Device(HWND hWnd, const TCHAR* FilePath) {
+HRESULT DIRECTX::InitD3Device(HWND hWnd, CONST TCHAR* FilePath) {
 	if (NULL == (pDirect3D = Direct3DCreate9(D3D_SDK_VERSION))) {
 		MessageBox(0, _T("Direct3Dの作成に失敗しました"), _T(""), MB_OK);
 		return E_FAIL;
@@ -70,17 +70,17 @@ HRESULT DirectX::InitD3Device(HWND hWnd, const TCHAR* FilePath) {
 		OUT_DEFAULT_PRECIS,      /* 出力精度 */
 		DEFAULT_QUALITY,         /* 出力品質 */
 		DEFAULT_PITCH | FF_SWISS,/* フォントピッチとファミリ */
-		"ＭＳ Ｐゴシック",       /* フォント名 */
+		_T("ＭＳ Ｐゴシック"),       /* フォント名 */
 		&pFont)))
 	{
-		MessageBox(0, "フォントの作成に失敗しました", "", MB_OK);
+		MessageBox(0, _T("フォントの作成に失敗しました"), "", MB_OK);
 		return E_FAIL;
 	}
 
 	return S_OK;
 }
 
-HRESULT DirectX::InitDinput(HWND hWnd)
+HRESULT DIRECTX::InitDinput(HWND hWnd)
 {
 	HRESULT hr;
 
@@ -109,7 +109,7 @@ HRESULT DirectX::InitDinput(HWND hWnd)
 	return S_OK;
 }
 
-void DirectX::InitPresentParameters(HWND hWnd)
+void DIRECTX::InitPresentParameters(HWND hWnd)
 {
 	ZeroMemory(&D3dPresentParameters, sizeof(D3dPresentParameters));
 
@@ -129,7 +129,7 @@ void DirectX::InitPresentParameters(HWND hWnd)
 	D3dPresentParameters.Windowed = true;
 }
 
-void DirectX::UpdateKeyState() {
+void DIRECTX::UpdateKeyState() {
 
 	BYTE curr_diks[MAX_KEY];
 
@@ -164,11 +164,11 @@ void DirectX::UpdateKeyState() {
 	}
 }
 
-DirectX::KEY_STATE DirectX::GetKeyState(INT diks) {
+DIRECTX::KEY_STATE DIRECTX::GetKeyState(INT diks) {
 	return KeyState[diks];
 }
 
-void DirectX::All_Release() {
+void DIRECTX::All_Release() {
 
 
 	if (pDxIKeyDevice)
@@ -186,7 +186,7 @@ void DirectX::All_Release() {
 	pDirect3D = nullptr;
 }
 
-double DirectX::to_Rad(double degree) {
+double DIRECTX::to_Rad(double degree) {
 
 	return degree * atan(1.0) * 4.0 / 180.0;
 }

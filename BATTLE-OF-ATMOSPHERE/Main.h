@@ -47,13 +47,13 @@ enum SCENE {
 	EXIT,
 };
 
-extern DirectX dx;
+extern DIRECTX dx;
 extern SCENE scene;
 
 
 
 //WinMain関数
-INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ int nCmdShow);
+INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow);
 
 //ウィンドプロシージャの生成
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -65,9 +65,9 @@ HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* API_NAME);
 void Mainloop(MSG* msg);
 
 //描画関数
-void Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, FLOAT height, FLOAT tu_width, FLOAT tv_height, INT texture, double degree = 0.0f);
+void Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, FLOAT height, FLOAT tu_width, FLOAT tv_height, INT texture, DOUBLE degree = 0.0f);
 
 //テクスチャを読み込む
-void LoadTexture(const char* file_name, int TEX);
+void LoadTexture(const CHAR* file_name, INT TEX);
 
 #endif
