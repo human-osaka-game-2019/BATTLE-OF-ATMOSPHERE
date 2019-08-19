@@ -36,6 +36,9 @@
     <ClCompile Include="MapChip.cpp">
       <Filter>ソースファイル\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="HelpScene.cpp">
+      <Filter>ソースファイル\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DirectX.h">
@@ -54,6 +57,12 @@
       <Filter>ソースファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="MapChip.h">
+      <Filter>ソースファイル\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpScene.h">
+      <Filter>ソースファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw.h">
       <Filter>ソースファイル\Engine</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include <time.h>
 
-DrawMap map;
+DRAWMAP map;
 
-Game::SCENE_PAHSE Phase = Game::LOAD;
+GAME::SCENE_PAHSE phase = GAME::LOAD;
 
 
 //ゲームのフェーズの移動
-void Game::Game_Scene() {
+void GAME::Game_Scene() {
 
-	switch (Phase) {
+	switch (phase) {
 	case LOAD:
 		Loading();
 		break;
@@ -19,27 +19,27 @@ void Game::Game_Scene() {
 		break;
 	case RELEASES:
 		Release();
-		Phase = LOAD;
+		phase = LOAD;
 		break;
 	}
 }
 
 //ゲームのテクスチャの読み込み
-void Game::Loading() {
+void GAME::Loading() {
 
-	
+
 }
 
-void Game::Process() {
+void GAME::Process() {
 	//リリースのフェーズへ
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS) {
-		Phase = RELEASES;
+		phase = RELEASES;
 	}
 
 }
 
 //ゲームのテクスチャの解放
-void Game::Release() {
+void GAME::Release() {
 
 	//テクスチャの開放
 	for (int i = 0; i < TEX_MAX; i++) {
@@ -49,5 +49,5 @@ void Game::Release() {
 		}
 	}
 	//リザルトシーンへ
-	scene = RESULT;
+	scene = RESULTSCENE;
 }

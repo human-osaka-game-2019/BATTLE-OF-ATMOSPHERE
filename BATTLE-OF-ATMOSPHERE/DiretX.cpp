@@ -185,8 +185,3 @@ void DIRECTX::All_Release() {
 	pDirect3D->Release();
 	pDirect3D = nullptr;
 }
-
-double DIRECTX::to_Rad(double degree) {
-
-	return degree * atan(1.0) * 4.0 / 180.0;
-}

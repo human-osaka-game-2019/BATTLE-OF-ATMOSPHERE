@@ -2,18 +2,19 @@
 #include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
 
 #include "../BATTLE-OF-ATMOSPHERE/TitleScene.h"
-//#include "Help.h"
+#include "../BATTLE-OF-ATMOSPHERE/HelpScene.h"
 #include "../BATTLE-OF-ATMOSPHERE/GameScene.h"
 #include "../BATTLE-OF-ATMOSPHERE/ResultScene.h"
 
 //ここ出来ればなくしたい
 DIRECTX directx;
-Title title;
-//Help help;
-Game game;
-Result result;
+DRAW draw;
+TITLE title;
+HELP help;
+GAME game;
+RESULT result;
 
-SCENE scene = TITLE;
+SCENE scene = TITLESCENE;
 
 //メイン
 INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow) {
@@ -66,75 +67,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 	return DefWindowProc(hWnd, msg, wp, lp);
 }
 
-VOID Rotate(CUSTOMVERTEX  original[], CUSTOMVERTEX rotatevertex[], DOUBLE degree = 0.0f) {
-	FLOAT center_x = (original[0].x + original[1].x) / 2.0f;
-	FLOAT center_y = (original[0].y + original[3].y) / 2.0f;
 
-
-	for (INT i = 0; i < 4; i++) {
-		original[i].x -= center_x;
-		original[i].y -= center_y;
-
-		rotatevertex[i] = original[i];
-
-		// 回転後のx = 回転前のx・cosθ - 回転前のy・sinθ
-		rotatevertex[i].x = (FLOAT)(original[i].x * cos(directx.to_Rad(degree)) - original[i].y * sin(directx.to_Rad(degree)));
-
-		// 回転後のy = 回転前のx・sinθ + 回転前のy・cosθ
-		rotatevertex[i].y = (FLOAT)(original[i].x * sin(directx.to_Rad(degree)) + original[i].y * cos(directx.to_Rad(degree)));
-
-		original[i].x += center_x;
-		original[i].y += center_y;
-
-		rotatevertex[i].x += center_x;
-		rotatevertex[i].y += center_y;
-	}
-
-}
-
-//描画関数
-void Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, FLOAT height, FLOAT tu_width, FLOAT tv_height, INT texture, DOUBLE degree) {
-	CUSTOMVERTEX customvertex[4]{
-		{x        ,y         ,0,1,color,tu           ,tv            },
-		{x + width,y         ,0,1,color,tu + tu_width,tv            },
-		{x + width,y + height,0,1,color,tu + tu_width,tv + tv_height},
-		{x        ,y + height,0,1,color,tu           ,tv + tv_height},
-	};
-
-	directx.pD3Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
-	directx.pD3Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	directx.pD3Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
-	
-	directx.pD3Device->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1);
-
-	CUSTOMVERTEX vertex[4];
-	Rotate(customvertex, vertex, degree);
-
-	directx.pD3Device->SetTexture(0, directx.pTexture[texture]);
-	directx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertex, sizeof(CUSTOMVERTEX));
-}
-
-
-
-
-VOID LoadTexture(const CHAR* file_name, INT TEX) {
-
-	D3DXCreateTextureFromFileEx(
-		directx.pD3Device,
-		_T(file_name),
-		0,
-		0,
-		1, 
-		0,
-		D3DFMT_UNKNOWN,
-		D3DPOOL_MANAGED,
-		D3DX_DEFAULT,
-		D3DX_DEFAULT,
-		0x00000000,
-		nullptr,
-		nullptr,
-		&directx.pTexture[TEX]);
-}
 //
 HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* p_api_name) {
 	//ウィンドウクラス
@@ -196,16 +129,16 @@ void Mainloop(MSG* msg) {
 
 				//ここからゲーム処理
 				switch (scene) {
-				case TITLE:
+				case TITLESCENE:
 					title.Title_Scene();
 					break;
-				case HELP:
-					//help.Help_Scene();
+				case HELPSCENE:
+					help.Help_Scene();
 					break;
-				case GAME:
+				case GAMESCENE:
 					game.Game_Scene();
 					break;
-				case RESULT:
+				case RESULTSCENE:
 					result.Result_Scene();
 					break;
 				default:
