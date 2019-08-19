@@ -1,17 +1,17 @@
-﻿#include "Main.h"
-#include "DirectX.h"
+﻿#include "../BATTLE-OF-ATMOSPHERE/Main.h"
+#include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
 
-//#include "Title.h"
+#include "../BATTLE-OF-ATMOSPHERE/TitleScene.h"
 //#include "Help.h"
-//#include "Game.h"
-//#include "Result.h"
+#include "../BATTLE-OF-ATMOSPHERE/GameScene.h"
+#include "../BATTLE-OF-ATMOSPHERE/ResultScene.h"
 
 //ここ出来ればなくしたい
 DIRECTX directx;
-//Title title;
+Title title;
 //Help help;
-//Game game;
-//Result result;
+Game game;
+Result result;
 
 SCENE scene = TITLE;
 
@@ -78,10 +78,10 @@ VOID Rotate(CUSTOMVERTEX  original[], CUSTOMVERTEX rotatevertex[], DOUBLE degree
 		rotatevertex[i] = original[i];
 
 		// 回転後のx = 回転前のx・cosθ - 回転前のy・sinθ
-		rotatevertex[i].x = (FLOAT)(original[i].x * cos(dx.to_Rad(degree)) - original[i].y * sin(dx.to_Rad(degree)));
+		rotatevertex[i].x = (FLOAT)(original[i].x * cos(directx.to_Rad(degree)) - original[i].y * sin(directx.to_Rad(degree)));
 
 		// 回転後のy = 回転前のx・sinθ + 回転前のy・cosθ
-		rotatevertex[i].y = (FLOAT)(original[i].x * sin(dx.to_Rad(degree)) + original[i].y * cos(dx.to_Rad(degree)));
+		rotatevertex[i].y = (FLOAT)(original[i].x * sin(directx.to_Rad(degree)) + original[i].y * cos(directx.to_Rad(degree)));
 
 		original[i].x += center_x;
 		original[i].y += center_y;
@@ -195,12 +195,12 @@ void Mainloop(MSG* msg) {
 				directx.UpdateKeyState();
 
 				//ここからゲーム処理
-				/*switch (scene) {
+				switch (scene) {
 				case TITLE:
 					title.Title_Scene();
 					break;
 				case HELP:
-					help.Help_Scene();
+					//help.Help_Scene();
 					break;
 				case GAME:
 					game.Game_Scene();
@@ -210,7 +210,7 @@ void Mainloop(MSG* msg) {
 					break;
 				default:
 					MessageBox(0, _T("シーン設定がされていません"), NULL, MB_OK);
-				}*/
+				}
 				directx.pD3Device->EndScene();
 				directx.pD3Device->Present(NULL, NULL, NULL, NULL);
 

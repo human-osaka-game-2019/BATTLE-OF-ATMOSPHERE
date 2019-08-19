@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <d3d9.h>
 
-#include "DirectX.h"
+#include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
 
 
 //カスタムバーテックス
@@ -47,7 +47,7 @@ enum SCENE {
 	EXIT,
 };
 
-extern DIRECTX dx;
+extern DIRECTX directx;
 extern SCENE scene;
 
 
