@@ -13,7 +13,7 @@
 #define DRAW_WIDTH (16)         // 描画する横幅
 #define DRAW_HEIGHT (16)        // 描画する縦幅
 
-class Title {
+class TITLE {
 public:
 
 	void Title_Scene();
@@ -30,28 +30,6 @@ private:
 	void Loading();
 	void Process();
 	void Release();
-
-	int flamecount_title_logo = 0;
-	float title_logo_tu = 0.0f;
-	float title_select_ui_tu_a = 0.5f;
-	float title_select_ui_tu_b = 0.0f;
-	float title_select_ui_tu_c = 0.0f;
-	int flamecount_pacman = 0;
-
-	float pacman_y = 795;
-	float title_pacman_tu = 0.0f;
-
-	// ゲームかヘルプか、１ｐか２ｐの勝利を見分ける変数
-	SCENE nextscene = GAME;
-
-	enum SelectUI_ID
-	{
-		select_ui_start,
-		select_ui_help,
-		select_ui_exit,
-	};
-
-	SelectUI_ID currentID;
 
 };
 

@@ -57,15 +57,13 @@ public:
 
 	HRESULT InitDinput(HWND hWnd);
 
-	void InitPresentParameters(HWND hWnd);
+	VOID InitPresentParameters(HWND hWnd);
 
-	void UpdateKeyState();
+	VOID UpdateKeyState();
 
 	KEY_STATE GetKeyState(INT diks);
 
-	void All_Release();
-
-	double to_Rad(double degree);
+	VOID All_Release();
 
 };
 

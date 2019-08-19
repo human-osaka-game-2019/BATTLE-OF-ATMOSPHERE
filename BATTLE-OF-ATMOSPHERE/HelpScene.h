@@ -1,13 +1,13 @@
-﻿#ifndef RESULT_SCENE_H
-#define RESULT_SCENE_H
+﻿#ifndef HELP_SCENE_H
+#define HELP_SCENE_H
 
 #include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
 #include "../BATTLE-OF-ATMOSPHERE/Main.h"
 
-class RESULT {
+class HELP {
 public:
 
-	void Result_Scene();
+	void Help_Scene();
 
 	enum SCENE_PHASE {
 		LOAD,
@@ -16,10 +16,7 @@ public:
 	};
 
 	//リザルトのフェーズの宣言
-	RESULT::SCENE_PHASE phase = RESULT::LOAD;
-
-
-
+	HELP::SCENE_PHASE phase = HELP::LOAD;
 
 private:
 

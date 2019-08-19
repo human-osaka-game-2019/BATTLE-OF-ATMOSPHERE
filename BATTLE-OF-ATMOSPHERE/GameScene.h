@@ -6,7 +6,7 @@
 #include "../BATTLE-OF-ATMOSPHERE/MapChip.h"
 
 
-class Game {
+class GAME {
 public:
 
 	void Game_Scene();

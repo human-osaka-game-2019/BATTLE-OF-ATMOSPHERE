@@ -1,16 +1,16 @@
-﻿#include "../BATTLE-OF-ATMOSPHERE/TitleScene.h"
+﻿#include "../BATTLE-OF-ATMOSPHERE/HelpScene.h"
 #include"../BATTLE-OF-ATMOSPHERE/MapChip.h"
 
 //タイトルのフェーズの宣言
-TITLE::SCENE_PHASE phase = TITLE::LOAD;
+HELP::SCENE_PHASE Phase = HELP::LOAD;
 //
 //MapchipLoading Mp;
 //DrawMap map;
 
 //タイトルのフェーズの移動
-void TITLE::Title_Scene() {
+void HELP::Help_Scene() {
 
-	switch (phase) {
+	switch (Phase) {
 	case LOAD:
 		Loading();
 		break;
@@ -19,30 +19,30 @@ void TITLE::Title_Scene() {
 		break;
 	case RELEASES:
 		Release();
-		phase = LOAD;
+		Phase = LOAD;
 		break;
 	}
 }
 
 //タイトルのテクスチャの読み込み
-void TITLE::Loading() {
+void HELP::Loading() {
 
-	phase = PROCESSING;
+	Phase = PROCESSING;
 
 }
 
 //タイトルの描画処理
-void TITLE::Process() {
+void HELP::Process() {
 
 	//エンターでゲームへ
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS) {
-		phase = RELEASES;
+		Phase = RELEASES;
 
 	}
 }
 
 //タイトルのテクスチャの解放
-void TITLE::Release() {
+void HELP::Release() {
 
 	for (int i = 0; i < TEX_MAX; i++) {
 		if (directx.pTexture[i] != nullptr) {
@@ -51,6 +51,6 @@ void TITLE::Release() {
 		}
 	}
 
-		scene = GAMESCENE;
+	scene = GAMESCENE;
 
 }
