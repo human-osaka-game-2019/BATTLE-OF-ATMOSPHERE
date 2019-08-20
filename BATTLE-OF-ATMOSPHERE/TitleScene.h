@@ -13,12 +13,14 @@
 #define DRAW_WIDTH (16)         // 描画する横幅
 #define DRAW_HEIGHT (16)        // 描画する縦幅
 
-class TITLE {
+class TITLE 
+{
 public:
 
 	VOID Title_Scene();
 
-	enum SCENE_PHASE {
+	enum SCENE_PHASE 
+	{
 		LOAD,
 		PROCESSING,
 		RELEASES
