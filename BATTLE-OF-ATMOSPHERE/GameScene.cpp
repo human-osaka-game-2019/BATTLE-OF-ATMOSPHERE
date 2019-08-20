@@ -30,7 +30,6 @@ VOID GAME::Game_Scene()
 VOID GAME::Loading() 
 {
 
-
 }
 
 VOID GAME::Process() 
