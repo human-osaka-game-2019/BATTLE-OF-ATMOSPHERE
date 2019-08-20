@@ -109,7 +109,7 @@ HRESULT DIRECTX::InitDinput(HWND hWnd)
 	return S_OK;
 }
 
-void DIRECTX::InitPresentParameters(HWND hWnd)
+VOID DIRECTX::InitPresentParameters(HWND hWnd)
 {
 	ZeroMemory(&D3dPresentParameters, sizeof(D3dPresentParameters));
 
@@ -129,7 +129,7 @@ void DIRECTX::InitPresentParameters(HWND hWnd)
 	D3dPresentParameters.Windowed = true;
 }
 
-void DIRECTX::UpdateKeyState() {
+VOID DIRECTX::UpdateKeyState() {
 
 	BYTE curr_diks[MAX_KEY];
 

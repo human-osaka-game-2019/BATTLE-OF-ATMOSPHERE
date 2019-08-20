@@ -51,6 +51,6 @@ void TITLE::Release() {
 		}
 	}
 
-		scene = GAMESCENE;
+		scene = GAME_SCENE;
 
 }

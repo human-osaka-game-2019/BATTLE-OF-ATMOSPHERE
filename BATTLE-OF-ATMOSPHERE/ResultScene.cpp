@@ -43,5 +43,5 @@ void RESULT::Release() {
 		}
 	}
 	phase = LOAD;
-	scene = TITLESCENE;
+	scene = TITLE_SCENE;
 }

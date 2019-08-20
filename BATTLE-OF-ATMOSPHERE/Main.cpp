@@ -14,7 +14,7 @@ HELP help;
 GAME game;
 RESULT result;
 
-SCENE scene = TITLESCENE;
+SCENE scene = TITLE_SCENE;
 
 //メイン
 INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow) {
@@ -129,16 +129,16 @@ void Mainloop(MSG* msg) {
 
 				//ここからゲーム処理
 				switch (scene) {
-				case TITLESCENE:
+				case TITLE_SCENE:
 					title.Title_Scene();
 					break;
-				case HELPSCENE:
+				case HELP_SCENE:
 					help.Help_Scene();
 					break;
-				case GAMESCENE:
+				case GAME_SCENE:
 					game.Game_Scene();
 					break;
-				case RESULTSCENE:
+				case RESULT_SCENE:
 					result.Result_Scene();
 					break;
 				default:

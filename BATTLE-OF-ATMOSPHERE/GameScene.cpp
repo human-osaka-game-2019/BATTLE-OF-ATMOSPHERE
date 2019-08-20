@@ -49,5 +49,5 @@ void GAME::Release() {
 		}
 	}
 	//リザルトシーンへ
-	scene = RESULTSCENE;
+	scene = RESULT_SCENE;
 }
