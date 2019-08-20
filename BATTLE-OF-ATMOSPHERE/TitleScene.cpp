@@ -1,6 +1,7 @@
 ﻿#include "../BATTLE-OF-ATMOSPHERE/TitleScene.h"
 #include"../BATTLE-OF-ATMOSPHERE/MapChip.h"
 
+
 //タイトルのフェーズの宣言
 TITLE::SCENE_PHASE phase = TITLE::LOAD;
 //
@@ -29,7 +30,7 @@ VOID TITLE::Title_Scene()
 //タイトルのテクスチャの読み込み
 VOID TITLE::Loading() 
 {
-	LoadTexture("title_bg.png", TITLE_BG);
+	draw.LoadTexture("title_bg.png", TITLE_BG);
 	phase = PROCESSING;
 
 }
@@ -37,7 +38,7 @@ VOID TITLE::Loading()
 //タイトルの描画処理
 VOID TITLE::Process() 
 {
-	Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, TITLE_BG);
+	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, TITLE_BG);
 	//エンターでゲームへ
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS) 
 	{

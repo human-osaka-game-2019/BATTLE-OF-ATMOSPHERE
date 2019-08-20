@@ -3,6 +3,7 @@
 
 #include "../BATTLE-OF-ATMOSPHERE/TitleScene.h"
 #include "../BATTLE-OF-ATMOSPHERE/Main.h"
+#include"../BATTLE-OF-ATMOSPHERE/Draw.h"
 
 #define MAP_SIZE_WIDTH (28)		// MAPの横幅(値はチップ数)
 #define MAP_SIZE_HEIGHT (31)	// MAPの縦幅(値はチップ数)

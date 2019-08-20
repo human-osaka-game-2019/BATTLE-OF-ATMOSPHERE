@@ -29,4 +29,6 @@ public:
 	DOUBLE to_Rad(DOUBLE degree);
 };
 
+
+
 #endif
