@@ -8,9 +8,11 @@ TITLE::SCENE_PHASE phase = TITLE::LOAD;
 //DrawMap map;
 
 //タイトルのフェーズの移動
-VOID TITLE::Title_Scene() {
+VOID TITLE::Title_Scene() 
+{
 
-	switch (phase) {
+	switch (phase) 
+	{
 	case LOAD:
 		Loading();
 		break;
@@ -25,27 +27,33 @@ VOID TITLE::Title_Scene() {
 }
 
 //タイトルのテクスチャの読み込み
-VOID TITLE::Loading() {
-
+VOID TITLE::Loading() 
+{
+	LoadTexture("title_bg.png", TITLE_BG);
 	phase = PROCESSING;
 
 }
 
 //タイトルの描画処理
-VOID TITLE::Process() {
-
+VOID TITLE::Process() 
+{
+	Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, TITLE_BG);
 	//エンターでゲームへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS) {
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS) 
+	{
 		phase = RELEASES;
 
 	}
 }
 
 //タイトルのテクスチャの解放
-VOID TITLE::Release() {
+VOID TITLE::Release() 
+{
 
-	for (INT i = 0; i < TEX_MAX; i++) {
-		if (directx.pTexture[i] != nullptr) {
+	for (INT i = 0; i < TEX_MAX; i++) 
+	{
+		if (directx.pTexture[i] != nullptr) 
+		{
 			directx.pTexture[i]->Release();
 			directx.pTexture[i] = nullptr;
 		}
