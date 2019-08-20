@@ -8,11 +8,13 @@
 #include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
 #include "../BATTLE-OF-ATMOSPHERE/Draw.h"
 
-enum TEX {
+enum TEX 
+{
 	MAXTEX
 };
 
-enum SCENE {
+enum SCENE 
+{
 	TITLE_SCENE,
 	HELP_SCENE,
 	GAME_SCENE,

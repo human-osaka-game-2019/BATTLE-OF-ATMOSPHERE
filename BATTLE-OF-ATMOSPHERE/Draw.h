@@ -7,14 +7,16 @@
 #include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
 
 //カスタムバーテックス
-struct CUSTOMVERTEX {
+struct CUSTOMVERTEX 
+{
 	FLOAT x, y, z, rhw;
 	DWORD color;
 	FLOAT tu, tv;
 };
 
 
-class DRAW {
+class DRAW 
+{
 public:
 	VOID Rotate(CUSTOMVERTEX  original[], CUSTOMVERTEX rotatevertex[], DOUBLE degree = 0.0f);
 

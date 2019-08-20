@@ -1,8 +1,6 @@
 ﻿#ifndef MAPCHIP_H
 #define MAPCHIP_H
 
-
-
 #include "../BATTLE-OF-ATMOSPHERE/Main.h"
 
 #include<iostream>

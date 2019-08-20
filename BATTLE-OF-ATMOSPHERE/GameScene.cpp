@@ -8,9 +8,11 @@ GAME::SCENE_PAHSE phase = GAME::LOAD;
 
 
 //ゲームのフェーズの移動
-VOID GAME::Game_Scene() {
+VOID GAME::Game_Scene() 
+{
 
-	switch (phase) {
+	switch (phase) 
+	{
 	case LOAD:
 		Loading();
 		break;
@@ -25,14 +27,17 @@ VOID GAME::Game_Scene() {
 }
 
 //ゲームのテクスチャの読み込み
-VOID GAME::Loading() {
+VOID GAME::Loading() 
+{
 
 
 }
 
-VOID GAME::Process() {
+VOID GAME::Process() 
+{
 	//リリースのフェーズへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS) {
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
+	{
 		phase = RELEASES;
 	}
 
@@ -42,8 +47,10 @@ VOID GAME::Process() {
 VOID GAME::Release() {
 
 	//テクスチャの開放
-	for (INT i = 0; i < TEX_MAX; i++) {
-		if (directx.pTexture[i] != nullptr) {
+	for (INT i = 0; i < TEX_MAX; i++) 
+	{
+		if (directx.pTexture[i] != nullptr) 
+		{
 			directx.pTexture[i]->Release();
 			directx.pTexture[i] = nullptr;
 		}

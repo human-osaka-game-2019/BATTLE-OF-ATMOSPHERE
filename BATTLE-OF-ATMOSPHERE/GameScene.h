@@ -6,7 +6,8 @@
 #include "../BATTLE-OF-ATMOSPHERE/MapChip.h"
 
 
-class GAME {
+class GAME 
+{
 public:
 
 	VOID Game_Scene();
@@ -15,7 +16,8 @@ public:
 	VOID Process();
 	VOID Release();
 
-	enum SCENE_PAHSE {
+	enum SCENE_PAHSE 
+	{
 		LOAD,
 		PROCESSING,
 		RELEASES

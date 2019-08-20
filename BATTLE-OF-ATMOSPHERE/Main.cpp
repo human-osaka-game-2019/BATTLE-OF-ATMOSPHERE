@@ -17,7 +17,8 @@ RESULT result;
 SCENE scene = TITLE_SCENE;
 
 //メイン
-INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow) {
+INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow) 
+{
 	HWND hWnd = NULL;
 	const TCHAR api_name[] = _T("PAC-MAN");
 	//メッセージ
@@ -69,7 +70,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 
 
 //
-HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* p_api_name) {
+HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* p_api_name) 
+{
 	//ウィンドウクラス
 	WNDCLASS Wndclass;
 	Wndclass.style = CS_HREDRAW | CS_VREDRAW; //ウィンドウスタイル
@@ -103,7 +105,8 @@ HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* p_api_name) {
 }
 
 //メインループ
-VOID Mainloop(MSG* msg) {
+VOID Mainloop(MSG* msg) 
+{
 
 	DWORD Prev = timeGetTime();
 	DWORD Curr;
@@ -112,14 +115,18 @@ VOID Mainloop(MSG* msg) {
 
 
 	ZeroMemory(msg, sizeof(msg));
-	while (msg->message != WM_QUIT) {
-		if (PeekMessage(msg, NULL, 0U, 0U, PM_REMOVE)) {
+	while (msg->message != WM_QUIT) 
+	{
+		if (PeekMessage(msg, NULL, 0U, 0U, PM_REMOVE)) 
+		{
 			TranslateMessage(msg);
 			DispatchMessage(msg);
 		}
-		else {
+		else 
+		{
 			Curr = timeGetTime();
-			if (Curr - Prev >= 1000 / 60) {
+			if (Curr - Prev >= 1000 / 60) 
+			{
 
 				directx.pD3Device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 
@@ -128,7 +135,8 @@ VOID Mainloop(MSG* msg) {
 				directx.UpdateKeyState();
 
 				//ここからゲーム処理
-				switch (scene) {
+				switch (scene) 
+				{
 				case TITLE_SCENE:
 					title.Title_Scene();
 					break;
@@ -149,7 +157,8 @@ VOID Mainloop(MSG* msg) {
 
 				Prev = Curr;
 
-				if (directx.KeyState[DIK_ESCAPE] == directx.PRESS) {
+				if (directx.KeyState[DIK_ESCAPE] == directx.PRESS) 
+				{
 					PostQuitMessage(0);
 				}
 			}

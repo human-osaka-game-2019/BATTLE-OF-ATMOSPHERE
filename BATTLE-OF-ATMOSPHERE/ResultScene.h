@@ -4,12 +4,14 @@
 #include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
 #include "../BATTLE-OF-ATMOSPHERE/Main.h"
 
-class RESULT {
+class RESULT 
+{
 public:
 
 	VOID Result_Scene();
 
-	enum SCENE_PHASE {
+	enum SCENE_PHASE 
+	{
 		LOAD,
 		PROCESSING,
 		RELEASES

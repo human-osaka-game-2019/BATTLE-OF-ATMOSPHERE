@@ -9,17 +9,20 @@
 
 HRESULT DIRECTX::BuildDxDevice(HWND hWnd, CONST TCHAR* filepath)
 {
-	if (FAILED(InitD3Device(hWnd, filepath))) {
+	if (FAILED(InitD3Device(hWnd, filepath))) 
+	{
 		return E_FAIL;
 	}
 
-	if (FAILED(InitDinput(hWnd))) {
+	if (FAILED(InitDinput(hWnd))) 
+	{
 		return E_FAIL;
 	}
 
 	pDirect3D = Direct3DCreate9(D3D_SDK_VERSION);
 
-	if (pDirect3D == NULL) {
+	if (pDirect3D == NULL) 
+	{
 		MessageBox(0, _T("Direct3Dの作成に失敗しました"), NULL, MB_OK);
 		return E_FAIL;
 	}
@@ -31,8 +34,10 @@ HRESULT DIRECTX::BuildDxDevice(HWND hWnd, CONST TCHAR* filepath)
 	return S_OK;
 }
 
-HRESULT DIRECTX::InitD3Device(HWND hWnd, CONST TCHAR* FilePath) {
-	if (NULL == (pDirect3D = Direct3DCreate9(D3D_SDK_VERSION))) {
+HRESULT DIRECTX::InitD3Device(HWND hWnd, CONST TCHAR* FilePath) 
+{
+	if (NULL == (pDirect3D = Direct3DCreate9(D3D_SDK_VERSION))) 
+	{
 		MessageBox(0, _T("Direct3Dの作成に失敗しました"), _T(""), MB_OK);
 		return E_FAIL;
 	}
@@ -41,20 +46,24 @@ HRESULT DIRECTX::InitD3Device(HWND hWnd, CONST TCHAR* FilePath) {
 
 	if (FAILED(pDirect3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd,
 		D3DCREATE_MIXED_VERTEXPROCESSING,
-		&D3dPresentParameters, &pD3Device))) {
+		&D3dPresentParameters, &pD3Device))) 
+	{
 
 		MessageBox(0, _T("HALモードでDIRECT3Dデバイスの作成に失敗しました\nREFモードで再試行します"), NULL, MB_OK);
 		if (FAILED(pDirect3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, hWnd,
 			D3DCREATE_MIXED_VERTEXPROCESSING,
-			&D3dPresentParameters, &pD3Device))) {
+			&D3dPresentParameters, &pD3Device))) 
+		{
 			MessageBox(0, _T("DIRECT3Dデバイスの作成に失敗しました"), NULL, MB_OK);
 			return E_FAIL;
 		}
 	}
-	for (INT i = 0; i < TEX_MAX; i++) {
+	for (INT i = 0; i < TEX_MAX; i++) 
+	{
 		if (FAILED(D3DXCreateTextureFromFileEx(pD3Device, FilePath, 100, 100, 0, 0, D3DFMT_UNKNOWN,
 			D3DPOOL_DEFAULT, D3DX_FILTER_NONE, D3DX_DEFAULT,
-			0xffffffff, NULL, NULL, &pTexture[i]))) {
+			0xffffffff, NULL, NULL, &pTexture[i]))) 
+		{
 			MessageBox(0, _T("テクスチャの作成に失敗しました"), _T(""), MB_OK);
 			return E_FAIL;
 		}
@@ -129,7 +138,8 @@ VOID DIRECTX::InitPresentParameters(HWND hWnd)
 	D3dPresentParameters.Windowed = true;
 }
 
-VOID DIRECTX::UpdateKeyState() {
+VOID DIRECTX::UpdateKeyState() 
+{
 
 	BYTE curr_diks[MAX_KEY];
 
@@ -137,21 +147,27 @@ VOID DIRECTX::UpdateKeyState() {
 
 	HRESULT hr = pDxIKeyDevice->Acquire();
 
-	if ((hr == DI_OK) || (hr == S_FALSE)) {
+	if ((hr == DI_OK) || (hr == S_FALSE)) 
+	{
 		pDxIKeyDevice->GetDeviceState(sizeof(curr_diks), &curr_diks);
-		for (INT i = 0; i < MAX_KEY; i++) {
-			if (curr_diks[i] & MASK_NUM) {
-				if (prev_diks[i] == OFF) {
+		for (INT i = 0; i < MAX_KEY; i++) 
+		{
+			if (curr_diks[i] & MASK_NUM) 
+			{
+				if (prev_diks[i] == OFF) 
+				{
 					KeyState[i] = PRESS;
 				}
-				else {
+				else 
+				{
 					KeyState[i] = ON;
 				}
 
 				prev_diks[i] = ON;
 			}
 			else {
-				if (prev_diks[i] == ON) {
+				if (prev_diks[i] == ON) 
+				{
 					KeyState[i] == RELEASE;
 				}
 				else {
@@ -164,11 +180,13 @@ VOID DIRECTX::UpdateKeyState() {
 	}
 }
 
-DIRECTX::KEY_STATE DIRECTX::GetKeyState(INT diks) {
+DIRECTX::KEY_STATE DIRECTX::GetKeyState(INT diks)
+{
 	return KeyState[diks];
 }
 
-VOID DIRECTX::All_Release() {
+VOID DIRECTX::All_Release() 
+{
 
 
 	if (pDxIKeyDevice)
