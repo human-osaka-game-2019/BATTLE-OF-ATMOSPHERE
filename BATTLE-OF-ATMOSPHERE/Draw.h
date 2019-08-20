@@ -24,7 +24,7 @@ public:
 	//テクスチャを読み込む
 	VOID LoadTexture(const CHAR* file_name, INT TEX);
 
-	DOUBLE to_Rad(double degree);
+	DOUBLE to_Rad(DOUBLE degree);
 };
 
 #endif

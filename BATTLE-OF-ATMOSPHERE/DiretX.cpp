@@ -51,7 +51,7 @@ HRESULT DIRECTX::InitD3Device(HWND hWnd, CONST TCHAR* FilePath) {
 			return E_FAIL;
 		}
 	}
-	for (int i = 0; i < TEX_MAX; i++) {
+	for (INT i = 0; i < TEX_MAX; i++) {
 		if (FAILED(D3DXCreateTextureFromFileEx(pD3Device, FilePath, 100, 100, 0, 0, D3DFMT_UNKNOWN,
 			D3DPOOL_DEFAULT, D3DX_FILTER_NONE, D3DX_DEFAULT,
 			0xffffffff, NULL, NULL, &pTexture[i]))) {
@@ -139,7 +139,7 @@ VOID DIRECTX::UpdateKeyState() {
 
 	if ((hr == DI_OK) || (hr == S_FALSE)) {
 		pDxIKeyDevice->GetDeviceState(sizeof(curr_diks), &curr_diks);
-		for (int i = 0; i < MAX_KEY; i++) {
+		for (INT i = 0; i < MAX_KEY; i++) {
 			if (curr_diks[i] & MASK_NUM) {
 				if (prev_diks[i] == OFF) {
 					KeyState[i] = PRESS;
@@ -168,7 +168,7 @@ DIRECTX::KEY_STATE DIRECTX::GetKeyState(INT diks) {
 	return KeyState[diks];
 }
 
-void DIRECTX::All_Release() {
+VOID DIRECTX::All_Release() {
 
 
 	if (pDxIKeyDevice)

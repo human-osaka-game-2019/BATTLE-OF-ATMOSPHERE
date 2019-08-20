@@ -7,7 +7,7 @@
 class RESULT {
 public:
 
-	void Result_Scene();
+	VOID Result_Scene();
 
 	enum SCENE_PHASE {
 		LOAD,
@@ -23,9 +23,9 @@ public:
 
 private:
 
-	void Loading();
-	void Process();
-	void Release();
+	VOID Loading();
+	VOID Process();
+	VOID Release();
 
 
 };

@@ -1,7 +1,7 @@
 ﻿#include "../BATTLE-OF-ATMOSPHERE/ResultScene.h"
 
 //リザルトのフェーズの移動
-void RESULT::Result_Scene() {
+VOID RESULT::Result_Scene() {
 
 	switch (phase) {
 	case LOAD:
@@ -18,13 +18,13 @@ void RESULT::Result_Scene() {
 }
 
 //リザルトのテクスチャの読み込み
-void RESULT::Loading() {
+VOID RESULT::Loading() {
 
 	phase = PROCESSING;
 }
 
 //リザルトの描画処理
-void RESULT::Process() {
+VOID RESULT::Process() {
 
 	//エンターでタイトルへ
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS) {
@@ -34,9 +34,9 @@ void RESULT::Process() {
 
 
 //リザルトのテクスチャの解放
-void RESULT::Release() {
+VOID RESULT::Release() {
 
-	for (int i = 0; i < TEX_MAX; i++) {
+	for (INT i = 0; i < TEX_MAX; i++) {
 		if (directx.pTexture[i] != nullptr) {
 			directx.pTexture[i]->Release();
 			directx.pTexture[i] = nullptr;

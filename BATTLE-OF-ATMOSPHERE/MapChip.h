@@ -11,11 +11,11 @@
 class DRAWMAP {
 public:
 
-	VOID DrawMapChip(int map_size_width, int map_size_height, float texture_width, float texture_height, float mapchip_width, float mapchip_height, float draw_width, float draw_height, float draw_pos_x, float draw_pos_y, int texture, int** map);
+	VOID DrawMapChip(INT map_size_width, INT map_size_height, FLOAT texture_width, FLOAT texture_height, FLOAT mapchip_width, FLOAT mapchip_height, FLOAT draw_width, FLOAT draw_height, FLOAT draw_pos_x, FLOAT draw_pos_y, INT texture, INT** map);
 
-	VOID TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int mapchip_height, float chip_pos_x, float chip_pos_y, float width_num, float height_num, int texture);
+	VOID TexturePrint(INT drawpos_x, INT drawpos_y, INT mapcip_width, INT mapchip_height, FLOAT chip_pos_x, FLOAT chip_pos_y, FLOAT width_num, FLOAT height_num, INT texture);
 
-	int map[31][28];
+	INT map[31][28];
 
 };
 #endif // !MAPCHIP

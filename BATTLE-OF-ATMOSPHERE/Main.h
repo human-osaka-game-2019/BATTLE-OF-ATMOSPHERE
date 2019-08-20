@@ -36,6 +36,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* API_NAME);
 
 //メインループ
-void Mainloop(MSG* msg);
+VOID Mainloop(MSG* msg);
 
 #endif

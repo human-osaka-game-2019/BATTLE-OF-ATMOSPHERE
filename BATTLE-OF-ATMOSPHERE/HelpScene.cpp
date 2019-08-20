@@ -1,7 +1,7 @@
 ﻿#include "../BATTLE-OF-ATMOSPHERE/HelpScene.h"
 
 //リザルトのフェーズの移動
-void HELP::Help_Scene() {
+VOID HELP::Help_Scene() {
 
 	switch (phase) {
 	case LOAD:
@@ -18,13 +18,13 @@ void HELP::Help_Scene() {
 }
 
 //リザルトのテクスチャの読み込み
-void HELP::Loading() {
+VOID HELP::Loading() {
 
 	phase = PROCESSING;
 }
 
 //リザルトの描画処理
-void HELP::Process() {
+VOID HELP::Process() {
 
 	//エンターでタイトルへ
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS) {
@@ -34,9 +34,9 @@ void HELP::Process() {
 
 
 //リザルトのテクスチャの解放
-void HELP::Release() {
+VOID HELP::Release() {
 
-	for (int i = 0; i < TEX_MAX; i++) {
+	for (INT i = 0; i < TEX_MAX; i++) {
 		if (directx.pTexture[i] != nullptr) {
 			directx.pTexture[i]->Release();
 			directx.pTexture[i] = nullptr;

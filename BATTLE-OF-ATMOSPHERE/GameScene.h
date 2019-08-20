@@ -9,11 +9,11 @@
 class GAME {
 public:
 
-	void Game_Scene();
+	VOID Game_Scene();
 
-	void Loading();
-	void Process();
-	void Release();
+	VOID Loading();
+	VOID Process();
+	VOID Release();
 
 	enum SCENE_PAHSE {
 		LOAD,

@@ -7,7 +7,7 @@
 class HELP {
 public:
 
-	void Help_Scene();
+	VOID Help_Scene();
 
 	enum SCENE_PHASE {
 		LOAD,
@@ -20,9 +20,9 @@ public:
 
 private:
 
-	void Loading();
-	void Process();
-	void Release();
+	VOID Loading();
+	VOID Process();
+	VOID Release();
 
 
 };

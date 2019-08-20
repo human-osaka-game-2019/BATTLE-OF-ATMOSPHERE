@@ -73,7 +73,7 @@ VOID DRAW::LoadTexture(const CHAR* file_name, INT TEX) {
 }
 
 
-DOUBLE DRAW::to_Rad(double degree) {
+DOUBLE DRAW::to_Rad(DOUBLE degree) {
 
 	return degree * atan(1.0) * 4.0 / 180.0;
 }

@@ -34,7 +34,7 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	directx.All_Release();
 
-	return (int)msg.wParam;
+	return (INT)msg.wParam;
 }
 
 //ウィンドウプロシージャ
@@ -103,7 +103,7 @@ HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* p_api_name) {
 }
 
 //メインループ
-void Mainloop(MSG* msg) {
+VOID Mainloop(MSG* msg) {
 
 	DWORD Prev = timeGetTime();
 	DWORD Curr;

@@ -44,10 +44,10 @@ public:
 	};
 
 
-	static const int MAX_KEY = 256;
-	const int MASK_NUM = 0x80;
+	static const INT MAX_KEY = 256;
+	const INT MASK_NUM = 0x80;
 
-	int win;
+	INT win;
 
 	KEY_STATE KeyState[256];
 

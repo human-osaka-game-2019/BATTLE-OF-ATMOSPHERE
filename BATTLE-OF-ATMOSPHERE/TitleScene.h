@@ -16,7 +16,7 @@
 class TITLE {
 public:
 
-	void Title_Scene();
+	VOID Title_Scene();
 
 	enum SCENE_PHASE {
 		LOAD,
@@ -27,9 +27,9 @@ public:
 private:
 
 	//プロトタイプ宣言
-	void Loading();
-	void Process();
-	void Release();
+	VOID Loading();
+	VOID Process();
+	VOID Release();
 
 };
 
