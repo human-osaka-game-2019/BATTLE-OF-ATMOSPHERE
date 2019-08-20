@@ -10,7 +10,8 @@
 
 enum TEX 
 {
-	MAXTEX
+	TITLE_BG,
+	MAXTEX,
 };
 
 enum SCENE 
