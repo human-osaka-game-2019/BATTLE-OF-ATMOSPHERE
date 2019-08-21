@@ -11,6 +11,7 @@
 enum TEX 
 {
 	TITLE_BG,
+	SPACEMAN,
 	RESULT_BG,
 	MAXTEX,
 };
