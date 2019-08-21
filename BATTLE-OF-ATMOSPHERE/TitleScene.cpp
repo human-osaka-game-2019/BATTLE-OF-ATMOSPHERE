@@ -30,7 +30,7 @@ VOID TITLE::Title_Scene()
 //タイトルのテクスチャの読み込み
 VOID TITLE::Loading() 
 {
-	draw.LoadTexture("title_bg.png", TITLE_BG);
+	draw.LoadTexture("Texture/title_bg.png", TITLE_BG);
 	phase = PROCESSING;
 
 }
