@@ -11,6 +11,7 @@
 enum TEX 
 {
 	TITLE_BG,
+	RESULT_BG,
 	MAXTEX,
 };
 

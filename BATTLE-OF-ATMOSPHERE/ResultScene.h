@@ -3,6 +3,7 @@
 
 #include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
 #include "../BATTLE-OF-ATMOSPHERE/Main.h"
+#include"../BATTLE-OF-ATMOSPHERE/Draw.h"
 
 class RESULT 
 {
