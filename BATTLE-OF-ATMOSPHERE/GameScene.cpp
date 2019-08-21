@@ -39,20 +39,20 @@ VOID GAME::Process()
 	draw.Draw(0, 0, 0xffffffff, 0.0f, game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
 	flamecount++;
 
-	if(flamecount>=60)
+	if(flamecount>=2)
 	{
-		game_bg_tu += 0.01;
-	}
-	if (game_bg_tu >= 0.5)
+		game_bg_tu += SCROLL_SPEED;
+		flamecount = 0;
+	if (game_bg_tu >= 1.0f)
 	{
 		game_bg_tu = 0.0f;
-		flamecount = 0;
 	}
 	m_pos_y += m_gravity;
 	if (m_pos_y >= 900)
 	{
 		m_pos_y = 900;
 	
+	}
 	}
 
 	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 100, 100, 1.0f, 1.0f, SPACEMAN);

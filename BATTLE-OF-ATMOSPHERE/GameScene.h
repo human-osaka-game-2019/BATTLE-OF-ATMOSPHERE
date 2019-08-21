@@ -14,8 +14,10 @@ public:
 	INT m_pos_y = 0;
 
 	INT m_spaceman_speed = 4;
-	FLOAT game_bg_tu = 0.25;
+	FLOAT game_bg_tu = 0.25f;
 	INT flamecount = 0;
+	
+	#define SCROLL_SPEED  0.005f
 
 	//月の重力
 	INT m_gravity = 1.6;
