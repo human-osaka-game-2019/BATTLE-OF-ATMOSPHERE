@@ -29,11 +29,25 @@ VOID GAME::Game_Scene()
 //ゲームのテクスチャの読み込み
 VOID GAME::Loading() 
 {
-	draw.LoadTexture("Texture/spaceman.png", SPACEMAN);
+	draw.LoadTexture("game_bg.png", GAME_BG);
+	draw.LoadTexture("spaceman.png", SPACEMAN);
+	phase = PROCESSING;
 }
 
 VOID GAME::Process() 
 {
+	draw.Draw(0, 0, 0xffffffff, 0.0f, game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
+	flamecount++;
+
+	if(flamecount>=60)
+	{
+		game_bg_tu += 0.01;
+	}
+	if (game_bg_tu >= 0.5)
+	{
+		game_bg_tu = 0.0f;
+		flamecount = 0;
+	}
 	m_pos_y += m_gravity;
 	if (m_pos_y >= 900)
 	{
@@ -43,17 +57,12 @@ VOID GAME::Process()
 
 	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 100, 100, 1.0f, 1.0f, SPACEMAN);
 
-	if (directx.KeyState[DIK_RIGHT] == directx.PRESS)
+	if (directx.KeyState[DIK_RIGHT] == directx.ON)
 	{
 		m_pos_x += m_spaceman_speed;
-		/*if (m_pos_x>=)
-		{
-		
-		
-		}*/
 	
 	}
-	if (directx.KeyState[DIK_LEFT] == directx.PRESS)
+	if (directx.KeyState[DIK_LEFT] == directx.ON)
 	{
 		m_pos_x -= m_spaceman_speed;
 
