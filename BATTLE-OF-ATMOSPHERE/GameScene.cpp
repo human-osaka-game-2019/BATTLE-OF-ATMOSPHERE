@@ -36,9 +36,12 @@ VOID GAME::Loading()
 
 VOID GAME::Process() 
 {
+	//ゲーム背景の描画
 	draw.Draw(0, 0, 0xffffffff, 0.0f, game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
+	
+	
 	flamecount++;
-
+	//縦スクロールのアニメーション
 	if(flamecount>=2)
 	{
 		game_bg_tu += SCROLL_SPEED;
@@ -47,7 +50,9 @@ VOID GAME::Process()
 	{
 		game_bg_tu = 0.0f;
 	}
+	//重力
 	m_pos_y += m_gravity;
+	//仮の当たり判定
 	if (m_pos_y >= 825)
 	{
 		m_pos_y = 825;
@@ -55,8 +60,9 @@ VOID GAME::Process()
 	}
 	}
 
+	//自機の描画
 	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 128, 256, 1.0f, 1.0f, SPACEMAN);
-
+	//自機の移動
 	if (directx.KeyState[DIK_RIGHT] == directx.ON)
 	{
 		m_pos_x += m_spaceman_speed;
