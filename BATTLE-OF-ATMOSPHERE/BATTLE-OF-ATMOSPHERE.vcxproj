@@ -145,12 +145,26 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="MapChip.cpp" />
     <ClCompile Include="HelpScene.cpp" />
+    <ClCompile Include="Impact.cpp" />
+    <ClCompile Include="Create.cpp" />
+    <ClCompile Include="Gravity.cpp" />
+    <ClCompile Include="Jet.cpp" />
+    <ClCompile Include="Powerup.cpp" />
+    <ClCompile Include="Ice.cpp" />
+    <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DirectX.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Draw.h" />
+    <ClInclude Include="Create.h" />
+    <ClInclude Include="Gravity.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="Ice.h" />
+    <ClInclude Include="Powerup.h" />
+    <ClInclude Include="Jet.h" />
+    <ClInclude Include="Impact.h" />
     <ClInclude Include="HelpScene.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MapChip.h" />

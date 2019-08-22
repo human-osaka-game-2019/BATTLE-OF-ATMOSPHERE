@@ -17,7 +17,7 @@ public:
 	FLOAT game_bg_tu = 0.25f;
 	INT flamecount = 0;
 	
-	#define SCROLL_SPEED  0.005f
+	#define SCROLL_SPEED  -0.001f
 
 	//月の重力
 	INT m_gravity = 1.6;
