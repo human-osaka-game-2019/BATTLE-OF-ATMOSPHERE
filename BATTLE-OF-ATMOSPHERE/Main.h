@@ -14,6 +14,7 @@ enum TEX
 	TITLE_UI,
 	SPACEMAN,
 	GAME_BG,
+	HELP_BG,
 	RESULT_BG,
 	MAXTEX,
 };
