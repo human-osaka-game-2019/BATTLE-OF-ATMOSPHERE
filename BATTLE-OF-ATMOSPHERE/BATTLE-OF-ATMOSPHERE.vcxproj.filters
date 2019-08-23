@@ -63,6 +63,9 @@
     <ClCompile Include="Stage.cpp">
       <Filter>ソースファイル\feature</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>ソースファイル\feature</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DirectX.h">
@@ -108,6 +111,9 @@
       <Filter>ソースファイル\feature</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
+      <Filter>ソースファイル\feature</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
       <Filter>ソースファイル\feature</Filter>
     </ClInclude>
   </ItemGroup>
