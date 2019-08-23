@@ -1,24 +1,14 @@
 ﻿#include "../BATTLE-OF-ATMOSPHERE/MapChip.h"
 
-const INT map_chip_list[map_size_width_pos][map_size_height_pos]
-{
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-};
 
-VOID DRAWMAP::DrawMapChip(INT map_size_width, INT map_size_height, FLOAT texture_width, FLOAT texture_height, FLOAT mapchip_width, FLOAT mapchip_height, FLOAT draw_width, FLOAT draw_height, FLOAT draw_pos_x, FLOAT draw_pos_y, INT texture, INT** map)
+
+VOID DRAWMAP::DrawMapChip(INT map_size_width, INT map_size_height, FLOAT texture_width, FLOAT texture_height, FLOAT mapchip_width, FLOAT mapchip_height, FLOAT draw_width, FLOAT draw_height, FLOAT draw_pos_x, FLOAT draw_pos_y, INT texture, BLOCK** map)
 {
 	for (INT i = 0; i < map_size_height; i++)
 	{
 		for (INT j = 0; j < map_size_width; j++)
 		{
-			INT chip_id = map[i][j];
+			INT chip_id = map[i][j].chip_id;
 			if (chip_id == 0)
 			{
 				continue;
@@ -40,6 +30,9 @@ VOID DRAWMAP::DrawMapChip(INT map_size_width, INT map_size_height, FLOAT texture
 			//MAPCHIP_HEIGHT                                        一マスのheight大きさ
 			FLOAT chip_pos_x = (FLOAT)(chip_id % width_num) * mapchip_width;
 			FLOAT chip_pos_y = (FLOAT)(chip_id / height_num) * mapchip_height;
+
+			map[i][j].x = draw_pos_x + draw_width * j;
+			map[i][j].y = draw_pos_y + draw_height * i;
 
 			DRAWMAP::TexturePrint(draw_pos_x + draw_width * j, draw_pos_y + draw_height * i, draw_width, draw_height, chip_pos_x / texture_width, chip_pos_y / texture_height, mapchip_width / texture_width, mapchip_height / texture_height, texture);
 		}

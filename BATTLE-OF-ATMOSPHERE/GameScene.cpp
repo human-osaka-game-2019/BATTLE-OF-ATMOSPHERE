@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-DRAWMAP map;
+//DRAWMAP drawmap;
+STAGE stage;
 
 GAME::SCENE_PAHSE phase = GAME::LOAD;
 
@@ -31,6 +32,7 @@ VOID GAME::Loading()
 {
 	draw.LoadTexture("game_bg.png", GAME_BG);
 	draw.LoadTexture("spaceman.png", SPACEMAN);
+	draw.LoadTexture("battleofatomosphere_block.png", GAME_STAGE);
 	phase = PROCESSING;
 }
 
@@ -40,25 +42,38 @@ VOID GAME::Process()
 	draw.Draw(0, 0, 0xffffffff, 0.0f, game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
 	
 	
-	flamecount++;
+	fc_background++;
 	//縦スクロールのアニメーション
-	if(flamecount>=2)
+	if(fc_background >=2)
 	{
 		game_bg_tu += SCROLL_SPEED;
-		flamecount = 0;
-	if (game_bg_tu <= -1.0f)
-	{
-		game_bg_tu = 0.0f;
+		fc_background = 0;
+		if (game_bg_tu <= -1.0f)
+		{
+			game_bg_tu = 0.0f;
+		}
+		//重力
+		m_pos_y += m_gravity;
+		//仮の当たり判定
+		if (m_pos_y >= 825)
+		{
+			m_pos_y = 825;
+		
+		}
 	}
-	//重力
-	m_pos_y += m_gravity;
-	//仮の当たり判定
-	if (m_pos_y >= 825)
-	{
-		m_pos_y = 825;
-	
-	}
-	}
+
+
+	stage.InitStage();
+
+
+
+
+
+
+
+
+
+
 
 	//自機の描画
 	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 128, 256, 1.0f, 1.0f, SPACEMAN);

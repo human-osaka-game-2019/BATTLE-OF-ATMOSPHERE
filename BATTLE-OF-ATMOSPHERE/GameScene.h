@@ -5,6 +5,7 @@
 #include "../BATTLE-OF-ATMOSPHERE/Main.h"
 #include "../BATTLE-OF-ATMOSPHERE/MapChip.h"
 #include "../BATTLE-OF-ATMOSPHERE/Draw.h"
+#include "../BATTLE-OF-ATMOSPHERE/Stage.h"
 
 class GAME 
 {
@@ -19,7 +20,7 @@ public:
 	//スクロールの可視範囲
 	FLOAT game_bg_tu = 0.25f;
 	
-	INT flamecount = 0;
+	INT fc_background = 0;
 	
 	//スクロールのスピード
 	#define SCROLL_SPEED  -0.001f
