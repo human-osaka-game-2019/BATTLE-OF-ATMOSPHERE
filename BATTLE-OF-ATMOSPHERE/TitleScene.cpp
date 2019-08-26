@@ -80,6 +80,9 @@ VOID TITLE::Process()
 	//エンターでゲームへ
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS) 
 	{
+		m_title_ui_tu_start = 0.5f;
+		m_title_ui_tu_help = 0.0f;
+		m_title_ui_tu_exit = 0.0f;
 		phase = RELEASES;
 
 	}

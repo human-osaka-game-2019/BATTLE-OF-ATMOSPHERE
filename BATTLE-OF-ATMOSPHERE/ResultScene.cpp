@@ -20,18 +20,18 @@ VOID RESULT::Result_Scene()
 }
 
 //リザルトのテクスチャの読み込み
-VOID RESULT::Loading() 
+VOID RESULT::Loading()
 {
-	draw.LoadTexture("Texture/result_bg.png", RESULT_BG);
+	draw.LoadTexture("result-1240x698.png", RESULT_BG);
 	phase = PROCESSING;
 }
 
 //リザルトの描画処理
-VOID RESULT::Process() 
+VOID RESULT::Process()
 {
 	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, RESULT_BG);
 	//エンターでタイトルへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS) 
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
 	{
 		phase = RELEASES;
 	}
@@ -39,12 +39,12 @@ VOID RESULT::Process()
 
 
 //リザルトのテクスチャの解放
-VOID RESULT::Release() 
+VOID RESULT::Release()
 {
 
-	for (INT i = 0; i < TEX_MAX; i++) 
+	for (INT i = 0; i < TEX_MAX; i++)
 	{
-		if (directx.pTexture[i] != nullptr) 
+		if (directx.pTexture[i] != nullptr)
 		{
 			directx.pTexture[i]->Release();
 			directx.pTexture[i] = nullptr;
@@ -53,3 +53,4 @@ VOID RESULT::Release()
 	phase = LOAD;
 	scene = TITLE_SCENE;
 }
+
