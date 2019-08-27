@@ -54,7 +54,36 @@ VOID DRAW::Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, 
 	directx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertex, sizeof(CUSTOMVERTEX));
 }
 
-
+//アニメーション関数
+/**
+* @breaf アニメーションの関数
+* @param flamecount   なんのアニメーションをするためのflamecountか
+* @param count  　　　何回処理に入るのか
+* @param tu  　　　　 アニメーションをする初めのtu座標
+* @param tv           アニメーションをする初めのtv座標
+* @param split_tu     tuの幅（1/???）
+* @param split_tv     tvの幅（1/???）
+*/
+VOID DRAW:: Animetion(int* flamecount, int count, float* tu, float* tv, float split_tu, float split_tv)
+{
+	if (*flamecount >= count)
+	{
+		*tu += split_tu;
+		*tv += split_tv;
+		count = 0.0f;
+		*flamecount = count;
+	}
+	if (*tu >= 1.0f)
+	{
+		split_tu = 0.0f;
+		*tu = split_tu;
+	}
+	if (*tv >= 1.0f)
+	{
+		split_tv = 0.0f;
+		*tv = split_tv;
+	}
+}
 
 
 VOID DRAW::LoadTexture(const CHAR* file_name, INT TEX) 
