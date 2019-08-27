@@ -9,7 +9,7 @@ GAME::SCENE_PAHSE phase = GAME::LOAD;
 
 
 //ゲームのフェーズの移動
-VOID GAME::Game_Scene() 
+VOID GAME::Game_Scene()
 {
 
 	switch (phase) 
@@ -33,6 +33,10 @@ VOID GAME::Loading()
 	draw.LoadTexture("game_bg.png", GAME_BG);
 	draw.LoadTexture("spaceman.png", SPACEMAN);
 	draw.LoadTexture("battleofatomosphere_block.png", GAME_STAGE);
+
+	stage.InitStage();
+
+
 	phase = PROCESSING;
 }
 
@@ -52,6 +56,11 @@ VOID GAME::Process()
 		{
 			game_bg_tu = 0.0f;
 		}
+		//ブロックをスクロールに合わせて落とす処理
+		for (int i = 0; i < BLOCK_QUANTITY; i++)
+		{
+			stage.ScrollBlock(&stage.block[i]);
+		}
 		//重力
 		m_pos_y += m_gravity;
 		//仮の当たり判定
@@ -62,18 +71,12 @@ VOID GAME::Process()
 		}
 	}
 
+	//ブロックの描画
+	for (int i = 0; i < BLOCK_QUANTITY; i++)
+	{
+		stage.DrawBlock(stage.block[i]);
 
-	stage.InitStage();
-
-
-
-
-
-
-
-
-
-
+	}
 
 	//自機の描画
 	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 128, 256, 1.0f, 1.0f, SPACEMAN);
