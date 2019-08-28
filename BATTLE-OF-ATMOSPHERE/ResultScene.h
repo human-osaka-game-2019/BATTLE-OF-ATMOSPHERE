@@ -29,6 +29,19 @@ private:
 	VOID Loading();
 	VOID Process();
 	VOID Release();
+	
+	FLOAT result_ui_tu_a = 0.5f;
+	FLOAT result_ui_tu_b = 0.5f;
+	FLOAT result_ui_tu_c = 0.5f;
+
+	enum Result_SelectUI_ID
+	{
+		select_ui_retry,
+		select_ui_title,
+
+	};
+
+	Result_SelectUI_ID Result_ID;
 
 
 };
