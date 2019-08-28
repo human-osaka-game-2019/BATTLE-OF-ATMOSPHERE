@@ -32,6 +32,7 @@ VOID TITLE::Loading()
 {
 	draw.LoadTexture("title_bg.png", TITLE_BG);
 	draw.LoadTexture("title_ui.png", TITLE_UI);
+	draw.LoadTexture("title_logo.png", TITLE_LOGO);
 	phase = PROCESSING;
 	
 	current_id = title_ui_exit;
@@ -46,6 +47,8 @@ VOID TITLE::Process()
 	draw.Draw(600, 610, 0xffffffff, m_title_ui_tu_start, 0.0f,600,200, 0.5f, 0.25f, TITLE_UI);
 	draw.Draw(600, 710, 0xffffffff, m_title_ui_tu_help, 0.25f,600,200, 0.5f, 0.25f, TITLE_UI);
 	draw.Draw(600, 810, 0xffffffff, m_title_ui_tu_exit, 0.5f, 600,200, 0.5f, 0.25f, TITLE_UI);
+
+	draw.Draw(460, 100, 0xffffffff, 0.0f, 0.0f, 1000, 500, 1.0f, 1.0f, TITLE_LOGO);
 
 	if (directx.KeyState[DIK_DOWN] == directx.PRESS)
 	{
