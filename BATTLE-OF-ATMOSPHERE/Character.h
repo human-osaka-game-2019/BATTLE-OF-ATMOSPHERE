@@ -20,8 +20,8 @@ public:
 	FLOAT m_gravity = 0.0F;							//! 自機にかかる重力
 
 	// 自機の座標、サイズ関係変数
-	FLOAT m_pos_x = 0.0F;							//! 自機のX座標
-	FLOAT m_pos_y = 0.0F;							//! 自機のY座標
+	FLOAT m_spaceman_pos_x = 0.0F;							//! 自機のX座標
+	FLOAT m_spaceman_pos_y = 0.0F;							//! 自機のY座標
 	FLOAT m_spaceman_width = 96.0F;					//! 自機の幅
 	FLOAT m_spaceman_height = 192.0F;				//! 自機の高さ
 
@@ -41,15 +41,30 @@ public:
 	{
 		NO_JUMP,	//! ジャンプしていない
 		ONE_JUMP,	//! 1回ジャンプした
-		TWO_JUMP	//! 二段ジャンプした
+		TWO_JUMP	//! 2回ジャンプした
 	};
 
 	/**
-	* @fn VOID SpaceManJumpSwitchChange(INT* jump)
-	* @param (INT jump) 現在のジャンプ状態
-	* @brief ジャンプボタンが押されたときジャンプ状態を切り替える
+	* @fn VOID SpaceManJumpSwitchChange(JUMP jump)
+	* @param (JUMP jump) 現在のジャンプ状態
+	* @brief ジャンプボタンが押されたとき次のジャンプ状態を返す
 	*/
 	JUMP SpaceManJumpSwitchChange(JUMP jump);
+
+	VOID SpaceManJump();
+
+	/**
+	* @fn VOID SpaceManSwitchJump(INT jump)
+	* @param (INT jump) 現在のジャンプ状態
+	* @brief 現在のジャンプ状態に応じて処理を行う関数
+	*/
+	VOID SpaceManSwitchJump(JUMP jump);
+
+	/**
+	* @fn VOID SpaceManRelease()
+	* @brief 自機のステータス解放用関数
+	*/
+	VOID SpaceManRelease();
 
 	/**
 	* @fn virtual VOID SpaceManDash()
@@ -72,25 +87,16 @@ protected:
 class SPACEMANONE :public SPACEMANBASE
 {
 public:
-	VOID SpaceManJump();
 	VOID SpaceManDash();
 	VOID SpaceManMove();
+};
 
-	/**
-	* @fn VOID SpaceManRelease()
-	* @brief 自機のステータス解放用関数
-	*/
-	VOID SpaceManRelease();
-
-
-
-	/**
-	* @fn VOID SpaceManSwitchJump(INT jump)
-	* @param (INT jump) 現在のジャンプ状態
-	* @brief 現在のジャンプ状態に応じて処理を行う関数
-	*/
-	VOID SpaceManSwitchJump(JUMP jump);
+class SPACEMANTWO :public SPACEMANBASE
+{
+public:
+	FLOAT m_spaceman_pos_x = 500;
+	VOID SpaceManDash();
+	VOID SpaceManMove();
 };
 
 #endif // !CHARACTER_H_
-
