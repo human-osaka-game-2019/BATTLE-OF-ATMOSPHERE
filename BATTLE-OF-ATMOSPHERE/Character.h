@@ -37,12 +37,19 @@ public:
 
 
 
-	enum JAMP
+	enum JUMP
 	{
-		NO_JAMP,	//! ジャンプしていない
-		ONE_JAMP,	//! 1回ジャンプした
-		TWO_JAMP	//! 二段ジャンプした
+		NO_JUMP,	//! ジャンプしていない
+		ONE_JUMP,	//! 1回ジャンプした
+		TWO_JUMP	//! 二段ジャンプした
 	};
+
+	/**
+	* @fn VOID SpaceManJumpSwitchChange(INT* jump)
+	* @param (INT jump) 現在のジャンプ状態
+	* @brief ジャンプボタンが押されたときジャンプ状態を切り替える
+	*/
+	JUMP SpaceManJumpSwitchChange(JUMP jump);
 
 	/**
 	* @fn virtual VOID SpaceManDash()
@@ -57,12 +64,12 @@ public:
 	virtual VOID SpaceManMove() = 0;
 
 protected:
-	INT m_jump = NO_JAMP;				//! ジャンプ状態記憶用変数
+	JUMP m_jump = NO_JUMP;				//! ジャンプ状態記憶用変数
 	BOOL m_is_dash = FALSE;				//! 現在ジャンプが可能かどうかを判断する用フラグ
 	BOOL m_is_call = FALSE;				//! 呼ばれたかどうか判断する用フラグ
 };
 
-class SPACEMAN1P :public SPACEMANBASE
+class SPACEMANONE :public SPACEMANBASE
 {
 public:
 	VOID SpaceManJump();
@@ -75,19 +82,14 @@ public:
 	*/
 	VOID SpaceManRelease();
 
-	/**
-	* @fn VOID SpaceManJumpSwitchChange(INT* jump)
-	* @param (INT jump) 現在のジャンプ状態
-	* @brief ジャンプボタンが押されたときジャンプ状態を切り替える
-	*/
-	VOID SpaceManJumpSwitchChange(INT* jump);
+
 
 	/**
 	* @fn VOID SpaceManSwitchJump(INT jump)
 	* @param (INT jump) 現在のジャンプ状態
 	* @brief 現在のジャンプ状態に応じて処理を行う関数
 	*/
-	VOID SpaceManSwitchJump(INT jump);
+	VOID SpaceManSwitchJump(JUMP jump);
 };
 
 #endif // !CHARACTER_H_
