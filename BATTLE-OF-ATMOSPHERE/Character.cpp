@@ -127,6 +127,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_)
 		}
 		else if (directx.KeyState[DIK_S] == directx.OFF)
 		{
+			char_->m_is_guard = FALSE;
 			char_->m_is_dash = TRUE;
 		}
 	}
@@ -161,6 +162,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_)
 		}
 		else if (directx.KeyState[DIK_DOWN] == directx.OFF)
 		{
+			char_->m_is_guard = FALSE;
 			char_->m_is_dash = TRUE;
 		}
 	}
