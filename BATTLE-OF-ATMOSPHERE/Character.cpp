@@ -113,6 +113,8 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_)
 
 		SpaceManDash(char_);
 
+		if(directx.KeyState[DIK_LCONTROL])
+
 		if ((directx.KeyState[DIK_W] == directx.PRESS) && (char_->m_is_call == FALSE))
 		{
 			char_->m_gravity = -30;
