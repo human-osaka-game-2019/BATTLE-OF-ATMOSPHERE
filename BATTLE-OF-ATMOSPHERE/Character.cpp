@@ -1,4 +1,4 @@
-﻿#include "Character.h"
+?�#include "Character.h"
 
 #include "Main.h"
 
@@ -40,7 +40,7 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 
 	case NO_JUMP:
 
-		// ジャンプしていないとき（落下など）自身に重力をかけている
+		// ジャンプして�?���?��き（落下など?��?身に重力をかけて�?��
 		char_->m_is_call = FALSE;
 		char_->m_gravity = 0;
 
@@ -174,12 +174,12 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_)
 VOID SPACEMAN::Move(CHAR_* char_, FLOAT save_x, FLOAT save_y)
 {
 
-	//重力移動
+	//重力移�?
 	char_->y += char_->m_gravity;
 
 
 
-	//キー入力
+	//キー入�?
 
 
 
