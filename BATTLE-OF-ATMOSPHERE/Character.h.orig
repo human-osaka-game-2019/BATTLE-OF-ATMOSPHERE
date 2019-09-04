@@ -1,4 +1,4 @@
-#ifndef CHARACTER_H_
+?�#ifndef CHARACTER_H_
 #define CHARACTER_H_
 
 #include <Windows.h>
@@ -37,6 +37,7 @@ enum ITEM
 
 typedef struct
 {
+<<<<<<< HEAD
 	FLOAT x, y, tu, tv, width, height;
 	FLOAT vec_x, vec_y;					            //! 今移動して�?��方向を割り�?�?
 	JUMP m_action = FALL;				            //! 今�?状�?
@@ -54,8 +55,18 @@ typedef struct
 	FLOAT m_plus_jump_power = 0.0F;					//! �?�?��ュ時�?�上�?したジャンプ量
 	FLOAT save_x;
 	FLOAT save_y;
-	BOOL create;
+	bool create;
 
+=======
+	FLOAT x, y, width, height, tu, tv;
+	FLOAT vec_x, vec_y;					//! 今移動している方向を割り出す
+	JUMP m_action = FALL;				//! 今の状態
+	FLOAT m_gravity = 0.0f;				//! 自機にかかる重力
+	BOOL m_is_dash = FALSE;				//! 現在ジャンプが可能かどうかを判断する用フラグ
+	BOOL m_is_call = FALSE;				//! 呼ばれたかどうか判断する用フラグ
+	BOOL m_is_guard = FALSE;			//! 現在ガード中かどうかを判断する用フラグ
+	DIRECTION m_direction;
+>>>>>>> :sparkles: ガードに関する処理を追加
 }CHAR_;
 
 struct ITEM_
@@ -103,8 +114,13 @@ public:
 
 
 
+<<<<<<< HEAD
 	CHAR_ char_one = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,RIGHT,ONE_PLAYER,5.0f,0.0f,5.0f,0.05f,0.0f };
 	CHAR_ char_two = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,LEFT ,TWO_PLAYER,5.0f,0.0f,5.0f,0.05f,0 };
+=======
+	CHAR_ char_one = { 200,100,100,200,0.0f,0.0f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,RIGHT };
+	CHAR_ char_two;
+>>>>>>> :sparkles: ガードに関する処理を追加
 
 	ITEM_ item[MAX_ITEM];
 
@@ -126,8 +142,13 @@ public:
 
 	/**
 	* @fn VOID SpaceManSwitchJump(INT jump)
+<<<<<<< HEAD
 	* @param (INT jump) 現在のジャンプ状�?
 	* @brief 現在のジャンプ状態に応じて処�?��行う関数
+=======
+	* @param (CHAR_* char_) 現在のジャンプ状態
+	* @brief 現在のジャンプ状態に応じて処理を行う関数
+>>>>>>> :sparkles: ガードに関する処理を追加
 	*/
 	VOID SpaceManSwitchJump(CHAR_* char_);
 

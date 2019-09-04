@@ -1,4 +1,4 @@
-#include "Character.h"
+?�#include "Character.h"
 
 #include "Main.h"
 
@@ -122,6 +122,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_)
 			char_->m_direction = UP;
 		}
 
+<<<<<<< HEAD
 		if (directx.KeyState[DIK_S] == directx.ON)
 		{
 			char_->m_is_dash = FALSE;
@@ -133,6 +134,21 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_)
 			char_->m_is_dash = TRUE;
 		}
 	}
+=======
+			if (directx.KeyState[DIK_S] == directx.ON)
+			{
+				if (char_->m_action == FALL||char_->m_action==NO_JUMP)
+				{
+					char_->m_is_guard = TRUE;
+					char_->m_is_dash = FALSE;
+				}
+			}
+			else if (directx.KeyState[DIK_S] == directx.OFF)
+			{
+				char_->m_is_guard = FALSE;
+				char_->m_is_dash = TRUE;
+			}
+>>>>>>> :art: ガードに条件を追加
 
 	if (char_->player == TWO_PLAYER) {
 		SpaceManSwitchJump(char_);
@@ -157,6 +173,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_)
 			char_->m_direction = UP;
 		}
 
+<<<<<<< HEAD
 		if (directx.KeyState[DIK_DOWN] == directx.ON)
 		{
 			char_->m_is_dash = FALSE;
@@ -168,6 +185,23 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_)
 			char_->m_is_dash = TRUE;
 		}
 	}
+=======
+
+
+			if (directx.KeyState[DIK_DOWN] == directx.ON)
+			{
+				if (char_->m_action == FALL||char_->m_action == NO_JUMP)
+				{
+					char_->m_is_guard = TRUE;
+					char_->m_is_dash = FALSE;
+				}
+			}
+			else if (directx.KeyState[DIK_DOWN] == directx.OFF)
+			{
+				char_->m_is_guard = FALSE;
+				char_->m_is_dash = TRUE;
+			}
+>>>>>>> :art: ガードに条件を追加
 
 	Move(char_, char_->save_x, char_->save_y);
 
