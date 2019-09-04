@@ -1,10 +1,13 @@
-﻿#include "../BATTLE-OF-ATMOSPHERE/Main.h"
-#include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
+﻿#include "Main.h"
+#include "DirectX.h"
 
-#include "../BATTLE-OF-ATMOSPHERE/TitleScene.h"
-#include "../BATTLE-OF-ATMOSPHERE/HelpScene.h"
-#include "../BATTLE-OF-ATMOSPHERE/GameScene.h"
-#include "../BATTLE-OF-ATMOSPHERE/ResultScene.h"
+#include "TitleScene.h"
+#include "HelpScene.h"
+#include "GameScene.h"
+#include "ResultScene.h"
+#include "Stage.h"
+#include "Collision.h"
+#include "Create.h"
 
 //ここ出来ればなくしたい
 DIRECTX directx;
@@ -13,11 +16,16 @@ TITLE title;
 HELP help;
 GAME game;
 RESULT result;
+STAGE stage;
+SPACEMAN spaceman;
+COLLISION collision;
+CREATE create;
+
 
 SCENE scene = TITLE_SCENE;
 
 //メイン
-INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow) 
+INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow)
 {
 	HWND hWnd = NULL;
 	const TCHAR api_name[] = _T("PAC-MAN");
@@ -70,7 +78,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 
 
 //
-HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* p_api_name) 
+HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* p_api_name)
 {
 	//ウィンドウクラス
 	WNDCLASS Wndclass;
@@ -92,20 +100,21 @@ HWND GenerateWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* p_api_name)
 	return *hWnd = CreateWindow(
 		p_api_name,							//クラスの名前
 		p_api_name,							//アプリケーションのタイトル
-		WS_VISIBLE | WS_POPUP,	//ウィンドウのスタイル
-		0,		            				//Xの位置
-		0,		            				//Yの位置
-		WINDOW_WIDTH,								//幅
-		WINDOW_HEIGHT,								//高さ
-		NULL,								//親ウィンドウのハンドル
-		NULL,								//メニューのハンドル
-		*hInstance,							//インスタンスハンドル
-		NULL								//メッセージに渡されるパラメータ
-	);
+		(WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME) | WS_VISIBLE,	//ウィンドウのスタイル
+//		WS_VISIBLE | WS_POPUP,	//ウィンドウのスタイル
+0,		            				//Xの位置
+0,		            				//Yの位置
+WINDOW_WIDTH,								//幅
+WINDOW_HEIGHT,								//高さ
+NULL,								//親ウィンドウのハンドル
+NULL,								//メニューのハンドル
+*hInstance,							//インスタンスハンドル
+NULL								//メッセージに渡されるパラメータ
+);
 }
 
 //メインループ
-VOID Mainloop(MSG* msg) 
+VOID Mainloop(MSG* msg)
 {
 
 	DWORD Prev = timeGetTime();
@@ -115,17 +124,17 @@ VOID Mainloop(MSG* msg)
 
 
 	ZeroMemory(msg, sizeof(msg));
-	while (msg->message != WM_QUIT) 
+	while (msg->message != WM_QUIT)
 	{
-		if (PeekMessage(msg, NULL, 0U, 0U, PM_REMOVE)) 
+		if (PeekMessage(msg, NULL, 0U, 0U, PM_REMOVE))
 		{
 			TranslateMessage(msg);
 			DispatchMessage(msg);
 		}
-		else 
+		else
 		{
 			Curr = timeGetTime();
-			if (Curr - Prev >= 1000 / 60) 
+			if (Curr - Prev >= 1000 / 60)
 			{
 
 				directx.pD3Device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
@@ -135,7 +144,7 @@ VOID Mainloop(MSG* msg)
 				directx.UpdateKeyState();
 
 				//ここからゲーム処理
-				switch (scene) 
+				switch (scene)
 				{
 				case TITLE_SCENE:
 					title.Title_Scene();
@@ -157,7 +166,7 @@ VOID Mainloop(MSG* msg)
 
 				Prev = Curr;
 
-				if (directx.KeyState[DIK_ESCAPE] == directx.PRESS) 
+				if (directx.KeyState[DIK_ESCAPE] == directx.PRESS)
 				{
 					PostQuitMessage(0);
 				}

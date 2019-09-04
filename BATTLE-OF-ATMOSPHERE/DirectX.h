@@ -12,7 +12,7 @@
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 
-class DIRECTX 
+class DIRECTX
 {
 
 public:
@@ -37,7 +37,7 @@ public:
 	LPD3DXFONT pFont;//フォントオブジェクト
 
 
-	enum KEY_STATE 
+	enum KEY_STATE
 	{
 		PRESS,
 		RELEASE,

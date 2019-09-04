@@ -1,14 +1,14 @@
-﻿#include "../BATTLE-OF-ATMOSPHERE/Main.h"
-#include "../BATTLE-OF-ATMOSPHERE/Draw.h"
+﻿#include "Draw.h"
 
+#include "Main.h"
 
-VOID DRAW::Rotate(CUSTOMVERTEX  original[], CUSTOMVERTEX rotatevertex[], DOUBLE degree) 
+VOID DRAW::Rotate(CUSTOMVERTEX  original[], CUSTOMVERTEX rotatevertex[], DOUBLE degree)
 {
 	FLOAT center_x = (original[0].x + original[1].x) / 2.0f;
 	FLOAT center_y = (original[0].y + original[3].y) / 2.0f;
 
 
-	for (INT i = 0; i < 4; i++) 
+	for (INT i = 0; i < 4; i++)
 	{
 		original[i].x -= center_x;
 		original[i].y -= center_y;
@@ -31,7 +31,7 @@ VOID DRAW::Rotate(CUSTOMVERTEX  original[], CUSTOMVERTEX rotatevertex[], DOUBLE 
 }
 
 //描画関数
-VOID DRAW::Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, FLOAT height, FLOAT tu_width, FLOAT tv_height, INT texture, DOUBLE degree) 
+VOID DRAW::Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, FLOAT height, FLOAT tu_width, FLOAT tv_height, INT texture, DOUBLE degree)
 {
 	CUSTOMVERTEX customvertex[4]
 	{
@@ -64,7 +64,7 @@ VOID DRAW::Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, 
 * @param split_tu     tuの幅（1/???）
 * @param split_tv     tvの幅（1/???）
 */
-VOID DRAW:: Animetion(int* flamecount, int count, float* tu, float* tv, float split_tu, float split_tv)
+VOID DRAW::Animetion(int* flamecount, int count, float* tu, float* tv, float split_tu, float split_tv)
 {
 	if (*flamecount >= count)
 	{
@@ -86,7 +86,7 @@ VOID DRAW:: Animetion(int* flamecount, int count, float* tu, float* tv, float sp
 }
 
 
-VOID DRAW::LoadTexture(const CHAR* file_name, INT TEX) 
+VOID DRAW::LoadTexture(const CHAR* file_name, INT TEX)
 {
 
 	D3DXCreateTextureFromFileEx(
@@ -107,7 +107,7 @@ VOID DRAW::LoadTexture(const CHAR* file_name, INT TEX)
 }
 
 
-DOUBLE DRAW::to_Rad(DOUBLE degree) 
+DOUBLE DRAW::to_Rad(DOUBLE degree)
 {
 
 	return degree * atan(1.0) * 4.0 / 180.0;

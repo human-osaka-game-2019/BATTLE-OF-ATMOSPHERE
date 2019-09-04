@@ -1,17 +1,15 @@
 ﻿#ifndef RESULT_SCENE_H
 #define RESULT_SCENE_H
 
-#include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
-#include "../BATTLE-OF-ATMOSPHERE/Main.h"
-#include"../BATTLE-OF-ATMOSPHERE/Draw.h"
+#include <Windows.h>
 
-class RESULT 
+class RESULT
 {
 public:
 
 	VOID Result_Scene();
 
-	enum SCENE_PHASE 
+	enum SCENE_PHASE
 	{
 		LOAD,
 		PROCESSING,
@@ -29,7 +27,7 @@ private:
 	VOID Loading();
 	VOID Process();
 	VOID Release();
-	
+
 	FLOAT m_result_ui_tu_a = 0.5f;
 	FLOAT m_result_ui_tu_b = 0.5f;
 	FLOAT m_result_ui_tu_c = 0.5f;

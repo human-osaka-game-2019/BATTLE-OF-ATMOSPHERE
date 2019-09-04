@@ -1,10 +1,12 @@
-﻿#include "../BATTLE-OF-ATMOSPHERE/ResultScene.h"
+﻿#include "ResultScene.h"
+
+#include "Main.h"
 
 //リザルトのフェーズの移動
-VOID RESULT::Result_Scene() 
+VOID RESULT::Result_Scene()
 {
 
-	switch (phase) 
+	switch (phase)
 	{
 	case LOAD:
 		Loading();

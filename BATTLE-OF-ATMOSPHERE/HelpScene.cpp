@@ -1,10 +1,12 @@
-﻿#include "../BATTLE-OF-ATMOSPHERE/HelpScene.h"
+﻿#include "HelpScene.h"
+
+#include "Main.h"
 
 //リザルトのフェーズの移動
-VOID HELP::Help_Scene() 
+VOID HELP::Help_Scene()
 {
 
-	switch (phase) 
+	switch (phase)
 	{
 	case LOAD:
 		Loading();
@@ -20,18 +22,18 @@ VOID HELP::Help_Scene()
 }
 
 //リザルトのテクスチャの読み込み
-VOID HELP::Loading() 
+VOID HELP::Loading()
 {
 	draw.LoadTexture("help.png", HELP_BG);
 	phase = PROCESSING;
 }
 
 //リザルトの描画処理
-VOID HELP::Process() 
+VOID HELP::Process()
 {
 	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, HELP_BG);
 	//エンターでタイトルへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS) 
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
 	{
 		phase = RELEASES;
 	}
@@ -39,12 +41,12 @@ VOID HELP::Process()
 
 
 //リザルトのテクスチャの解放
-VOID HELP::Release() 
+VOID HELP::Release()
 {
 
-	for (INT i = 0; i < TEX_MAX; i++) 
+	for (INT i = 0; i < TEX_MAX; i++)
 	{
-		if (directx.pTexture[i] != nullptr) 
+		if (directx.pTexture[i] != nullptr)
 		{
 			directx.pTexture[i]->Release();
 			directx.pTexture[i] = nullptr;

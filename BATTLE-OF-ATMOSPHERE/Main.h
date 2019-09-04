@@ -4,23 +4,22 @@
 #include <windows.h>
 #include <d3d9.h>
 
-#include "../BATTLE-OF-ATMOSPHERE/Main.h"
-#include "../BATTLE-OF-ATMOSPHERE/DirectX.h"
-#include "../BATTLE-OF-ATMOSPHERE/Draw.h"
+#include "Draw.h"
 
-enum TEX 
+enum TEX
 {
 	TITLE_BG,
 	TITLE_UI,
 	TITLE_LOGO,
-	SPACEMAN,
+	CHARCTER,
+	GAME_STAGE,
 	GAME_BG,
 	HELP_BG,
 	RESULT_BG,
 	MAXTEX,
 };
 
-enum SCENE 
+enum SCENE
 {
 	TITLE_SCENE,
 	HELP_SCENE,
@@ -35,6 +34,7 @@ extern DIRECTX directx;
 extern SCENE scene;
 
 extern DRAW draw;
+
 
 //WinMain関数
 INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow);
