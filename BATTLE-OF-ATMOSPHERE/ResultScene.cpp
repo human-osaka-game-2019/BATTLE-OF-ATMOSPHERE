@@ -24,7 +24,7 @@ VOID RESULT::Result_Scene()
 //リザルトのテクスチャの読み込み
 VOID RESULT::Loading()
 {
-	draw.LoadTexture("result_bg.png", RESULT_BG);
+	draw.LoadTexture("result_bg.jpg", RESULT_BG);
 	draw.LoadTexture("title_ui.png", TITLE_UI);
 	phase = PROCESSING;
 }

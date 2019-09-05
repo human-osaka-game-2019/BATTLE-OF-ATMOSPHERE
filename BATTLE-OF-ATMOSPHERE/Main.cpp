@@ -28,7 +28,7 @@ SCENE scene = TITLE_SCENE;
 INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow)
 {
 	HWND hWnd = NULL;
-	const TCHAR api_name[] = _T("PAC-MAN");
+	const TCHAR api_name[] = _T("BATTLE-OF-ATMOSHERE");
 	//メッセージ
 	MSG msg;
 	hWnd = GenerateWindow(&hWnd, &hInstance, api_name);
