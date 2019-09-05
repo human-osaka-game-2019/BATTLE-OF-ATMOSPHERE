@@ -52,6 +52,7 @@ typedef struct
 	BOOL m_is_call = FALSE;                          //! 呼ばれたかどうか判断する用フラグ
 	BOOL m_is_guard = FALSE;						 //! 現在ガード中かどうかを判断する用フラグ
 	BOOL m_is_hit = FALSE;
+	FLOAT m_fc_push = 0.0f;
 	DIRECTION m_direction;                           //! 向いている方向
 	PLAYER player;                                   //! playerの１pか２ｐ保存している関数
 	// 歩行関係変数
@@ -82,20 +83,20 @@ public:
 	CONST FLOAT m_plus_dash_power = 0.05F;           //! ダッシュの加速度
 
 	// 歩行関係変数
-	CONST FLOAT m_max_gravity = 0.2F;				//! 驥榊鴨縺ｮ螳壽焚
+	CONST FLOAT m_max_gravity = 0.2F;				
 
 	//CHAR char_1p = {0.0f,0.0f,100.0f,200.0f,0.0f,0.0f};
 	//CHAR cahr_2p;
 
 	// 自機の座標、サイズ関係変数
-	///FLOAT m_pos_x = 0.0F;							//! 閾ｪ讖溘?X蠎ｧ讓?
-	///FLOAT m_pos_y = 0.0F;							//! 閾ｪ讖溘?Y蠎ｧ讓?
-	///FLOAT m_spaceman_width = 96.0F;					//! 閾ｪ讖溘?蟷?
-	///FLOAT m_spaceman_height = 192.0F;				//! 閾ｪ讖溘?鬮倥＆
+	///FLOAT m_pos_x = 0.0F;							
+	///FLOAT m_pos_y = 0.0F;							
+	///FLOAT m_spaceman_width = 96.0F;					
+	///FLOAT m_spaceman_height = 192.0F;				
 
-	//CONST FLOAT m_max_jump_power = 10.0F;			//! 繧ｸ繝｣繝ｳ繝鈴?溷ｺｦ縺ｮ螳壽焚
-	//FLOAT m_jump_power = 0.0F;						//! 繧ｸ繝｣繝ｳ繝励?騾溷ｺｦ
-	//FLOAT m_plus_jump_power = 0.0F;					//! 繝?繝?す繝･譎ゅ?∽ｸ頑?縺励◆繧ｸ繝｣繝ｳ繝鈴㍼
+	//CONST FLOAT m_max_jump_power = 10.0F;			
+	//FLOAT m_jump_power = 0.0F;						
+	//FLOAT m_plus_jump_power = 0.0F;					
 
 
 
@@ -111,8 +112,8 @@ public:
 	BLAST_STATUS blast_one = { 0,0,0,0,96.0f };
 	BLAST_STATUS blast_two = { 0,0,0,0,96.0f };
 
-	CHAR_ char_one = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,RIGHT,ONE_PLAYER,5.0f,0.0f,0.0f};
-	CHAR_ char_two = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,LEFT ,TWO_PLAYER,5.0f,0.0f,0};
+	CHAR_ char_one = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,RIGHT,ONE_PLAYER,5.0f,0.0f,0.0f};
+	CHAR_ char_two = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,LEFT,TWO_PLAYER,5.0f,0.0f,0};
 
 	ITEM_ item[MAX_ITEM];
 

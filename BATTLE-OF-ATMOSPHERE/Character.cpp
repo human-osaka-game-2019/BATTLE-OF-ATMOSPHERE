@@ -64,7 +64,9 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 		break;
 
 	default:
+
 		char_->m_gravity += 1;
+
 		break;
 	}
 }
@@ -136,6 +138,9 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 			}
 		}
 	}
+
+	char_me->m_fc_push = 60;
+
 }
 
 VOID SPACEMAN::SpaceManBlastHit(CHAR_* char_, BLAST_STATUS* blast_status)
@@ -260,10 +265,15 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 
 			SpaceManDash(char_);
 
-			if (directx.KeyState[DIK_LCONTROL] == directx.PRESS)
-			{
-				SpaceManPush(char_, char_you, blast_status);
-			}
+			char_->m_fc_push--;
+
+				if (directx.KeyState[DIK_LCONTROL] == directx.PRESS)
+				{
+					if (char_->m_fc_push <= 0) 
+					{
+						SpaceManPush(char_, char_you, blast_status);
+					}
+				}
 
 			if ((directx.KeyState[DIK_W] == directx.PRESS) && (char_->m_is_call == FALSE))
 			{
@@ -310,10 +320,15 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 
 			SpaceManDash(char_);
 
-			if (directx.KeyState[DIK_RCONTROL] == directx.PRESS)
-			{
-				SpaceManPush(char_, char_you, blast_status);
-			}
+			char_->m_fc_push--;
+
+				if (directx.KeyState[DIK_RCONTROL] == directx.PRESS)
+				{
+					if (char_->m_fc_push <= 0)
+					{
+						SpaceManPush(char_, char_you, blast_status);
+					}
+				}
 
 			if ((directx.KeyState[DIK_UP] == directx.PRESS) && (char_->m_is_call == FALSE))
 			{
