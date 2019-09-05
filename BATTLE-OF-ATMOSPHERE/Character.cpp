@@ -1,4 +1,4 @@
-#include "Character.h"
+ï»¿#include "Character.h"
 
 #include "Main.h"
 
@@ -345,16 +345,16 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 VOID SPACEMAN::Move(CHAR_* char_, FLOAT save_x, FLOAT save_y)
 {
 
-	//d—ÍˆÚ“®
+	//é‡åŠ›ç§»å‹•
 	char_->y += char_->m_gravity;
 
 
 
-	//ƒL[“ü—Í
+	//ã‚­ãƒ¼å…¥åŠ›
 
 
 
-	//“–‚½‚è”»’è—p‚Ìˆ—i–ˆƒtƒŒ[ƒ€‚²‚Æ‚ÉXVj
+	//å½“ãŸã‚Šåˆ¤å®šç”¨ã®å‡¦ç†ï¼ˆæ¯Žãƒ•ãƒ¬ãƒ¼ãƒ ã”ã¨ã«æ›´æ–°ï¼‰
 	char_->vec_x = save_x - char_->x;
 	char_->vec_y = save_y - char_->y;
 }
