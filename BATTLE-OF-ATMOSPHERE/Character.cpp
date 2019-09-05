@@ -62,6 +62,10 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 		char_->m_gravity += 1;
 
 		break;
+
+	default:
+		char_->m_gravity += 1;
+		break;
 	}
 }
 
