@@ -49,7 +49,8 @@ VOID STAGE::InitBlock()
 VOID STAGE::MakeStage(BLOCK* block)
 {
 	if (block->y == WINDOW_HEIGHT) {
-		block->x = (float)(rand() % (1920 - (int)(BLOCK_SIZE)));
+		block->x_num = (FLOAT)(rand() % 20 + 1);
+		block->x = block->x_num * BLOCK_SIZE;
 		block->y = -BLOCK_SIZE;
 	}
 }

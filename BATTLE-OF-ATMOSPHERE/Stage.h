@@ -15,7 +15,7 @@
 #define SCROLL_SPEED_BLOCK 1.0f
 
 typedef struct {
-	float x, y, width, height, tu, tv;
+	float x, y,x_num, width, height, tu, tv;
 }BLOCK;
 
 class STAGE {
