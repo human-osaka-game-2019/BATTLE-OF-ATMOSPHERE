@@ -40,7 +40,12 @@ VOID GAME::Loading()
 {
 	draw.LoadTexture("game_bg.png", GAME_BG);
 	draw.LoadTexture("spaceman_1.png", CHARCTER);
+	draw.LoadTexture("spaceman_2.png", CHARCTER_TWO);
 	draw.LoadTexture("block.png", GAME_STAGE);
+	draw.LoadTexture("RIGHT_BLAST.png", R_BLAST);
+	draw.LoadTexture("LEFT_BLAST.png", L_BLAST);
+	draw.LoadTexture("UP_BLAST.png", U_BLAST);
+	draw.LoadTexture("DOWN_BLAST.png", D_BLAST);
 
 	stage.InitBlock();
 
@@ -91,7 +96,7 @@ VOID GAME::Process()
 
 		if (fc_cereate_two == 0)
 		{
-			spaceman.char_two.create = false;
+			spaceman.char_two.create = FALSE;
 			for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++)
 			{
 				stage.create_block[i].x = -10000;
@@ -103,7 +108,7 @@ VOID GAME::Process()
 
 
 	//ブロックをスクロールに合わせて落とす処理
-	for (int i = 0; i < BLOCK_QUANTITY; i++)
+	for (INT i = 0; i < BLOCK_QUANTITY; i++)
 	{
 		stage.ScrollBlock(&stage.block[i]);
 	}
@@ -113,11 +118,11 @@ VOID GAME::Process()
 	}
 
 	//重力
-	spaceman.SpaceManMove(&spaceman.char_one);
-	spaceman.SpaceManMove(&spaceman.char_two);
+	spaceman.SpaceManMove(&spaceman.char_one,&spaceman.char_two,&spaceman.blast_one);
+	spaceman.SpaceManMove(&spaceman.char_two,&spaceman.char_one,&spaceman.blast_two);
 
 	//ブロックとの当たり判定
-	for (int i = 0; i < BLOCK_QUANTITY; i++)
+	for (INT i = 0; i < BLOCK_QUANTITY; i++)
 	{
 		collision.Hit_Block(stage.block[i], &spaceman.char_one);
 		collision.Hit_Block(stage.block[i], &spaceman.char_two);
@@ -154,7 +159,7 @@ VOID GAME::Process()
 	}
 
 	//ブロックを上に移動する処理
-	for (int i = 0; i < BLOCK_QUANTITY; i++)
+	for (INT i = 0; i < BLOCK_QUANTITY; i++)
 	{
 		stage.MakeStage(&stage.block[i]);
 	}
@@ -163,14 +168,14 @@ VOID GAME::Process()
 	collision.Hit_Char(&spaceman.char_two, &spaceman.char_one);
 
 	//クリエイトを使った時の座標移動
-	if ((directx.KeyState[DIK_LCONTROL] == directx.PRESS) && (spaceman.char_one.create == false))
+	if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.create == false))
 	{
 		for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
 			create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
 			fc_cereate_one = 5 * 60;
 		}
 	}
-	if ((directx.KeyState[DIK_RCONTROL] == directx.PRESS) && (spaceman.char_two.create == false))
+	if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.create == false))
 	{
 		for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
 			create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);
@@ -180,7 +185,7 @@ VOID GAME::Process()
 	}
 
 	//ブロックの描画
-	for (int i = 0; i < BLOCK_QUANTITY; i++)
+	for (INT i = 0; i < BLOCK_QUANTITY; i++)
 	{
 		stage.DrawBlock(stage.block[i]);
 	}
@@ -193,7 +198,7 @@ VOID GAME::Process()
 	//自機の描画1p
 	draw.Draw(spaceman.char_one.x, spaceman.char_one.y, 0xffffffff, spaceman.char_one.tu, spaceman.char_one.tv, spaceman.char_one.width, spaceman.char_one.height, 1.0f, 1.0f, CHARCTER);
 	//自機の描画2p
-	draw.Draw(spaceman.char_two.x, spaceman.char_two.y, 0xffffffff, spaceman.char_two.tu, spaceman.char_two.tv, spaceman.char_two.width, spaceman.char_two.height, 1.0f, 1.0f, CHARCTER);
+	draw.Draw(spaceman.char_two.x, spaceman.char_two.y, 0xffffffff, spaceman.char_two.tu, spaceman.char_two.tv, spaceman.char_two.width, spaceman.char_two.height, 1.0f, 1.0f, CHARCTER_TWO);
 
 
 	//リリースのフェーズへ

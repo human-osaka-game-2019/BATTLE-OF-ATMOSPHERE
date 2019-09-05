@@ -6,9 +6,9 @@
 enum JUMP
 {
 	FALL,       //! 
-	NO_JUMP,	//! 繧ｸ繝｣繝ｳ繝励＠縺ｦ縺?↑縺?
-	ONE_JUMP,	//! 1蝗槭ず繝｣繝ｳ繝励＠縺?
-	TWO_JUMP	//! 莠梧ｮｵ繧ｸ繝｣繝ｳ繝励＠縺?
+	NO_JUMP,	//! ジャンプしていない
+	ONE_JUMP,	//! 1回ジャンプした
+	TWO_JUMP	//! 二段ジャンプした
 };
 
 enum DIRECTION
@@ -37,21 +37,28 @@ enum ITEM
 
 typedef struct
 {
+	FLOAT x, y;
+	FLOAT blast_power_x, blast_power_y = 0.0f;
+	FLOAT size;
+}BLAST_STATUS;
+
+typedef struct
+{
 	FLOAT x, y, tu, tv, width, height;
-	FLOAT vec_x, vec_y;					            //! 莉顔ｧｻ蜍輔＠縺ｦ縺?ｋ譁ｹ蜷代ｒ蜑ｲ繧雁?縺?
-	JUMP m_action = FALL;				            //! 莉翫?迥ｶ諷?
-	FLOAT m_gravity = 0.0f;				            //! 閾ｪ讖溘↓縺九°繧矩㍾蜉?
-	BOOL m_is_dash = FALSE;				            //! 迴ｾ蝨ｨ繧ｸ繝｣繝ｳ繝励′蜿ｯ閭ｽ縺九←縺?°繧貞愛譁ｭ縺吶ｋ逕ｨ繝輔Λ繧ｰ
-	BOOL m_is_call = FALSE;				            //! 蜻ｼ縺ｰ繧後◆縺九←縺?°蛻､譁ｭ縺吶ｋ逕ｨ繝輔Λ繧ｰ
-	DIRECTION m_direction;                          //! 蜷代＞縺ｦ縺?ｋ譁ｹ蜷?
-	PLAYER player;                                  //! player縺ｮ?叢縺具ｼ抵ｽ蝉ｿ晏ｭ倥＠縺ｦ縺?ｋ髢｢謨ｰ
-	// 豁ｩ陦碁未菫ょ､画焚
-	FLOAT m_spaceman_speed = 5.0F;					//! 閾ｪ讖溘?遘ｻ蜍暮?溷ｺｦ
-	// 繝?繝?す繝･髢｢菫ょ､画焚
-	FLOAT m_plus_spaceman_speed = 0.0F;				//! 繝?繝?す繝･譎ゅ?迴ｾ蝨ｨ縺ｮ騾溷ｺｦ蜉?騾滄㍼
-	CONST FLOAT m_max_plus_spaceman_power = 5.0F;	//! 繝?繝?す繝･譎ゅ?譛?螟ｧ蜉?騾滄㍼
-	CONST FLOAT m_plus_dash_power = 0.05F;			//! 繝?繝?す繝･縺ｮ蜉?騾溷ｺｦ
-	FLOAT m_plus_jump_power = 0.0F;					//! 繝?繝?す繝･譎ゅ?∽ｸ頑?縺励◆繧ｸ繝｣繝ｳ繝鈴㍼
+	FLOAT vec_x, vec_y;                              //! 今移動している方向を割り出す
+	JUMP m_action = FALL;                            //! 今の状態
+	FLOAT m_gravity = 0.0f;                          //! 自機にかかる重力
+	BOOL m_is_dash = FALSE;                          //! 現在ジャンプが可能かどうかを判断する用フラグ
+	BOOL m_is_call = FALSE;                          //! 呼ばれたかどうか判断する用フラグ
+	BOOL m_is_guard = FALSE;						 //! 現在ガード中かどうかを判断する用フラグ
+	BOOL m_is_hit = FALSE;
+	DIRECTION m_direction;                           //! 向いている方向
+	PLAYER player;                                   //! playerの１pか２ｐ保存している関数
+	// 歩行関係変数
+	FLOAT m_spaceman_speed = 5.0F;                   //! 自機の移動速度
+	// ダッシュ関係変数
+	FLOAT m_plus_spaceman_speed = 0.0F;              //! ダッシュ時の現在の速度加速量
+	FLOAT m_plus_jump_power = 0.0F;                  //! ダッシュ時、上昇したジャンプ量
 	FLOAT save_x;
 	FLOAT save_y;
 	BOOL create;
@@ -65,21 +72,22 @@ struct ITEM_
 };
 
 /**
-* @brief 閾ｪ讖溘?繧ｹ繝??繧ｿ繧ｹ縺ｮ繝吶?繧ｹ
+* @brief 自機のステータスのベース
 */
 class SPACEMAN
 {
 public:
 
+	CONST FLOAT m_max_plus_spaceman_power = 5.0F;    //! ダッシュ時の最大加速量
+	CONST FLOAT m_plus_dash_power = 0.05F;           //! ダッシュの加速度
 
-
-	// 驥榊鴨髢｢菫ょ､画焚
+	// 歩行関係変数
 	CONST FLOAT m_max_gravity = 0.2F;				//! 驥榊鴨縺ｮ螳壽焚
 
 	//CHAR char_1p = {0.0f,0.0f,100.0f,200.0f,0.0f,0.0f};
 	//CHAR cahr_2p;
 
-	// 閾ｪ讖溘?蠎ｧ讓吶?√し繧､繧ｺ髢｢菫ょ､画焚
+	// 自機の座標、サイズ関係変数
 	///FLOAT m_pos_x = 0.0F;							//! 閾ｪ讖溘?X蠎ｧ讓?
 	///FLOAT m_pos_y = 0.0F;							//! 閾ｪ讖溘?Y蠎ｧ讓?
 	///FLOAT m_spaceman_width = 96.0F;					//! 閾ｪ讖溘?蟷?
@@ -101,15 +109,13 @@ public:
 
 	///JUMP m_jump = NO_JUMP;				//! 繧ｸ繝｣繝ｳ繝礼憾諷玖ｨ俶?逕ｨ螟画焚
 
+	BLAST_STATUS blast_one = { 0,0,0,0,96.0f };
+	BLAST_STATUS blast_two = { 0,0,0,0,96.0f };
 
-
-	CHAR_ char_one = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,RIGHT,ONE_PLAYER,5.0f,0.0f,5.0f,0.05f,0.0f };
-	CHAR_ char_two = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,LEFT ,TWO_PLAYER,5.0f,0.0f,5.0f,0.05f,0 };
+	CHAR_ char_one = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,RIGHT,ONE_PLAYER,5.0f,0.0f,0.0f};
+	CHAR_ char_two = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,LEFT ,TWO_PLAYER,5.0f,0.0f,0};
 
 	ITEM_ item[MAX_ITEM];
-
-	VOID SpaceManDash(CHAR_* char_);
-	VOID SpaceManMove(CHAR_* char_);
 
 	/**
 	* @fn VOID SpaceManRelease()
@@ -117,17 +123,41 @@ public:
 	*/
 	VOID SpaceManInit(CHAR_* char_);
 
+	BOOL BlastHitCheck(CHAR_ char_, BLAST_STATUS blast_status);
+
+	/**
+	* @fn VOID SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast_status)
+	* @brief
+	*/
+	VOID SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast_status);
+
+	/**
+	* @fn VOID SpaceManBlastHit(CHAR_* char_, BLAST_STATUS* blast_status)
+	* @brief 押し出された（吹っ飛ばされる）ときの処理
+	*/
+	VOID SpaceManBlastHit(CHAR_* char_, BLAST_STATUS* blast_status);
+
+	/**
+	* @fn VOID SpaceManDash(CHAR_ char_, PLAYER player)
+	*/
+	VOID SpaceManDash(CHAR_* char_);
+	/**
+	* @fn VOID SpaceManMove(CHAR_* char_, PLAYER player)
+	* @param PLAYER player 1Pか2Pかを判断している
+	*/
+	VOID SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_status);
+
 	/**
 	* @fn VOID SpaceManJumpSwitchChange(INT* jump)
-	* @param (INT jump) 迴ｾ蝨ｨ縺ｮ繧ｸ繝｣繝ｳ繝礼憾諷?
-	* @brief 繧ｸ繝｣繝ｳ繝励?繧ｿ繝ｳ縺梧款縺輔ｌ縺溘→縺阪ず繝｣繝ｳ繝礼憾諷九ｒ蛻?ｊ譖ｿ縺医ｋ
+	* @param (INT jump) 現在のジャンプ状態
+	* @brief ジャンプボタンが押されたときジャンプ状態を切り替える
 	*/
 	VOID SpaceManJumpSwitchChange(JUMP* jump);
 
 	/**
 	* @fn VOID SpaceManSwitchJump(INT jump)
-	* @param (INT jump) 迴ｾ蝨ｨ縺ｮ繧ｸ繝｣繝ｳ繝礼憾諷?
-	* @brief 迴ｾ蝨ｨ縺ｮ繧ｸ繝｣繝ｳ繝礼憾諷九↓蠢懊§縺ｦ蜃ｦ逅?ｒ陦後≧髢｢謨ｰ
+	* @param (CHAR_* char_) 現在のジャンプ状態
+	* @brief 現在のジャンプ状態に応じて処理を行う関数
 	*/
 	VOID SpaceManSwitchJump(CHAR_* char_);
 
