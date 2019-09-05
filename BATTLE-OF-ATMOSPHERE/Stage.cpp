@@ -1,4 +1,4 @@
-﻿#include "Stage.h"
+?�#include "Stage.h"
 
 #include "MapChip.h"
 
@@ -24,21 +24,21 @@ VOID STAGE::InitStageBlock()
 
 VOID STAGE::InitBlock()
 {
-	//ブロックの初期値
+	//ブロ�?��の初期値
 	for (INT i = 0; i < BLOCK_QUANTITY; i++)
 	{
-		block[i].x = -10000.f;//初期値適当
-		block[i].y = -10000.f;//初期値適当
+		block[i].x = -10000.f;//初期値適�?
+		block[i].y = -10000.f;//初期値適�?
 		block[i].tu = 0.0f;
 		block[i].tv = 0.0f;
 		block[i].width = BLOCK_SIZE;
 		block[i].height = BLOCK_SIZE;
 	}
-	//クリエイトブロックの初期値
+	//クリエイトブロ�?��の初期値
 	for (INT i = 0; i < CREATE_BLOCK_QUANITITY; i++)
 	{
-		create_block[i].x = -10000.f;//初期値適当
-		create_block[i].y = -10000.f;//初期値適当
+		create_block[i].x = -10000.f;//初期値適�?
+		create_block[i].y = -10000.f;//初期値適�?
 		create_block[i].tu = 96.f / 192.f;
 		create_block[i].tv = 0.0f;
 		create_block[i].width = BLOCK_SIZE;

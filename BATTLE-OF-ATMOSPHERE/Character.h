@@ -93,7 +93,6 @@ public:
 	///FLOAT m_spaceman_width = 96.0F;					//! 自機�?�?
 	///FLOAT m_spaceman_height = 192.0F;				//! 自機�?高さ
 
-	// ジャンプ関係変数
 	//CONST FLOAT m_max_jump_power = 10.0F;			//! ジャンプ�?�度の定数
 	//FLOAT m_jump_power = 0.0F;						//! ジャンプ�?速度
 	//FLOAT m_plus_jump_power = 0.0F;					//! �?�?��ュ時�?�上�?したジャンプ量
@@ -107,7 +106,7 @@ public:
 
 
 
-	///JUMP m_jump = NO_JUMP;				//! ジャンプ状態記�?用変数
+	///JUMP m_jump = NO_JUMP;			
 
 	BLAST_STATUS blast_one = { 0,0,0,0,96.0f };
 	BLAST_STATUS blast_two = { 0,0,0,0,96.0f };
@@ -119,7 +118,6 @@ public:
 
 	/**
 	* @fn VOID SpaceManRelease()
-	* @brief 自機�?ス�??タス解放用関数
 	*/
 	VOID SpaceManInit(CHAR_* char_);
 

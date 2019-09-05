@@ -39,8 +39,8 @@ VOID GAME::Game_Scene()
 VOID GAME::Loading()
 {
 	draw.LoadTexture("game_bg.png", GAME_BG);
-	draw.LoadTexture("spaceman_1.png", CHARCTER);
-	draw.LoadTexture("spaceman_2.png", CHARCTER_TWO);
+	draw.LoadTexture("spaceman_1p.png", CHARCTER);
+	draw.LoadTexture("spaceman_2p.png", CHARCTER_TWO);
 	draw.LoadTexture("block.png", GAME_STAGE);
 	draw.LoadTexture("RIGHT_BLAST.png", R_BLAST);
 	draw.LoadTexture("LEFT_BLAST.png", L_BLAST);
