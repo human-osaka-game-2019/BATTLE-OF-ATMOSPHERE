@@ -84,6 +84,7 @@ VOID COLLISION::Hit_Char(CHAR_* char_one_, CHAR_* char_two_)
 		if (char_one_->m_action != NO_JUMP)
 		{
 			char_one_->y = char_two_->y - char_two_->height;
+			char_one_->m_gravity = 1;
 		}
 	}
 }
