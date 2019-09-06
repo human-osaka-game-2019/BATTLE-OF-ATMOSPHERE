@@ -161,7 +161,16 @@ VOID GAME::Process()
 	//ブロックを上に移動する処理
 	for (INT i = 0; i < BLOCK_QUANTITY; i++)
 	{
-		stage.MakeStage(&stage.block[i]);
+		if (stage.block[i].y >= BLOCK_SIZE * 2)
+		{
+			for (INT j = 0; j < BLOCK_QUANTITY; j++)
+			{
+				stage.MakeStage(&stage.block[j]);
+			}
+
+			break;
+		}
+
 	}
 	//charとcharの当たり判定
 	collision.Hit_Char(&spaceman.char_one, &spaceman.char_two);

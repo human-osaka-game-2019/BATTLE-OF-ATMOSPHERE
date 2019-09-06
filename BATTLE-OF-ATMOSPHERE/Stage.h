@@ -6,7 +6,7 @@
 //ブロックの大きさ
 #define BLOCK_SIZE 96.f
 //ブロックの個数
-#define BLOCK_QUANTITY 25
+#define BLOCK_QUANTITY 45
 
 #define BLOCK_X_MAX 20
 //クリエイトブロックの個数
@@ -14,7 +14,7 @@
 //スクロールのスピード
 #define SCROLL_SPEED  -0.001f
 //ブロックのスクロールするスピード
-#define SCROLL_SPEED_BLOCK 1.0f
+#define SCROLL_SPEED_BLOCK 3.0f
 
 typedef struct {
 	INT x_num;
