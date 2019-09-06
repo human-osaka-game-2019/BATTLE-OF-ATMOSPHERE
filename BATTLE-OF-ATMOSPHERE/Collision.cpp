@@ -22,6 +22,25 @@ VOID COLLISION::Hit_Block(BLOCK block, CHAR_* char_)
 
 }
 
+VOID COLLISION::HitWindow(CHAR_* char_)
+{
+	if (char_->y < -(BLOCK_SIZE * 3))
+	{
+		char_->m_gravity = 0;
+		char_->y = -(BLOCK_SIZE * 3);
+	}
+
+	if (char_->x < -(BLOCK_SIZE * 3))
+	{
+		char_->x = -(BLOCK_SIZE * 3);
+	}
+
+	if (char_->x < WINDOW_WIDTH +(BLOCK_SIZE * 3))
+	{
+		char_->x = WINDOW_WIDTH +(BLOCK_SIZE * 3);
+	}
+}
+
 VOID COLLISION::Hit_Move(BLOCK block, CHAR_* char_, FLOAT movement_x, FLOAT movement_y)
 {
 	if ((block.x < char_->x + char_->width) && (char_->x < block.x + block.width) && (block.y < char_->y + char_->height) && (char_->y < block.y + block.height))

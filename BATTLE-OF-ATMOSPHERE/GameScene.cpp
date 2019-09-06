@@ -124,7 +124,8 @@ VOID GAME::Process()
 	}
 
 	//クリエイトブロックとの当たり判定
-	for (INT i = 0; i < CREATE_BLOCK_QUANITITY; i++) {
+	for (INT i = 0; i < CREATE_BLOCK_QUANITITY; i++) 
+	{
 		collision.Hit_Block(stage.create_block[i], &spaceman.char_one);
 		collision.Hit_Block(stage.create_block[i], &spaceman.char_two);
 	}
@@ -140,6 +141,11 @@ VOID GAME::Process()
 		spaceman.char_two.m_gravity = 0;
 
 		spaceman.char_two.y = -(BLOCK_SIZE * 3);
+	}
+
+	if (spaceman.char_one.x < -(BLOCK_SIZE * 3))
+	{
+		spaceman.char_one.x = -(BLOCK_SIZE * 3);
 	}
 
 	for (INT i = 0; i < BLOCK_X_MAX; i++)
