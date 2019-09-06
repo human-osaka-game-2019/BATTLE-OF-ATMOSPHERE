@@ -14,7 +14,7 @@
 //スクロールのスピード
 #define SCROLL_SPEED  -0.001f
 //ブロックのスクロールするスピード
-#define SCROLL_SPEED_BLOCK 3.0f
+#define SCROLL_SPEED_BLOCK 1.0f
 
 typedef struct {
 	INT x_num;

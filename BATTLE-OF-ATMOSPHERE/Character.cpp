@@ -42,7 +42,7 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 
 		
 		char_->m_is_call = FALSE;
-		char_->m_gravity = 0;
+		char_->m_gravity +=1;
 
 		break;
 
