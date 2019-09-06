@@ -138,22 +138,8 @@ VOID GAME::Process()
 	}
 
 	//ウィンドウとの
-	if (spaceman.char_one.y < -(BLOCK_SIZE * 3))
-	{
-		spaceman.char_one.m_gravity = 0;
-		spaceman.char_one.y = -(BLOCK_SIZE * 3);
-	}
-	if (spaceman.char_two.y < -(BLOCK_SIZE * 3))
-	{
-		spaceman.char_two.m_gravity = 0;
-
-		spaceman.char_two.y = -(BLOCK_SIZE * 3);
-	}
-
-	if (spaceman.char_one.x < -(BLOCK_SIZE * 3))
-	{
-		spaceman.char_one.x = -(BLOCK_SIZE * 3);
-	}
+	collision.HitWindow(&spaceman.char_one);
+	collision.HitWindow(&spaceman.char_two);
 
 	for (INT i = 0; i < BLOCK_X_MAX; i++)
 	{
