@@ -8,13 +8,14 @@
 #include "Character.h"
 #include "Collision.h"
 #include "Create.h"
+#include "Jet.h"
 
 extern STAGE stage;
 extern SPACEMAN spaceman;
 extern COLLISION collision;
 extern CREATE create;
-
-WINNER winner;
+extern JET jet;
+extern WINNER winner;
 
 GAME::SCENE_PAHSE phase = GAME::LOAD;
 
@@ -107,6 +108,8 @@ VOID GAME::Process()
 		}
 	}
 
+	jet.UseJet(&spaceman.char_one);
+	jet.UseJet(&spaceman.char_two);
 
 
 	//ブロックをスクロールに合わせて落とす処理
@@ -131,7 +134,7 @@ VOID GAME::Process()
 	}
 
 	//クリエイトブロックとの当たり判定
-	for (INT i = 0; i < CREATE_BLOCK_QUANITITY; i++) 
+	for (INT i = 0; i < CREATE_BLOCK_QUANITITY; i++)
 	{
 		collision.Hit_Block(stage.create_block[i], &spaceman.char_one);
 		collision.Hit_Block(stage.create_block[i], &spaceman.char_two);
@@ -167,17 +170,18 @@ VOID GAME::Process()
 	//クリエイトを使った時の座標移動
 	if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.create == false))
 	{
-		for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
+		for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) 
+		{
 			create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
 			fc_cereate_one = 5 * 60;
 		}
 	}
 	if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.create == false))
 	{
-		for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
+		for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) 
+		{
 			create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);
 			fc_cereate_two = 5 * 60;
-
 		}
 	}
 

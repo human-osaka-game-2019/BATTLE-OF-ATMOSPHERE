@@ -235,9 +235,7 @@ VOID SPACEMAN::SpaceManDash(CHAR_* char_)
 
 VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_status)
 {
-	/*FLOAT save_x = char_->x;
-	FLOAT save_y = char_->y;*/
-
+	
 	char_->save_x = char_->x;
 	char_->save_y = char_->y;
 

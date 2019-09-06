@@ -32,9 +32,9 @@ VOID COLLISION::HitWindow(CHAR_* char_)
 		char_->x = -(BLOCK_SIZE * 3);
 	}
 
-	if (char_->x < WINDOW_WIDTH +(BLOCK_SIZE * 3))
+	if (char_->x > WINDOW_WIDTH +(BLOCK_SIZE * 2))
 	{
-		char_->x = WINDOW_WIDTH +(BLOCK_SIZE * 3);
+		char_->x = WINDOW_WIDTH +(BLOCK_SIZE * 2);
 	}
 }
 
