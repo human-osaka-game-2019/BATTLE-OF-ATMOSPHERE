@@ -70,13 +70,13 @@ VOID GAME::Process()
 	}
 
 
-	if (spaceman.char_one.create == true)
+	if (spaceman.char_one.create == TRUE)
 	{
 		fc_cereate_one--;
 
 		if (fc_cereate_one == 0)
 		{
-			spaceman.char_one.create = false;
+			spaceman.char_one.create = FALSE;
 			for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++)
 			{
 				stage.create_block[i].x = -10000;
@@ -85,7 +85,7 @@ VOID GAME::Process()
 		}
 	}
 
-	if (spaceman.char_two.create == true)
+	if (spaceman.char_two.create == TRUE)
 	{
 		fc_cereate_two--;
 
@@ -130,16 +130,16 @@ VOID GAME::Process()
 	}
 
 	//ウィンドウとの
-	if (spaceman.char_one.y < 0)
+	if (spaceman.char_one.y < -(BLOCK_SIZE * 3))
 	{
 		spaceman.char_one.m_gravity = 0;
-		spaceman.char_one.y = 0;
+		spaceman.char_one.y = -(BLOCK_SIZE * 3);
 	}
-	if (spaceman.char_two.y < 0)
+	if (spaceman.char_two.y < -(BLOCK_SIZE * 3))
 	{
 		spaceman.char_two.m_gravity = 0;
 
-		spaceman.char_two.y = 0;
+		spaceman.char_two.y = -(BLOCK_SIZE * 3);
 	}
 
 	for (INT i = 0; i < BLOCK_X_MAX; i++)

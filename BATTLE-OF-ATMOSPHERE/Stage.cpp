@@ -9,11 +9,13 @@
 
 VOID STAGE::InitStageBlock()
 {
-	for (int i = 0; i < 11; i++) {
+	for (INT i = 0; i < 11; i++) 
+	{
 		block[i].x = (5 + i) * BLOCK_SIZE;
 		block[i].y = 4 * BLOCK_SIZE;
 	}
-	for (int i = 0; i < 14; i++) {
+	for (INT i = 0; i < 14; i++) 
+	{
 		block[i + 10].x = (3 + i) * BLOCK_SIZE;
 		block[i + 10].y = 8 * BLOCK_SIZE;
 	}
@@ -48,7 +50,7 @@ VOID STAGE::InitBlock()
 
 VOID STAGE::MakeStage(BLOCK* block)
 {
-	if (block->y == WINDOW_HEIGHT)
+	if (block->y == WINDOW_HEIGHT + (BLOCK_SIZE * 3))
 	{
 		do
 		{
@@ -58,7 +60,7 @@ VOID STAGE::MakeStage(BLOCK* block)
 
 		m_is_stage[block->x_num] = TRUE;
 		block->x = (block->x_num) * BLOCK_SIZE;
-		block->y = -BLOCK_SIZE;
+		block->y = -(BLOCK_SIZE * 4);
 	}
 }
 

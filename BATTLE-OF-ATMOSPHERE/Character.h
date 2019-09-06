@@ -54,7 +54,7 @@ typedef struct
 	FLOAT m_plus_jump_power = 0.0F;					//! ダッシュ時、上昇したジャンプ量
 	FLOAT save_x;
 	FLOAT save_y;
-	bool create;
+	BOOL create;
 
 }CHAR_;
 

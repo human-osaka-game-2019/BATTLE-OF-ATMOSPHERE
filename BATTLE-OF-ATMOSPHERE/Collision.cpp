@@ -2,8 +2,8 @@
 
 extern SPACEMAN spaceman;
 
-int Gravity;
-int Jump = 0;
+INT Gravity;
+INT Jump = 0;
 
 VOID COLLISION::Hit_Block(BLOCK block, CHAR_* char_)
 {
@@ -16,10 +16,6 @@ VOID COLLISION::Hit_Block(BLOCK block, CHAR_* char_)
 	{
 		char_->m_action = NO_JUMP;
 	}
-
-
-
-
 
 	Hit_Move(block, char_, char_->vec_x, 0);
 	Hit_Move(block, char_, 0, char_->vec_y);
