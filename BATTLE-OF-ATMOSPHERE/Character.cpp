@@ -277,7 +277,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 
 			if ((directx.KeyState[DIK_W] == directx.PRESS) && (char_->m_is_call == FALSE))
 			{
-				char_->m_gravity = -30;
+				char_->m_gravity = -25;
 				SpaceManJumpSwitchChange(&char_->m_action);
 				char_->m_direction = UP;
 			}
@@ -332,7 +332,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 
 			if ((directx.KeyState[DIK_UP] == directx.PRESS) && (char_->m_is_call == FALSE))
 			{
-				char_->m_gravity = -30;
+				char_->m_gravity = -25;
 				SpaceManJumpSwitchChange(&char_->m_action);
 				char_->m_direction = UP;
 			}
