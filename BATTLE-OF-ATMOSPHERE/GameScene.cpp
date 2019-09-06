@@ -142,7 +142,7 @@ VOID GAME::Process()
 		spaceman.char_two.y = 0;
 	}
 
-	for (INT i = 0; i < BLOCK_QUANTITY; i++)
+	for (INT i = 0; i < BLOCK_X_MAX; i++)
 	{
 		stage.m_is_stage[i] = FALSE;
 	}

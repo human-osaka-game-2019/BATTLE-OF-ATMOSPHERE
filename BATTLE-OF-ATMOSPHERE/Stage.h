@@ -6,7 +6,9 @@
 //ブロックの大きさ
 #define BLOCK_SIZE 96.f
 //ブロックの個数
-#define BLOCK_QUANTITY 20
+#define BLOCK_QUANTITY 25
+
+#define BLOCK_X_MAX 20
 //クリエイトブロックの個数
 #define CREATE_BLOCK_QUANITITY 6
 //スクロールのスピード
