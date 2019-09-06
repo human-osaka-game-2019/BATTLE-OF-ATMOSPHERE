@@ -21,20 +21,20 @@ VOID COLLISION::Hit_Block(BLOCK block, CHAR_* char_)
 
 VOID COLLISION::HitWindow(CHAR_* char_)
 {
-	if (char_->y < -(BLOCK_SIZE * 3))
+	if (char_->y < -(BLOCK_SIZE * 2))
 	{
 		char_->m_gravity = 0;
-		char_->y = -(BLOCK_SIZE * 3);
+		char_->y = -(BLOCK_SIZE * 2);
 	}
 
-	if (char_->x < -(BLOCK_SIZE * 3))
+	if (char_->x < -(BLOCK_SIZE * 2))
 	{
-		char_->x = -(BLOCK_SIZE * 3);
+		char_->x = -(BLOCK_SIZE * 2);
 	}
 
-	if (char_->x < WINDOW_WIDTH +(BLOCK_SIZE * 3))
+	if (char_->x > WINDOW_WIDTH +(BLOCK_SIZE * 2))
 	{
-		char_->x = WINDOW_WIDTH +(BLOCK_SIZE * 3);
+		char_->x = WINDOW_WIDTH +(BLOCK_SIZE * 2);
 	}
 }
 
