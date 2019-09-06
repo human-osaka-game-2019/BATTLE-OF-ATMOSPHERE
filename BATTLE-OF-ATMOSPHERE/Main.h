@@ -15,6 +15,7 @@ enum TEX
 	GAME_STAGE,
 	GAME_BG,
 	HELP_BG,
+	HELP_BG2,
 	RESULT_BG,
 	MAXTEX,
 };
