@@ -64,7 +64,7 @@ VOID DRAW::Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, 
 * @param split_tu     tuの幅（1/???）
 * @param split_tv     tvの幅（1/???）
 */
-VOID DRAW::Animetion(int* flamecount, int count, float* tu, float* tv, float split_tu, float split_tv)
+VOID DRAW::Animetion(INT* flamecount, INT count, FLOAT* tu, FLOAT* tv, FLOAT split_tu, FLOAT split_tv, FLOAT start_tu, FLOAT start_tv, FLOAT finish_tu, FLOAT finish_tv)
 {
 	if (*flamecount >= count)
 	{
@@ -73,14 +73,14 @@ VOID DRAW::Animetion(int* flamecount, int count, float* tu, float* tv, float spl
 		count = 0.0f;
 		*flamecount = count;
 	}
-	if (*tu >= 1.0f)
+	if (*tu >= finish_tu)
 	{
-		split_tu = 0.0f;
+		split_tu = start_tu;
 		*tu = split_tu;
 	}
-	if (*tv >= 1.0f)
+	if (*tv >= finish_tv)
 	{
-		split_tv = 0.0f;
+		split_tv = start_tv;
 		*tv = split_tv;
 	}
 }

@@ -24,7 +24,7 @@ public:
 	VOID Draw(FLOAT x, FLOAT y, DWORD color, FLOAT tu, FLOAT tv, FLOAT width, FLOAT height, FLOAT tu_width, FLOAT tv_height, INT texture, DOUBLE degree = 0.0f);
 
 	//アニメーション関数
-	VOID Animetion(INT*, INT, FLOAT*, FLOAT*, FLOAT, FLOAT);
+	VOID Animetion(INT*, INT, FLOAT*, FLOAT*, FLOAT, FLOAT, FLOAT, FLOAT, FLOAT, FLOAT);
 
 	//テクスチャを読み込む
 	VOID LoadTexture(const CHAR* file_name, INT TEX);
