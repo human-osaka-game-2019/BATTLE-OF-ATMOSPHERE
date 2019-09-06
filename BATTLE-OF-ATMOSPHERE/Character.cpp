@@ -241,13 +241,20 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 	char_->save_x = char_->x;
 	char_->save_y = char_->y;
 
-	if (char_->player == ONE_PLAYER) {
+	if (char_->player == ONE_PLAYER) 
+	{
 
 		SpaceManSwitchJump(char_);
 
 		if (char_you->m_is_hit == TRUE)
 		{
 			SpaceManBlastHit(char_you, blast_status);
+		}
+		else if (directx.KeyState[DIK_S] == directx.ON)
+		{
+			char_->m_is_dash = FALSE;
+			char_->m_is_guard = TRUE;
+			char_->m_direction = DOWN;
 		}
 		else
 		{
@@ -281,19 +288,8 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 				SpaceManJumpSwitchChange(&char_->m_action);
 				char_->m_direction = UP;
 			}
-
-			if (directx.KeyState[DIK_S] == directx.ON)
-			{
-				char_->m_is_dash = FALSE;
-				char_->m_is_guard = TRUE;
-				char_->m_direction = DOWN;
-			}
-			else if (directx.KeyState[DIK_S] == directx.OFF)
-			{
 				char_->m_is_guard = FALSE;
 				char_->m_is_dash = TRUE;
-			}
-
 		}
 	}
 
@@ -304,6 +300,12 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 		if (char_you->m_is_hit == TRUE)
 		{
 			SpaceManBlastHit(char_you, blast_status);
+		}
+		else if (directx.KeyState[DIK_DOWN] == directx.ON)
+		{
+			char_->m_is_dash = FALSE;
+			char_->m_is_guard = TRUE;
+			char_->m_direction = DOWN;
 		}
 		else
 		{
@@ -337,17 +339,8 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 				char_->m_direction = UP;
 			}
 
-			if (directx.KeyState[DIK_DOWN] == directx.ON)
-			{
-				char_->m_is_dash = FALSE;
-				char_->m_is_guard = TRUE;
-				char_->m_direction = DOWN;
-			}
-			else if (directx.KeyState[DIK_DOWN] == directx.OFF)
-			{
 				char_->m_is_guard = FALSE;
 				char_->m_is_dash = TRUE;
-			}
 		}
 	}
 
