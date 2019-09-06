@@ -70,13 +70,13 @@ VOID GAME::Process()
 	}
 
 
-	if (spaceman.char_one.create == true)
+	if (spaceman.char_one.create == TRUE)
 	{
 		fc_cereate_one--;
 
 		if (fc_cereate_one == 0)
 		{
-			spaceman.char_one.create = false;
+			spaceman.char_one.create = FALSE;
 			for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++)
 			{
 				stage.create_block[i].x = -10000;
@@ -85,7 +85,7 @@ VOID GAME::Process()
 		}
 	}
 
-	if (spaceman.char_two.create == true)
+	if (spaceman.char_two.create == TRUE)
 	{
 		fc_cereate_two--;
 
@@ -124,22 +124,33 @@ VOID GAME::Process()
 	}
 
 	//クリエイトブロックとの当たり判定
-	for (INT i = 0; i < CREATE_BLOCK_QUANITITY; i++) {
+	for (INT i = 0; i < CREATE_BLOCK_QUANITITY; i++) 
+	{
 		collision.Hit_Block(stage.create_block[i], &spaceman.char_one);
 		collision.Hit_Block(stage.create_block[i], &spaceman.char_two);
 	}
 
 	//ウィンドウとの
-	if (spaceman.char_one.y < 0)
+	if (spaceman.char_one.y < -(BLOCK_SIZE * 3))
 	{
 		spaceman.char_one.m_gravity = 0;
-		spaceman.char_one.y = 0;
+		spaceman.char_one.y = -(BLOCK_SIZE * 3);
 	}
-	if (spaceman.char_two.y < 0)
+	if (spaceman.char_two.y < -(BLOCK_SIZE * 3))
 	{
 		spaceman.char_two.m_gravity = 0;
 
-		spaceman.char_two.y = 0;
+		spaceman.char_two.y = -(BLOCK_SIZE * 3);
+	}
+
+	if (spaceman.char_one.x < -(BLOCK_SIZE * 3))
+	{
+		spaceman.char_one.x = -(BLOCK_SIZE * 3);
+	}
+
+	for (INT i = 0; i < BLOCK_X_MAX; i++)
+	{
+		stage.m_is_stage[i] = FALSE;
 	}
 
 	//ブロックを上に移動する処理

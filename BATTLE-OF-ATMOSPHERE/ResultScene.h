@@ -29,8 +29,8 @@ private:
 	VOID Release();
 
 	FLOAT m_result_ui_tu_a = 0.5f;
-	FLOAT m_result_ui_tu_b = 0.5f;
-	FLOAT m_result_ui_tu_c = 0.5f;
+	FLOAT m_result_ui_tu_b = 0.0f;
+	FLOAT m_result_ui_tu_c = 0.0f;
 
 	enum Result_SelectUI_ID
 	{

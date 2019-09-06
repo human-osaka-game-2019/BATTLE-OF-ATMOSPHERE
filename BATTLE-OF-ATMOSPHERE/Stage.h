@@ -6,7 +6,9 @@
 //ブロックの大きさ
 #define BLOCK_SIZE 96.f
 //ブロックの個数
-#define BLOCK_QUANTITY 20
+#define BLOCK_QUANTITY 25
+
+#define BLOCK_X_MAX 20
 //クリエイトブロックの個数
 #define CREATE_BLOCK_QUANITITY 6
 //スクロールのスピード
@@ -15,15 +17,14 @@
 #define SCROLL_SPEED_BLOCK 1.0f
 
 typedef struct {
-	float x, y,x_num, width, height, tu, tv;
+	INT x_num;
+	FLOAT x, y, width, height, tu, tv;
 }BLOCK;
 
 class STAGE {
 public:
 
-
-
-
+	BOOL m_is_stage[20] = {};
 
 	VOID InitStageBlock();
 

@@ -17,6 +17,7 @@ enum TEX
 	HELP_BG,
 	HELP_BG2,
 	RESULT_BG,
+	RESULT_UI,
 	MAXTEX,
 };
 

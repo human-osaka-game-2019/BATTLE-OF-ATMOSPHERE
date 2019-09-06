@@ -5,12 +5,15 @@
 
 #include "Stage.h"
 #include "Character.h"
+#include"DirectX.h"
 
 class COLLISION
 {
 public:
 
 	VOID Hit_Block(BLOCK block, CHAR_* char_);
+
+	VOID HitWindow(CHAR_* char_);
 
 	VOID Hit_Move(BLOCK block, CHAR_* char_, FLOAT movement_x, FLOAT movement_y);
 
