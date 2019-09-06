@@ -1,6 +1,9 @@
 ﻿#include "ResultScene.h"
 
 #include "Main.h"
+#include"GameScene.h"
+
+extern WINNER winner;
 
 //リザルトのフェーズの移動
 VOID RESULT::Result_Scene()
@@ -32,10 +35,20 @@ VOID RESULT::Loading()
 //リザルトの描画処理
 VOID RESULT::Process()
 {
-	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, RESULT_BG);
-	draw.Draw(1450, 300, 0xffffffff, m_result_ui_tu_a, 0.0f, 370, 170, 0.5f, 0.25f, RESULT_UI);
-	//draw.Draw(775, 900, 0xffffffff, result_ui_tu_b, 0.25f, 370, 170, 0.5f, 0.25f, TITLE_UI);
-	draw.Draw(1450, 650, 0xffffffff, m_result_ui_tu_c, 0.25f, 370, 170, 0.5f, 0.25f, RESULT_UI);
+	//ここでどちらが勝利したかを表示
+	if (winner.is_one_win == TRUE)
+	{
+
+	}
+	else if (winner.is_two_win == TRUE)
+	{
+
+	}
+
+		draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, RESULT_BG);
+		draw.Draw(1450, 300, 0xffffffff, m_result_ui_tu_a, 0.0f, 370, 170, 0.5f, 0.25f, RESULT_UI);
+		//draw.Draw(775, 900, 0xffffffff, result_ui_tu_b, 0.25f, 370, 170, 0.5f, 0.25f, TITLE_UI);
+		draw.Draw(1450, 650, 0xffffffff, m_result_ui_tu_c, 0.25f, 370, 170, 0.5f, 0.25f, RESULT_UI);
 
 	if (directx.KeyState[DIK_DOWN] == directx.PRESS)
 	{

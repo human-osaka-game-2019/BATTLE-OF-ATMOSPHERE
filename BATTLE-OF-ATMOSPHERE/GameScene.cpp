@@ -14,6 +14,8 @@ extern SPACEMAN spaceman;
 extern COLLISION collision;
 extern CREATE create;
 
+WINNER winner;
+
 GAME::SCENE_PAHSE phase = GAME::LOAD;
 
 
@@ -209,10 +211,15 @@ VOID GAME::Process()
 	//自機の描画2p
 	draw.Draw(spaceman.char_two.x, spaceman.char_two.y, 0xffffffff, spaceman.char_two.tu, spaceman.char_two.tv, spaceman.char_two.width, spaceman.char_two.height, 1.0f, 1.0f, CHARCTER_TWO);
 
-
-	//リリースのフェーズへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
+	//どちらが勝利したか判断している
+	if (spaceman.char_one.y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))
 	{
+		winner.is_two_win = TRUE;
+		phase = RELEASES;
+	}
+	else if (spaceman.char_two.y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))
+	{
+		winner.is_one_win = TRUE;
 		phase = RELEASES;
 	}
 

@@ -3,6 +3,12 @@
 
 #include <Windows.h>
 
+typedef struct 
+{
+	BOOL is_one_win = FALSE;
+	BOOL is_two_win = FALSE;
+}WINNER;
+
 class GAME
 {
 public:

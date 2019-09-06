@@ -89,12 +89,12 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 	{
 	case RIGHT:
 		blast_status->x = char_me->x + 96.0f;
-		blast_status->y = char_me->y;
+		blast_status->y = char_me->y + 48.0f;
 		draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, R_BLAST);
 		break;
 	case LEFT:
 		blast_status->x = char_me->x - 96.0f;
-		blast_status->y = char_me->y;
+		blast_status->y = char_me->y + 48.0f;
 		draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, L_BLAST);
 		break;
 	case UP:
@@ -139,7 +139,7 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 		}
 	}
 
-	char_me->m_fc_push = 48;
+	char_me->m_fc_push = 30;
 
 }
 

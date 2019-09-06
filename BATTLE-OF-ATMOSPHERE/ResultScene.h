@@ -3,6 +3,7 @@
 
 #include <Windows.h>
 
+
 class RESULT
 {
 public:

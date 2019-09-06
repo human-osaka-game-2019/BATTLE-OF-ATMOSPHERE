@@ -15,7 +15,7 @@ VOID STAGE::InitStageBlock()
 		block[i].y = -4 * BLOCK_SIZE;
 	}
 
-	for (INT i = 0; i < 11; i++) 
+	for (INT i = 0; i < 10; i++) 
 	{
 		block[i + 8].x = (5 + i) * BLOCK_SIZE;
 		block[i + 8].y = 2 * BLOCK_SIZE;
@@ -26,7 +26,7 @@ VOID STAGE::InitStageBlock()
 		block[i + 19].y = 8 * BLOCK_SIZE;
 	}
 
-	for (INT i = 0; i < 11; i++)
+	for (INT i = 0; i < 10; i++)
 	{
 		block[i + 33].x = (5 + i) * BLOCK_SIZE;
 		block[i + 33].y = -10 * BLOCK_SIZE;
