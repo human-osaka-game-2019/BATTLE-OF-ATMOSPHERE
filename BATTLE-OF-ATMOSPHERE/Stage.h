@@ -15,15 +15,14 @@
 #define SCROLL_SPEED_BLOCK 1.0f
 
 typedef struct {
-	float x, y,x_num, width, height, tu, tv;
+	INT x_num;
+	FLOAT x, y, width, height, tu, tv;
 }BLOCK;
 
 class STAGE {
 public:
 
-
-
-
+	BOOL m_is_stage[20] = {};
 
 	VOID InitStageBlock();
 

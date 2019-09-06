@@ -142,6 +142,11 @@ VOID GAME::Process()
 		spaceman.char_two.y = 0;
 	}
 
+	for (INT i = 0; i < BLOCK_QUANTITY; i++)
+	{
+		stage.m_is_stage[i] = FALSE;
+	}
+
 	//ブロックを上に移動する処理
 	for (int i = 0; i < BLOCK_QUANTITY; i++)
 	{
