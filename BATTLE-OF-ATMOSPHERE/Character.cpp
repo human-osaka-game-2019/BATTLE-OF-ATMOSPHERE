@@ -139,7 +139,7 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 		}
 	}
 
-	char_me->m_fc_push = 60;
+	char_me->m_fc_push = 48;
 
 }
 
