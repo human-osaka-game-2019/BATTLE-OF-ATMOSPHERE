@@ -1,6 +1,8 @@
-﻿#include "HelpScene.h"
+﻿#include "../BATTLE-OF-ATMOSPHERE/HelpScene.h"
+#include <time.h>
 
-#include "Main.h"
+
+
 
 //リザルトのフェーズの移動
 VOID HELP::Help_Scene()
@@ -24,15 +26,40 @@ VOID HELP::Help_Scene()
 //リザルトのテクスチャの読み込み
 VOID HELP::Loading()
 {
-	draw.LoadTexture("help.png", HELP_BG);
+	draw.LoadTexture("HELP仮png.png", HELP_BG);
+	draw.LoadTexture("スクロール 2.png", HELP_BG2);
+
 	phase = PROCESSING;
 }
 
 //リザルトの描画処理
 VOID HELP::Process()
 {
-	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, HELP_BG);
+	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG);
+	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG2);
 	//エンターでタイトルへ
+	if (m_pos_y >= 825)
+	{
+		m_pos_y = 825;
+
+	}
+
+
+
+	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG);
+	if (directx.KeyState[DIK_RIGHT] <= directx.ON)
+	{
+		m_pos_x += m_スクロール_speed;
+
+	}
+	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG2);
+	if (directx.KeyState[DIK_LEFT] <= directx.ON)
+	{
+		m_pos_x -= m_スクロール_speed;
+
+	}
+
+
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
 	{
 		phase = RELEASES;

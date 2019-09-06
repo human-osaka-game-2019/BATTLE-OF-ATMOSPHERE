@@ -11,7 +11,7 @@ public:
 
 	VOID Title_Scene();
 
-	FLOAT m_title_ui_tu_start = 0.0f;
+	FLOAT m_title_ui_tu_start = 0.5f;
 	FLOAT m_title_ui_tu_help = 0.0f;
 	FLOAT m_title_ui_tu_exit = 0.0f;
 
