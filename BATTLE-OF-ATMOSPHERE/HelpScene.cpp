@@ -26,8 +26,8 @@ VOID HELP::Help_Scene()
 //リザルトのテクスチャの読み込み
 VOID HELP::Loading()
 {
-	draw.LoadTexture("HELP仮png.png", HELP_BG);
-	draw.LoadTexture("スクロール 2.png", HELP_BG2);
+	draw.LoadTexture("ヘルプ 2.png", HELP_BG);
+	draw.LoadTexture("ヘルプ 1.png", HELP_BG2);
 
 	phase = PROCESSING;
 }
