@@ -63,6 +63,9 @@ typedef struct
 	FLOAT save_x;
 	FLOAT save_y;
 	BOOL create;
+	BOOL is_ice = FALSE;	//ここ変更
+	FLOAT fc_ice = 0.0f;
+	BOOL is_ice_hit = FALSE;//ここ変更した
 
 }CHAR_;
 
