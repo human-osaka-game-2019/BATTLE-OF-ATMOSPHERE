@@ -8,6 +8,7 @@
 #include "Stage.h"
 #include "Collision.h"
 #include "Create.h"
+#include "Ice.h"
 
 //ここ出来ればなくしたい
 DIRECTX directx;
@@ -20,6 +21,8 @@ STAGE stage;
 SPACEMAN spaceman;
 COLLISION collision;
 CREATE create;
+ICE ice;
+
 
 
 SCENE scene = TITLE_SCENE;

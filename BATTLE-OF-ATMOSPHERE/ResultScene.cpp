@@ -20,6 +20,7 @@ VOID RESULT::Result_Scene()
 	case RELEASES:
 		Release();
 		phase = LOAD;
+
 		break;
 	}
 }

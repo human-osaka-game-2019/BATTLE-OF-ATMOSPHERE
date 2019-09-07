@@ -24,6 +24,7 @@ enum TEX
 	RESULT_BG,
 	RESULT_LOGO,
 	RESULT_UI,
+	ICE_BALL,
 	MAXTEX,
 };
 

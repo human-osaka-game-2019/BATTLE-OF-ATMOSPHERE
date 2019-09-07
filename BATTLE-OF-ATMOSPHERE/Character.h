@@ -71,6 +71,12 @@ typedef struct
 	INT m_fc_charge = 0;
 	FLOAT m_jet_speed = 20.0f;
 	BOOL m_charge = FALSE;
+
+	BOOL is_ice_hit = FALSE;
+	FLOAT fc_ice = 0.0f;
+	BOOL is_ice = FALSE;
+	DIRECTION save_direction;
+	
 }CHAR_;
 
 struct ITEM_
