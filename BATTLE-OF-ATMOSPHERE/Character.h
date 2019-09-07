@@ -63,7 +63,14 @@ typedef struct
 	FLOAT save_x;
 	FLOAT save_y;
 	BOOL create;
-
+	//ジェット関係
+	BOOL m_jet_right = FALSE;
+	BOOL m_jet_left = FALSE;
+	BOOL m_jet_up = FALSE;
+	INT m_fc_jet = 0;
+	INT m_fc_charge = 0;
+	FLOAT m_jet_speed = 20.0f;
+	BOOL m_charge = FALSE;
 }CHAR_;
 
 struct ITEM_
