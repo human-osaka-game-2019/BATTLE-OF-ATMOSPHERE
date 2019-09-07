@@ -8,6 +8,7 @@
 #include "Stage.h"
 #include "Collision.h"
 #include "Create.h"
+#include "Jet.h"
 #include "Ice.h"
 
 //ここ出来ればなくしたい
@@ -21,6 +22,7 @@ STAGE stage;
 SPACEMAN spaceman;
 COLLISION collision;
 CREATE create;
+JET jet;
 ICE ice;
 
 

@@ -9,11 +9,13 @@
 #include "Collision.h"
 #include "Create.h"
 #include "Ice.h"
+#include "Jet.h"
 
 extern STAGE stage;
 extern SPACEMAN spaceman;
 extern COLLISION collision;
 extern CREATE create;
+extern JET jet;
 extern ICE ice;
 
 
@@ -67,6 +69,9 @@ VOID GAME::Process()
 {
 	//ゲーム背景の描画
 	draw.Draw(0, 0, 0xffffffff, 0.0f, game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
+
+	fc_ice_time_one++;
+	fc_ice_time_two++;
 
 	fc_background++;
 	//縦スクロールのアニメーション
@@ -123,6 +128,9 @@ VOID GAME::Process()
 		stage.ScrollBlock(&stage.create_block[i]);
 	}
 
+	jet.UseJet(&spaceman.char_one);
+	jet.UseJet(&spaceman.char_two);
+
 	//重力
 	spaceman.SpaceManMove(&spaceman.char_one,&spaceman.char_two,&spaceman.blast_one);
 	spaceman.SpaceManMove(&spaceman.char_two,&spaceman.char_one,&spaceman.blast_two);
@@ -141,13 +149,26 @@ VOID GAME::Process()
 		collision.Hit_Block(stage.create_block[i], &spaceman.char_two);
 	}
 
-	if ((directx.KeyState[DIK_LALT] == directx.PRESS) && (spaceman.char_one.is_ice == FALSE))
-	{
-		ice.UseIce(&spaceman.char_one, &ice.ice_shot_one);
+	if (fc_ice_time_one >= 60 * 5) {
+		spaceman.char_one.is_ice = FALSE;
 	}
-	if ((directx.KeyState[DIK_RALT] == directx.PRESS) && (spaceman.char_two.is_ice == FALSE))
-	{
-		ice.UseIce(&spaceman.char_two, &ice.ice_shot_two);
+	if (fc_ice_time_two >= 60 * 5) {
+		spaceman.char_two.is_ice = FALSE;
+	}
+
+	if (spaceman.char_one.is_ice_hit == FALSE) {
+		if ((directx.KeyState[DIK_LALT] == directx.PRESS) && (spaceman.char_one.is_ice == FALSE))
+		{
+			ice.UseIce(&spaceman.char_one, &ice.ice_shot_one);
+			fc_ice_time_one = 0;
+		}
+	}
+	if (spaceman.char_two.is_ice_hit == FALSE) {
+		if ((directx.KeyState[DIK_RALT] == directx.PRESS) && (spaceman.char_two.is_ice == FALSE))
+		{
+			ice.UseIce(&spaceman.char_two, &ice.ice_shot_two);
+			fc_ice_time_two = 0;
+		}
 	}
 	if (ice.ice_shot_one.is_ice_move == TRUE)
 	{
@@ -177,24 +198,26 @@ VOID GAME::Process()
 	{
 		if (ice.IceHitBlockCheck(stage.block[i], ice.ice_shot_one) == TRUE)
 		{
-			spaceman.char_one.is_ice = FALSE;
+			//spaceman.char_one.is_ice = FALSE;
 			ice.ice_shot_one.is_ice_move = FALSE;
 		}
 		if (ice.IceHitBlockCheck(stage.block[i], ice.ice_shot_two) == TRUE)
 		{
-			spaceman.char_one.is_ice = FALSE;
+			//spaceman.char_one.is_ice = FALSE;
 			ice.ice_shot_two.is_ice_move = FALSE;
 		}
 	}
 
+
+
 	if (ice.IceHitCharCheck(spaceman.char_two, ice.ice_shot_one) == TRUE)
 	{
-		spaceman.char_one.is_ice = FALSE;
+		//spaceman.char_one.is_ice = FALSE;
 		ice.HitIceChar(&spaceman.char_two, &ice.ice_shot_one);
 	}
 	if (ice.IceHitCharCheck(spaceman.char_one, ice.ice_shot_two) == TRUE)
 	{
-		spaceman.char_two.is_ice = FALSE;
+		//spaceman.char_two.is_ice = FALSE;
 		ice.HitIceChar(&spaceman.char_one, &ice.ice_shot_two);
 	}
 
@@ -225,23 +248,26 @@ VOID GAME::Process()
 	collision.Hit_Char(&spaceman.char_one, &spaceman.char_two);
 	collision.Hit_Char(&spaceman.char_two, &spaceman.char_one);
 
-	//クリエイトを使った時の座標移動
-	if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.create == false))
-	{
-		for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
-			create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
-			fc_cereate_one = 5 * 60;
+	if (spaceman.char_one.is_ice_hit == FALSE) {
+		//クリエイトを使った時の座標移動
+		if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.create == false))
+		{
+			for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
+				create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
+				fc_cereate_one = 5 * 60;
+			}
 		}
 	}
-	if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.create == false))
-	{
-		for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
-			create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);
-			fc_cereate_two = 5 * 60;
+	if (spaceman.char_two.is_ice_hit == FALSE) {
+		if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.create == false))
+		{
+			for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
+				create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);
+				fc_cereate_two = 5 * 60;
 
+			}
 		}
 	}
-
 	//ブロックの描画
 	for (INT i = 0; i < BLOCK_QUANTITY; i++)
 	{

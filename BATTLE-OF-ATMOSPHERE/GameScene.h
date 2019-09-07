@@ -20,7 +20,8 @@ public:
 
 	INT fc_cereate_one = 0;
 	INT fc_cereate_two = 0;
-
+	INT fc_ice_time_one = 0;
+	INT fc_ice_time_two = 0;
 
 	//スクロールのスピード
 #define SCROLL_SPEED  -0.001f

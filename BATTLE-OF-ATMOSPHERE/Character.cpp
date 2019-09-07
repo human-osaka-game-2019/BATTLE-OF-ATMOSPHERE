@@ -228,13 +228,9 @@ VOID SPACEMAN::SpaceManBlastHit(CHAR_* char_, BLAST_STATUS* blast_status)
 		}
 
 	}
-	else if (char_->is_ice_hit == TRUE)
+	else 
 	{
-		char_->fc_ice--;
-		if (char_->fc_ice <= 0)
-		{
-			char_->is_ice_hit = FALSE;
-		}
+		char_->m_is_hit = FALSE;
 	}
 
 }
@@ -302,9 +298,28 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 			char_->save_direction = char_->m_direction;
 		}
 
+		SpaceManSwitchJump(char_);
+
 		if (char_you->m_is_hit == TRUE)
 		{
 			SpaceManBlastHit(char_you, blast_status);
+		}
+		else if (char_->is_ice_hit == TRUE)
+		{
+			if (char_->m_direction == RIGHT) {
+				char_->tu = 0.0f;
+				char_->tv = 0.03125f * 22;
+			}
+			else if(char_->m_direction == LEFT){
+				char_->tu = 0.0f;
+				char_->tv = 0.03125f * 23;
+			}
+			
+			char_->fc_ice--;
+			if (char_->fc_ice <= 0)
+			{
+				char_->is_ice_hit = FALSE;
+			}
 		}
 		else
 		{
@@ -421,7 +436,6 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 				}
 			}
 		}
-		SpaceManSwitchJump(char_);
 	}
 
 	if (char_->player == TWO_PLAYER) {
@@ -430,10 +444,27 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 		{
 			char_->save_direction = char_->m_direction;
 		}
+		SpaceManSwitchJump(char_);
 
 		if (char_you->m_is_hit == TRUE)
 		{
 			SpaceManBlastHit(char_you, blast_status);
+		}
+		else if (char_->is_ice_hit == TRUE)
+		{
+			if (char_->m_direction == RIGHT) {
+				char_->tu = 0.0f;
+				char_->tv = 0.03125f * 22;
+			}
+			else if (char_->m_direction == LEFT) {
+				char_->tu = 0.0f;
+				char_->tv = 0.03125f * 23;
+			}
+
+			char_->fc_ice--;
+			if (char_->fc_ice <= 0)
+
+				char_->is_ice_hit = FALSE;
 		}
 		else
 		{
@@ -512,6 +543,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 			{
 				char_->m_gravity = -30;
 				SpaceManJumpSwitchChange(&char_->m_action);
+
 				char_->m_direction = UP;
 			}
 
@@ -548,13 +580,14 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 					}
 				}
 			}
+			
 		}
-		SpaceManSwitchJump(char_);
 	}
-
 	Move(char_, char_->save_x, char_->save_y);
-
+	
 }
+	
+
 
 VOID SPACEMAN::Move(CHAR_* char_, FLOAT save_x, FLOAT save_y)
 {
