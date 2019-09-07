@@ -1,8 +1,5 @@
 ﻿#include "Ice.h"
 
-
-
-
 VOID ICE::Init_Ice(ITEM_* item)
 {
 	item->x = -10000;

@@ -41,8 +41,8 @@ VOID GAME::Game_Scene()
 VOID GAME::Loading()
 {
 	draw.LoadTexture("game_bg.png", GAME_BG);
-	draw.LoadTexture("spaceman_1p.png", CHARCTER);
-	draw.LoadTexture("spaceman_2p.png", CHARCTER_TWO);
+	draw.LoadTexture("spaceman_one.png", CHARCTER);
+	draw.LoadTexture("spaceman_two.png", CHARCTER_TWO);
 	draw.LoadTexture("block.png", GAME_STAGE);
 	draw.LoadTexture("RIGHT_BLAST.png", R_BLAST);
 	draw.LoadTexture("LEFT_BLAST.png", L_BLAST);
@@ -207,9 +207,9 @@ VOID GAME::Process()
 	}
 
 	//自機の描画1p
-	draw.Draw(spaceman.char_one.x, spaceman.char_one.y, 0xffffffff, spaceman.char_one.tu, spaceman.char_one.tv, spaceman.char_one.width, spaceman.char_one.height, 1.0f, 1.0f, CHARCTER);
+	draw.Draw(spaceman.char_one.x, spaceman.char_one.y, 0xffffffff, spaceman.char_one.tu, spaceman.char_one.tv, spaceman.char_one.width, spaceman.char_one.height,0.25f, 0.03125f, CHARCTER);
 	//自機の描画2p
-	draw.Draw(spaceman.char_two.x, spaceman.char_two.y, 0xffffffff, spaceman.char_two.tu, spaceman.char_two.tv, spaceman.char_two.width, spaceman.char_two.height, 1.0f, 1.0f, CHARCTER_TWO);
+	draw.Draw(spaceman.char_two.x, spaceman.char_two.y, 0xffffffff, spaceman.char_two.tu, spaceman.char_two.tv, spaceman.char_two.width, spaceman.char_two.height, 0.25f, 0.03125f, CHARCTER_TWO);
 
 	//どちらが勝利したか判断している
 	if (spaceman.char_one.y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))

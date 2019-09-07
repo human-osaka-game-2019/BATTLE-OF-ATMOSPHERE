@@ -43,7 +43,8 @@ VOID COLLISION::Hit_Move(BLOCK block, CHAR_* char_, FLOAT movement_x, FLOAT move
 
 	if ((block.x < char_->x + char_->width) && (char_->x < block.x + block.width) && (block.y < char_->y + char_->height) && (char_->y < block.y + block.height))
 	{
-		if ((char_->save_y + char_->height <= block.y) || (char_->save_y >= block.y + block.height)) {
+		if ((char_->save_y + char_->height <= block.y) || (char_->save_y >= block.y + block.height))
+		{
 			if (movement_y < 0)
 			{
 				char_->y = block.y - char_->height;
