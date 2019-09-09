@@ -32,7 +32,7 @@ private:
 	};
 
 
-	SelectUI_ID current_id;
+	SelectUI_ID current_id = title_ui_start;
 	SCENE nextscene = GAME_SCENE;
 
 	//プロトタイプ宣言

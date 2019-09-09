@@ -372,23 +372,23 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						if (char_->m_direction == RIGHT && (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP))
 						{
-							char_->tu = 0.03125f * 19;
-							char_->tv = 0.5f;
+							char_->tu = 0.5f;
+							char_->tv = 0.03125f * 19;
 						}
 						else if (char_->m_direction == LEFT && (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP))
 						{
-							char_->tu = 0.03125f * 4;
-							char_->tv = 0.5f;
+							char_->tu = 0.5f;
+							char_->tv = 0.03125f * 4;
 						}
 						else if (char_->m_direction == RIGHT)
 						{
-							char_->tu = 0.03125f * 1;
-							char_->tv = 0.5f;
+							char_->tu = 0.5f;
+							char_->tv =  0.03125f * 1;
 						}
 						else if (char_->m_direction == LEFT)
 						{
-							char_->tu = 0.03125f * 0;
-							char_->tv = 0.5f;
+							char_->tu = 0.5f;
+							char_->tv = 0.03125f * 0;
 						}
 					}
 				}
@@ -518,23 +518,23 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						if (char_->m_direction == RIGHT && (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP))
 						{
-							char_->tu = 0.03125f * 19;
-							char_->tv = 0.5f;
+							char_->tu = 0.5f;
+							char_->tv = 0.03125f * 19;
 						}
 						else if (char_->m_direction == LEFT && (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP))
 						{
-							char_->tu = 0.03125f * 4;
-							char_->tv = 0.5f;
+							char_->tu = 0.5f;
+							char_->tv = 0.03125f * 4;
 						}
 						else if (char_->m_direction == RIGHT)
 						{
-							char_->tu = 0.03125f * 1;
-							char_->tv = 0.5f;
+							char_->tu = 0.5f;
+							char_->tv =  0.03125f * 1;
 						}
 						else if (char_->m_direction == LEFT)
 						{
-							char_->tu = 0.03125f * 0;
-							char_->tv = 0.5f;
+							char_->tu = 0.5f;
+							char_->tv = 0.03125f * 0;
 						}
 					}
 				}

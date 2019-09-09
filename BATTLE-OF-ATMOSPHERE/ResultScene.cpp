@@ -31,6 +31,9 @@ VOID RESULT::Loading()
 	draw.LoadTexture("result_bg.jpg", RESULT_BG);
 	draw.LoadTexture("result_logo.png", RESULT_LOGO);
 	draw.LoadTexture("result_ui.png", RESULT_UI);
+
+
+
 	phase = PROCESSING;
 }
 

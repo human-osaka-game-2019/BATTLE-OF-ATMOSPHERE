@@ -6,9 +6,12 @@
 class HELP
 {
 public:
-	INT m_pos_x = 0;
-	INT m_pos_y = 0;
-	INT m_スクロール_speed = 10;
+	INT m_scroll_x = 0;
+	INT m_scroll_y = 0;
+	INT m_scroll_speed = 30;
+	BOOL help_front = TRUE;
+	BOOL scroll_move = FALSE;
+
 	VOID Help_Scene();
 	enum SCENE_PAHSE
 	{

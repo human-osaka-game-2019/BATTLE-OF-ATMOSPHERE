@@ -27,23 +27,51 @@ VOID HELP::Loading()
 //リザルトの描画処理
 VOID HELP::Process()
 {
-	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG);
-	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG2);
+	
+
 	//エンターでタイトルへ
-	if (m_pos_y >= 825)
+	
+	if (directx.KeyState[DIK_C] <= directx.PRESS)
 	{
-		m_pos_y = 825;
+		scroll_move = TRUE;
 	}
-	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG);
-	if (directx.KeyState[DIK_RIGHT] <= directx.ON)
+
+	if (scroll_move == TRUE)
 	{
-		m_pos_x += m_スクロール_speed;
+	
+		m_scroll_x += m_scroll_speed;
 	}
-	draw.Draw(m_pos_x, m_pos_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG2);
-	if (directx.KeyState[DIK_LEFT] <= directx.ON)
+
+	if (m_scroll_x == 0)
 	{
-		m_pos_x -= m_スクロール_speed;
+		scroll_move = FALSE;
 	}
+
+	if (m_scroll_x == 960) 
+	{
+		help_front = FALSE;
+		m_scroll_speed = -30;
+	}
+	else if (m_scroll_x == -960)
+	{
+		help_front = TRUE;
+		m_scroll_speed = 30;
+
+	}
+
+	if (help_front == TRUE) {
+		draw.Draw(-m_scroll_x, -m_scroll_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG);
+		draw.Draw(m_scroll_x, m_scroll_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG2);
+	}
+	else
+	{
+		draw.Draw(m_scroll_x, m_scroll_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG2);
+		draw.Draw(-m_scroll_x, -m_scroll_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG);
+	}
+	
+	
+
+
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
 	{
 		phase = RELEASES;

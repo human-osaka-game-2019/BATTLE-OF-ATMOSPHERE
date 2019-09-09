@@ -33,7 +33,7 @@ VOID TITLE::Loading()
 	draw.LoadTexture("title_logo.png", TITLE_LOGO);
 	phase = PROCESSING;
 
-	current_id = title_ui_exit;
+	current_id = title_ui_start;
 	nextscene = GAME_SCENE;
 }
 
@@ -69,15 +69,48 @@ VOID TITLE::Process()
 			nextscene = EXIT_SCENE;
 			break;
 		case title_ui_exit:
+			current_id = title_ui_exit;
+			m_title_ui_tu_exit += 0.5f;
+			nextscene = EXIT_SCENE;
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (directx.KeyState[DIK_UP] == directx.PRESS)
+	{
+		// ボタンを押されたら選択UIをいったんリセット
+		m_title_ui_tu_help = 0.0f;
+		m_title_ui_tu_exit = 0.0f;
+		m_title_ui_tu_start = 0.0f;
+
+		//それぞれのUIがアニメーション、そのシーンへ遷移
+		switch (current_id)
+		{
+			
+		case title_ui_start:
 			current_id = title_ui_start;
 			m_title_ui_tu_start += 0.5f;
 			nextscene = GAME_SCENE;
+			break;
+		case title_ui_help:
+			current_id = title_ui_start;
+			m_title_ui_tu_start += 0.5f;
+			nextscene = GAME_SCENE;
+			break;
+		case title_ui_exit:
+			current_id = title_ui_help;
+			m_title_ui_tu_help += 0.5f;
+			nextscene = HELP_SCENE;
+			
 			break;
 		default:
 			break;
 		}
 
 	}
+
 	//エンターでゲームへ
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
 	{
