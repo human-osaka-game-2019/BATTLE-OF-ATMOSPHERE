@@ -79,11 +79,15 @@ typedef struct
 	
 }CHAR_;
 
-struct ITEM_
+typedef struct
 {
-	FLOAT x, y, tu, tv, width, height;
-	INT item_type;
-};
+	BOOL is_pop = FALSE;
+	FLOAT x, y;
+	FLOAT width = 96.0f;
+	FLOAT height = 96.0f;
+	FLOAT item_gravity = 0.1f;
+	FLOAT tu, tv;
+}ITEMSTATE;
 
 /**
 * @brief 自機のステータスのベース
@@ -128,7 +132,7 @@ public:
 	CHAR_ char_one = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,RIGHT,ONE_PLAYER,5.0f,0.0f,0.0f};
 	CHAR_ char_two = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,LEFT,TWO_PLAYER,5.0f,0.0f,0};
 
-	ITEM_ item[MAX_ITEM];
+	ITEMSTATE item_state[10];
 
 	/**
 	* @fn VOID SpaceManRelease()

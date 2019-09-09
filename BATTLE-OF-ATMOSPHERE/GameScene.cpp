@@ -239,11 +239,31 @@ VOID GAME::Process()
 			for (INT j = 0; j < BLOCK_QUANTITY; j++)
 			{
 				stage.MakeStage(&stage.block[j]);
+
+
 			}
 
 			break;
 		}
 
+	}
+
+	if (stage.fc_item_pop <= 0)
+	{
+		for (INT i = 0; i < 10; i++)
+		{
+			if (spaceman.item_state[i].is_pop == FALSE)
+			{
+				stage.PopItem(&spaceman.item_state[i]);
+				stage.fc_item_pop = 6 * 60;
+				break;
+			}
+
+		}
+	}
+	else
+	{
+		stage.fc_item_pop--;
 	}
 	//charとcharの当たり判定
 	collision.Hit_Char(&spaceman.char_one, &spaceman.char_two);
@@ -280,6 +300,21 @@ VOID GAME::Process()
 		stage.DrawBlock(stage.create_block[i]);
 	}
 
+	for (INT i = 0; i < 10; i++)
+	{
+		if (spaceman.item_state[i].is_pop == TRUE)
+		{
+			for (INT j = 0; j < BLOCK_QUANTITY; j++) 
+			{
+				collision.HitBlockItem(stage.block[j], &spaceman.item_state[i]);
+			}
+			stage.ItemReset(&spaceman.item_state[i]);
+			spaceman.item_state[i].y += spaceman.item_state[i].item_gravity;
+			draw.Draw(spaceman.item_state[i].x, spaceman.item_state[i].y, 0xffffffff, 0, 0, spaceman.item_state[i].width, spaceman.item_state[i].height, 1, 1, ICE_BALL);
+			spaceman.item_state[i].item_gravity += 0.1f;
+		}
+	}
+
 	//自機の描画1p
 	draw.Draw(spaceman.char_one.x, spaceman.char_one.y, 0xffffffff, spaceman.char_one.tu, spaceman.char_one.tv, spaceman.char_one.width, spaceman.char_one.height, 0.25f, 0.03125f, CHARCTER);
 	//自機の描画2p
@@ -305,6 +340,10 @@ VOID GAME::Process()
 //ゲームのテクスチャの解放
 VOID GAME::Release() {
 
+	for (INT i = 0; i < 10; i++)
+	{
+		spaceman.item_state[i].is_pop = FALSE;
+	}
 	//テクスチャの開放
 	for (INT i = 0; i < TEX_MAX; i++)
 	{

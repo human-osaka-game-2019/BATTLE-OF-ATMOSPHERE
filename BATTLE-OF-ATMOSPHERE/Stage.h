@@ -2,6 +2,7 @@
 #define STAGE_H_
 
 #include <Windows.h>
+#include"Character.h"
 
 //ブロックの大きさ
 #define BLOCK_SIZE 96.f
@@ -9,6 +10,8 @@
 #define BLOCK_QUANTITY 45
 
 #define BLOCK_X_MAX 20
+
+#define BLOCK_Y_MAX 8
 //クリエイトブロックの個数
 #define CREATE_BLOCK_QUANITITY 6
 //スクロールのスピード
@@ -16,19 +19,29 @@
 //ブロックのスクロールするスピード
 #define SCROLL_SPEED_BLOCK 1.0f
 
-typedef struct {
+typedef struct 
+{
 	INT x_num;
 	FLOAT x, y, width, height, tu, tv;
 }BLOCK;
 
-class STAGE {
+class STAGE
+{
 public:
 
+	FLOAT fc_item_pop = 5*60;
+
 	BOOL m_is_stage[20] = {};
+
+	VOID PopItem(ITEMSTATE* item_state);
+
+	VOID SlotChange(CHAR_ char_one,CHAR_ char_two);
 
 	VOID InitStageBlock();
 
 	VOID InitBlock();
+
+	VOID ItemReset(ITEMSTATE* item_state);
 
 	VOID MakeStage(BLOCK* block);
 
