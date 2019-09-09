@@ -14,8 +14,6 @@ public:
 
 	VOID MakeBlock_Change(CHAR_* char_, BLOCK* block, INT ite);
 
-
-
 	VOID Right_MakeBlock(CHAR_* char_, BLOCK* block, INT i);
 
 	VOID Left_MakeBlock(CHAR_* char_, BLOCK* block, INT i);

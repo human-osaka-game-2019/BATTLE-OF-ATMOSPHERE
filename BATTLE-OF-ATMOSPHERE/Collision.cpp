@@ -1,9 +1,7 @@
 ﻿#include "Collision.h"
 
-extern SPACEMAN spaceman;
+//extern SPACEMAN spaceman;
 
-INT Gravity;
-INT Jump = 0;
 
 VOID COLLISION::Hit_Block(BLOCK block, CHAR_* char_)
 {

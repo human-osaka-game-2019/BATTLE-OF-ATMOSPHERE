@@ -1,9 +1,8 @@
 ﻿#include "Stage.h"
 #include "Collision.h"
+#include "Character.h"
 #include "MapChip.h"
 
-//DRAWMAP drawmap;
-//DRAW draw;
 
 
 
@@ -21,6 +20,16 @@ VOID STAGE::PopItem(ITEMSTATE* item_state)
 	item_y_pos = rand() % (BLOCK_Y_MAX - 5);
 	item_state->x = item_x_pos * BLOCK_SIZE;
 	item_state->y = item_y_pos * BLOCK_SIZE;
+}
+
+VOID STAGE::ItemReset(ITEMSTATE* item_state)
+{
+	if (item_state->y > WINDOW_HEIGHT + (BLOCK_SIZE * 2))
+	{
+		item_state->item_gravity = 0.1f;
+		item_state->is_pop = FALSE;
+	}
+
 }
 
 VOID STAGE::InitStageBlock()
@@ -55,15 +64,6 @@ VOID STAGE::InitStageBlock()
 	}
 }
 
-VOID STAGE::ItemReset(ITEMSTATE* item_state)
-{
-	if (item_state->y > WINDOW_HEIGHT + (BLOCK_SIZE * 2))
-	{
-		item_state->item_gravity = 0.1f;
-		item_state->is_pop = FALSE;
-	}
-
-}
 
 VOID STAGE::InitBlock()
 {
