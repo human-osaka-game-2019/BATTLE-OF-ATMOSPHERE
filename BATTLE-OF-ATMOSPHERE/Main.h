@@ -25,6 +25,7 @@ enum TEX
 	RESULT_LOGO,
 	RESULT_UI,
 	ICE_BALL,
+	SLOT,
 	MAXTEX,
 };
 

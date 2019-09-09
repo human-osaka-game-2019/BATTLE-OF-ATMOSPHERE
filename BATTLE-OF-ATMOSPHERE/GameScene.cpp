@@ -54,6 +54,7 @@ VOID GAME::Loading()
 	draw.LoadTexture("UP_BLAST.png", U_BLAST);
 	draw.LoadTexture("DOWN_BLAST.png", D_BLAST);
 	draw.LoadTexture("ice_ball.png", ICE_BALL);
+	draw.LoadTexture("slot.png", SLOT);
 
 	stage.InitBlock();
 
@@ -283,6 +284,9 @@ VOID GAME::Process()
 	draw.Draw(spaceman.char_one.x, spaceman.char_one.y, 0xffffffff, spaceman.char_one.tu, spaceman.char_one.tv, spaceman.char_one.width, spaceman.char_one.height, 0.25f, 0.03125f, CHARCTER);
 	//自機の描画2p
 	draw.Draw(spaceman.char_two.x, spaceman.char_two.y, 0xffffffff, spaceman.char_two.tu, spaceman.char_two.tv, spaceman.char_two.width, spaceman.char_two.height, 0.25f,0.03125f , CHARCTER_TWO);
+
+	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 128, 128, 1.0f, 1.0f, SLOT);
+	draw.Draw(WINDOW_WIDTH - 128, 0, 0xffffffff, 0.0f, 0.0f, 128, 128, 1.0f, 1.0f, SLOT);
 
 	//どちらが勝利したか判断している
 	if (spaceman.char_one.y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))
