@@ -75,7 +75,7 @@ typedef struct
 	BOOL is_ice_hit = FALSE;
 	FLOAT fc_ice = 0.0f;
 	BOOL is_ice = FALSE;
-	DIRECTION save_direction;
+	DIRECTION side_direction;
 	
 }CHAR_;
 
@@ -125,8 +125,8 @@ public:
 	BLAST_STATUS blast_one = { 0,0,0,0,96.0f };
 	BLAST_STATUS blast_two = { 0,0,0,0,96.0f };
 
-	CHAR_ char_one = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,RIGHT,ONE_PLAYER,5.0f,0.0f,0.0f};
-	CHAR_ char_two = { 200,100,0.0f,0.0f,96.f,192.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,LEFT,TWO_PLAYER,5.0f,0.0f,0};
+	CHAR_ char_one = { 200,100,0.0f,0.0f,70.f,140.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,RIGHT,ONE_PLAYER,5.0f,0.0f,0.0f};
+	CHAR_ char_two = { 200,100,0.0f,0.0f,70.f,140.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,LEFT,TWO_PLAYER,5.0f,0.0f,0};
 
 	ITEM_ item[MAX_ITEM];
 

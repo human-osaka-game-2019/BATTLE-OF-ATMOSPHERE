@@ -123,7 +123,6 @@ VOID RESULT::Release()
 			directx.pTexture[i] = nullptr;
 		}
 	}
-	phase = LOAD;
 	scene = TITLE_SCENE;
 }
 

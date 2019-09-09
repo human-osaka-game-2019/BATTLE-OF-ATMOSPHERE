@@ -41,15 +41,15 @@ VOID JET::UseJet(CHAR_* char_)
 					{
 					case RIGHT:
 						char_->m_jet_right = TRUE;
-						char_->m_jet_speed = 20.0f;
+						char_->m_jet_speed = 40.0f;
 						break;
 					case LEFT:
 						char_->m_jet_left = TRUE;
-						char_->m_jet_speed = 20.0f;
+						char_->m_jet_speed = 40.0f;
 						break;
 					case UP:
 						char_->m_jet_up = TRUE;
-						char_->m_jet_speed = 30.0f;
+						char_->m_jet_speed = 50.0f;
 						break;
 					}
 				}
@@ -62,15 +62,15 @@ VOID JET::UseJet(CHAR_* char_)
 					{
 					case RIGHT:
 						char_->m_jet_right = TRUE;
-						char_->m_jet_speed = 20.0f;
+						char_->m_jet_speed = 40.0f;
 						break;
 					case LEFT:
 						char_->m_jet_left = TRUE;
-						char_->m_jet_speed = 20.0f;
+						char_->m_jet_speed = 40.0f;
 						break;
 					case UP:
 						char_->m_jet_up = TRUE;
-						char_->m_jet_speed = 30.0f;
+						char_->m_jet_speed = 50.0f;
 						break;
 					}
 				}
@@ -88,31 +88,31 @@ VOID JET::UseJet(CHAR_* char_)
 	}
 
 
-	if (char_->m_fc_jet < 80)
+	if (char_->m_fc_jet < 20)
 	{
 
 		if (char_->m_jet_right == TRUE)
 		{
-			char_->m_jet_speed -= 0.1f;
+			char_->m_jet_speed -= 1.f;
 			char_->x += char_->m_jet_speed;
 			char_->y -= char_->m_gravity;
 		}
 
 		if (char_->m_jet_left == TRUE)
 		{
-			char_->m_jet_speed -= 0.1f;
+			char_->m_jet_speed -= 1.f;
 			char_->x -= char_->m_jet_speed;
 			char_->y -= char_->m_gravity;
 		}
 
 		if (char_->m_jet_up == TRUE)
 		{
-			char_->m_jet_speed -= 0.1f;
+			char_->m_jet_speed -= 1.f;
 			char_->y -= char_->m_jet_speed;
 		}
 
 	}
-	if (char_->m_fc_jet >= 80)
+	if (char_->m_fc_jet >= 20)
 	{
 		char_->m_fc_jet = 0;
 		char_->m_gravity = 0;

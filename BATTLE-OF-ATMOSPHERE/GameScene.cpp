@@ -250,7 +250,7 @@ VOID GAME::Process()
 
 	if (spaceman.char_one.is_ice_hit == FALSE) {
 		//クリエイトを使った時の座標移動
-		if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.create == false))
+		if ((directx.KeyState[DIK_E] == directx.PRESS) && (spaceman.char_one.create == false))
 		{
 			for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
 				create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
@@ -259,7 +259,7 @@ VOID GAME::Process()
 		}
 	}
 	if (spaceman.char_two.is_ice_hit == FALSE) {
-		if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.create == false))
+		if ((directx.KeyState[DIK_END] == directx.PRESS) && (spaceman.char_two.create == false))
 		{
 			for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
 				create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);

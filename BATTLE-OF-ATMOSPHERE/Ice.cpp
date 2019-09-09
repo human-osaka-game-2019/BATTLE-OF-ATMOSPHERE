@@ -45,8 +45,7 @@ VOID ICE::MoveIce(CHAR_* char_, ICE_SHOT* ice_shot)
 	{
 	case RIGHT:
 		ice_shot->x += 10;
-		ice_shot->y += SCROLL_SPEED_BLOCK
-			;
+		ice_shot->y += SCROLL_SPEED_BLOCK;
 		break;
 	case LEFT:
 		ice_shot->x -= 10;

@@ -42,11 +42,11 @@ VOID TITLE::Process()
 {
 	draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, TITLE_BG);
 	//タイトルUIの描画
-	draw.Draw(120, 650, 0xffffffff, m_title_ui_tu_start, 0.0f, 420, 140, 0.5f, 0.25f, TITLE_UI);
-	draw.Draw(120, 770, 0xffffffff, m_title_ui_tu_help, 0.25f, 420, 140, 0.5f, 0.25f, TITLE_UI);
-	draw.Draw(120, 910, 0xffffffff, m_title_ui_tu_exit, 0.5f, 420, 140, 0.5f, 0.25f, TITLE_UI);
+	draw.Draw(580, 700, 0xffffffff, m_title_ui_tu_start, 0.0f, 300, 100, 0.5f, 0.25f, TITLE_UI);
+	draw.Draw(580, 800, 0xffffffff, m_title_ui_tu_help, 0.25f, 300, 100, 0.5f, 0.25f, TITLE_UI);
+	draw.Draw(580, 900, 0xffffffff, m_title_ui_tu_exit, 0.5f, 300, 100, 0.5f, 0.25f, TITLE_UI);
 
-	draw.Draw(-50, 100, 0xffffffff, 0.0f, 0.0f, 1000, 500, 1.0f, 1.0f, TITLE_LOGO);
+	draw.Draw(0, 100, 0xffffffff, 0.0f, 0.0f, 1250, 625, 1.0f, 1.0f, TITLE_LOGO);
 
 	if (directx.KeyState[DIK_DOWN] == directx.PRESS)
 	{
