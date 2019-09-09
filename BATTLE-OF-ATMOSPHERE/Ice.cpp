@@ -1,13 +1,8 @@
 ﻿#include "Ice.h"
 #include"Main.h"
-VOID ICE::Init_Ice(CHAR_* item, ICE_SHOT* ice_shot)
+
+VOID ICE::Init_Ice(ICE_SHOT* ice_shot)
 {
-	item->x = -10000;
-	item->y = -10000;
-	item->width = 96.f;
-	item->height = 96.f;
-	item->tu;
-	item->tv;
 	ice_shot->x = 100000;
 	ice_shot->y = 100000;
 	ice_shot->width = 96.0f;

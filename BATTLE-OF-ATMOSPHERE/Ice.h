@@ -16,7 +16,7 @@ class ICE
 public:
 	BOOL IceHitCharCheck(CHAR_ char_, ICE_SHOT ice_shot);
 	BOOL IceHitBlockCheck(BLOCK block, ICE_SHOT ice_shot);
-	VOID Init_Ice(CHAR_* item, ICE_SHOT* ice_shot);
+	VOID Init_Ice(ICE_SHOT* ice_shot);
 	VOID UseIce(CHAR_* char_, ICE_SHOT* ice_shot);
 	VOID ShotIce_Change(CHAR_* char_, ICE_SHOT* ice_shot);
 	VOID EvaporatingIce(CHAR_* char_, ICE_SHOT* ice_shot);
