@@ -41,14 +41,14 @@ VOID RESULT::Process()
 	if (winner.is_one_win == TRUE)
 	{
 		draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, RESULT_BG);
-		draw.Draw(100, 190, 0xffffffff, 0.0f, 0.0f, 700, 700, 1.0f, 0.5f, RESULT_LOGO);
+		draw.Draw(600, 190, 0xffffffff, 0.0f, 0.0f, 700, 700, 1.0f, 0.5f, RESULT_LOGO);
 		draw.Draw(1450, 300, 0xffffffff, m_result_ui_tu_a, 0.0f, 370, 170, 0.5f, 0.25f, RESULT_UI);
 		draw.Draw(1450, 650, 0xffffffff, m_result_ui_tu_c, 0.25f, 370, 170, 0.5f, 0.25f, RESULT_UI);
 	}
 	else if (winner.is_two_win == TRUE)
 	{
 		draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, RESULT_BG);
-		draw.Draw(100, 190, 0xffffffff, 0.0f, 0.5f, 700, 700, 1.0f, 0.5f, RESULT_LOGO);
+		draw.Draw(600, 190, 0xffffffff, 0.0f, 0.5f, 700, 700, 1.0f, 0.5f, RESULT_LOGO);
 		draw.Draw(1450, 300, 0xffffffff, m_result_ui_tu_a, 0.0f, 370, 170, 0.5f, 0.25f, RESULT_UI);
 		draw.Draw(1450, 650, 0xffffffff, m_result_ui_tu_c, 0.25f, 370, 170, 0.5f, 0.25f, RESULT_UI);
 
