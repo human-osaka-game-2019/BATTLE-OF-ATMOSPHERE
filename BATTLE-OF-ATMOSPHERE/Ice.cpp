@@ -1,6 +1,6 @@
 ﻿#include "Ice.h"
 #include"Main.h"
-VOID ICE::Init_Ice(ITEM_* item, ICE_SHOT* ice_shot)
+VOID ICE::Init_Ice(CHAR_* item, ICE_SHOT* ice_shot)
 {
 	item->x = -10000;
 	item->y = -10000;

@@ -134,21 +134,18 @@ VOID COLLISION::Hit_Char(CHAR_* char_one_, CHAR_* char_two_)
 		}
 }
 
-VOID COLLISION::Hit_Item(CHAR_* char_, ITEM_* item)
+VOID COLLISION::HitBlockItem(BLOCK block, ITEMSTATE* item_state)
 {
-	if ((char_->x + char_->width > item->x) && (char_->x < item->x + item->width) && (char_->y + char_->height > item->y) && (char_->y < item->y + item->height))
+	if ((block.x < item_state->x + item_state->width && block.y < item_state->y + item_state->height)
+		&& (block.x + block.width > item_state->x && block.y + block.width > item_state->y))
 	{
-
-
-
-
-
-
-
-
-
+		item_state->item_gravity = 0;
+		item_state->y = block.y - item_state->height;
 	}
-
-
-
-}
+	else if ((block.x == item_state->x + item_state->width && block.y == item_state->y + item_state->height)
+		&& (block.x + block.width == item_state->x && block.y + block.width == item_state->y))
+	{
+		item_state->item_gravity = 0;
+		item_state->y += item_state->height;
+	}
+};

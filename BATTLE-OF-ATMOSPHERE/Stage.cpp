@@ -1,5 +1,5 @@
 ﻿#include "Stage.h"
-
+#include "Collision.h"
 #include "MapChip.h"
 
 //DRAWMAP drawmap;
@@ -7,30 +7,9 @@
 
 
 
-VOID STAGE::InitStageBlock()
+VOID STAGE::SlotChange(CHAR_ char_one, CHAR_ char_two)
 {
-	for (INT i = 0; i < 8; i++)
-	{
-		block[i].x = (6 + i) * BLOCK_SIZE;
-		block[i].y = -4 * BLOCK_SIZE;
-	}
 
-	for (INT i = 0; i < 10; i++) 
-	{
-		block[i + 8].x = (5 + i) * BLOCK_SIZE;
-		block[i + 8].y = 2 * BLOCK_SIZE;
-	}
-	for (INT i = 0; i < 14; i++) 
-	{
-		block[i + 19].x = (3 + i) * BLOCK_SIZE;
-		block[i + 19].y = 8 * BLOCK_SIZE;
-	}
-
-	for (INT i = 0; i < 10; i++)
-	{
-		block[i + 33].x = (5 + i) * BLOCK_SIZE;
-		block[i + 33].y = -10 * BLOCK_SIZE;
-	}
 }
 
 VOID STAGE::PopItem(ITEMSTATE* item_state)
@@ -44,7 +23,37 @@ VOID STAGE::PopItem(ITEMSTATE* item_state)
 	item_state->y = item_y_pos * BLOCK_SIZE;
 }
 
+VOID STAGE::InitStageBlock()
+{
+	for (INT i = 0; i < 8; i++)
+	{
+		block[i].x = (6 + i) * BLOCK_SIZE;
+		block[i].y = -4 * BLOCK_SIZE;
+	}
 
+	for (INT i = 0; i < 10; i++)
+	{
+		block[i + 8].x = (5 + i) * BLOCK_SIZE;
+		block[i + 8].y = 2 * BLOCK_SIZE;
+	}
+	for (INT i = 0; i < 14; i++)
+	{
+		block[i + 19].x = (3 + i) * BLOCK_SIZE;
+		block[i + 19].y = 8 * BLOCK_SIZE;
+	}
+
+	for (INT i = 0; i < 5; i++)
+	{
+		block[i + 33].x = i * BLOCK_SIZE;
+		block[i + 33].y = -10 * BLOCK_SIZE;
+	}
+
+	for (INT i = 0; i < 5; i++)
+	{
+		block[i + 38].x = (15 + i) * BLOCK_SIZE;
+		block[i + 38].y = -10 * BLOCK_SIZE;
+	}
+}
 
 VOID STAGE::ItemReset(ITEMSTATE* item_state)
 {
@@ -55,7 +64,6 @@ VOID STAGE::ItemReset(ITEMSTATE* item_state)
 	}
 
 }
-
 
 VOID STAGE::InitBlock()
 {

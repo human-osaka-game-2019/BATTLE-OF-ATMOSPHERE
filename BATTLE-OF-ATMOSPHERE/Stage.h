@@ -9,6 +9,8 @@
 #define BLOCK_QUANTITY 45
 
 #define BLOCK_X_MAX 20
+
+#define BLOCK_Y_MAX 11
 //クリエイトブロックの個数
 #define CREATE_BLOCK_QUANITITY 6
 //スクロールのスピード
