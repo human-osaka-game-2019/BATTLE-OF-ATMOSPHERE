@@ -24,7 +24,16 @@ typedef struct {
 class STAGE {
 public:
 
+	FLOAT fc_item_pop = 5 * 60;
+
 	BOOL m_is_stage[20] = {};
+
+	VOID PopItem(ITEMSTATE* item_state);
+
+	VOID SlotChange(CHAR_ char_one, CHAR_ char_two);
+
+
+	VOID ItemReset(ITEMSTATE* item_state);
 
 	VOID InitStageBlock();
 

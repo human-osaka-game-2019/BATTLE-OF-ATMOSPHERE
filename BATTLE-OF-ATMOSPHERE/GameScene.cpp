@@ -244,6 +244,47 @@ VOID GAME::Process()
 		}
 
 	}
+
+
+	if (stage.fc_item_pop <= 0)
+	{
+		for (INT i = 0; i < 10; i++)
+		{
+			if (spaceman.item_state[i].is_pop == FALSE)
+			{
+				stage.PopItem(&spaceman.item_state[i]);
+				stage.fc_item_pop = 6 * 60;
+				break;
+			}
+
+		}
+	}
+	else
+	{
+		stage.fc_item_pop--;
+	}
+
+	for (INT i = 0; i < 10; i++)
+	{
+		if (spaceman.item_state[i].is_pop == TRUE)
+		{
+			for (INT j = 0; j < BLOCK_QUANTITY; j++)
+			{
+				collision.HitBlockItem(stage.block[j], &spaceman.item_state[i]);
+			}
+			stage.ItemReset(&spaceman.item_state[i]);
+			spaceman.item_state[i].y += spaceman.item_state[i].item_gravity;
+			draw.Draw(spaceman.item_state[i].x, spaceman.item_state[i].y, 0xffffffff, 0, 0, spaceman.item_state[i].width, spaceman.item_state[i].height, 1, 1, ICE_BALL);
+			spaceman.item_state[i].item_gravity += 0.1f;
+		}
+	}
+
+
+
+
+
+
+
 	//charとcharの当たり判定
 	collision.Hit_Char(&spaceman.char_one, &spaceman.char_two);
 	collision.Hit_Char(&spaceman.char_two, &spaceman.char_one);

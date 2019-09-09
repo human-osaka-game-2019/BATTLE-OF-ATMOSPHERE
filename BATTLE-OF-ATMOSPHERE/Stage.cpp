@@ -33,6 +33,29 @@ VOID STAGE::InitStageBlock()
 	}
 }
 
+VOID STAGE::PopItem(ITEMSTATE* item_state)
+{
+	INT item_x_pos;
+	INT item_y_pos;
+	item_state->is_pop = TRUE;
+	item_x_pos = rand() % (BLOCK_X_MAX - 1);
+	item_y_pos = rand() % (BLOCK_Y_MAX - 5);
+	item_state->x = item_x_pos * BLOCK_SIZE;
+	item_state->y = item_y_pos * BLOCK_SIZE;
+}
+
+
+
+VOID STAGE::ItemReset(ITEMSTATE* item_state)
+{
+	if (item_state->y > WINDOW_HEIGHT + (BLOCK_SIZE * 2))
+	{
+		item_state->item_gravity = 0.1f;
+		item_state->is_pop = FALSE;
+	}
+
+}
+
 
 VOID STAGE::InitBlock()
 {
