@@ -1,6 +1,5 @@
 ﻿#include "Stage.h"
 #include "Collision.h"
-#include "Character.h"
 #include "MapChip.h"
 
 

@@ -2,6 +2,8 @@
 #define STAGE_H_
 
 #include <Windows.h>
+#include "Character.h"
+
 
 //ブロックの大きさ
 #define BLOCK_SIZE 96.f
