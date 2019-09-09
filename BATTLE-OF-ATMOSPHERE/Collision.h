@@ -19,7 +19,7 @@ public:
 
 	VOID Hit_Char(CHAR_* char_one, CHAR_* char_two);
 
-	VOID Hit_Item(CHAR_* char_, ITEM_* item);
+	VOID Hit_Item(CHAR_* char_, ITEMSTATE* item);
 
 };
 
