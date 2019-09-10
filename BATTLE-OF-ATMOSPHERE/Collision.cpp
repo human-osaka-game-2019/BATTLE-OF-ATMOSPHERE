@@ -169,7 +169,8 @@ VOID COLLISION::Get_Item(CHAR_* char_,ITEMSTATE* item_state)
 			break;
 		}
 
-
+		item_state->x = -10000;
+		item_state->y =-10100;
 		item_state->item_gravity = 0.1f;
 		item_state->is_pop = FALSE;
 	}
