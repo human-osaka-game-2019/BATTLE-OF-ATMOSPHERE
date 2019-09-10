@@ -25,14 +25,15 @@ enum PLAYER
 	TWO_PLAYER,
 };
 
-enum ITEM
+enum ITEM_
 {
 	ICE_ITEM,
 	CREATE_ITEM,
-	GRAVITY_ITEM,
+	
 	JET_ITEM,
-	IMPACT_ITEM,
 	MAX_ITEM,
+	GRAVITY_ITEM,
+	IMPACT_ITEM,
 };
 
 typedef struct
@@ -62,7 +63,14 @@ typedef struct
 	FLOAT m_plus_jump_power = 0.0F;                  //! ダッシュ時、上昇したジャンプ量
 	FLOAT save_x;
 	FLOAT save_y;
-	BOOL create;
+
+	//クリエイト使えるかどうか
+	BOOL is_create = FALSE;
+	//アイスを使えるかどうか
+	BOOL is_ice = FALSE;
+	//ジェット
+	BOOL is_jet = FALSE;
+
 	//ジェット関係
 	BOOL m_jet_right = FALSE;
 	BOOL m_jet_left = FALSE;
@@ -74,7 +82,7 @@ typedef struct
 
 	BOOL is_ice_hit = FALSE;
 	FLOAT fc_ice = 0.0f;
-	BOOL is_ice = FALSE;
+
 	DIRECTION side_direction;
 	
 
@@ -90,7 +98,7 @@ typedef struct
 	FLOAT width = 96.0f;
 	FLOAT height = 96.0f;
 	FLOAT item_gravity = 0.1f;
-	FLOAT tu, tv;
+	ITEM_ item_kind;
 }ITEMSTATE;
 
 /**
@@ -130,8 +138,8 @@ public:
 
 	///JUMP m_jump = NO_JUMP;			
 
-	BLAST_STATUS blast_one = { 0,0,0,0,96.0f };
-	BLAST_STATUS blast_two = { 0,0,0,0,96.0f };
+	BLAST_STATUS blast_one = { 0,0,0.0f,0.0f,0,0,96.0f };
+	BLAST_STATUS blast_two = { 0,0,0.0f,0.0f,0,0,96.0f };
 
 	CHAR_ char_one = { 200,100,0.0f,0.0f,70.f,140.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,RIGHT,ONE_PLAYER,5.0f,0.0f,0.0f};
 	CHAR_ char_two = { 200,100,0.0f,0.0f,70.f,140.f,0,0,FALL,0.0f,FALSE,FALSE,FALSE,FALSE,0.0f,LEFT,TWO_PLAYER,5.0f,0.0f,0};

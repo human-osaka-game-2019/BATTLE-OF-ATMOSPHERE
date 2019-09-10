@@ -5,7 +5,7 @@
 VOID CREATE::MakeBlock_Change(CHAR_* char_, BLOCK* create_block, INT ite)
 {
 
-	char_->create = true;
+	char_->is_create = true;
 
 
 	switch (char_->m_direction)

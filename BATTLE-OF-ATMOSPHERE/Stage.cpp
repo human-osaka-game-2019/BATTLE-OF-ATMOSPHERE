@@ -14,11 +14,15 @@ VOID STAGE::PopItem(ITEMSTATE* item_state)
 {
 	INT item_x_pos;
 	INT item_y_pos;
+
+
 	item_state->is_pop = TRUE;
 	item_x_pos = rand() % (BLOCK_X_MAX - 1);
 	item_y_pos = rand() % (BLOCK_Y_MAX - 5);
 	item_state->x = item_x_pos * BLOCK_SIZE;
 	item_state->y = item_y_pos * BLOCK_SIZE;
+
+	item_state->item_kind = (ITEM_)(rand() % 3);
 }
 
 VOID STAGE::ItemReset(ITEMSTATE* item_state)
@@ -125,3 +129,7 @@ VOID STAGE::DrawBlock(BLOCK block)
 	draw.Draw(block.x, block.y, 0xffffffff, block.tu, block.tv, block.width, block.height, 96.f / 192.f, 96.f / 192.f, GAME_STAGE, 0);
 }
 
+VOID STAGE::StopBlock(BLOCK* block)
+{
+	block->y -= SCROLL_SPEED_BLOCK;
+}

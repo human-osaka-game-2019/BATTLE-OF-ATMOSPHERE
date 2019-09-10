@@ -54,6 +54,7 @@ public:
 
 	BLOCK create_block[CREATE_BLOCK_QUANITITY];
 
+	VOID StopBlock(BLOCK* block);
 };
 
 #endif

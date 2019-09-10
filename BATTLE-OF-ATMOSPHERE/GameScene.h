@@ -18,6 +18,17 @@ public:
 	FLOAT game_bg_tu = 0.25f;
 	INT fc_background = 0;
 
+	INT fc_count = 0;
+
+	FLOAT count_tv = 0.0f;
+	
+	INT fc_finish = 0;
+	INT finish_left_y = -600;
+	INT finish_right_y = 1920;
+	INT left_scr = 20;
+	INT right_scr = 10;
+	INT fc_right_finish_move = 0;
+	INT fc_left_finish_move = 0;
 	INT fc_cereate_one = 0;
 	INT fc_cereate_two = 0;
 	INT fc_ice_time_one = 0;

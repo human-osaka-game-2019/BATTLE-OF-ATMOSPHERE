@@ -151,7 +151,7 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 
 BOOL SPACEMAN::BlastHitCheck(CHAR_ char_, BLAST_STATUS blast_status)
 {
-	if ((blast_status.x < char_.x + char_.width && blast_status.y < char_.y + char_.height) && (blast_status.x + blast_status.size > char_.x && blast_status.y + blast_status.size > char_.y))
+	if ((blast_status.x < char_.x + char_.width) && (blast_status.y < char_.y + char_.height) && (blast_status.x + blast_status.size > char_.x) && (blast_status.y + blast_status.size > char_.y))
 	{
 		return TRUE;
 	}
@@ -168,36 +168,35 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 	case RIGHT:
 		blast_status->x = char_me->x + 96.0f;
 		blast_status->y = char_me->y + 48.0f;
-		blast_status->tu = 0.0f;
-		blast_status->tv = 0.0f;
-		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, R_BLAST);
+		blast_status->tu = 128.0f * 1 / 2048.f;
+		blast_status->tv = 128.0f * 0 / 2048.f;
+		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, BLAST);
 		break;
 	case LEFT:
 		blast_status->x = char_me->x - 96.0f;
 		blast_status->y = char_me->y + 48.0f;
-		blast_status->tu = 0.0f;
-		blast_status->tv = 0.0f;
-		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, L_BLAST);
+		blast_status->tu = 128.0f * 1 / 2048.f;
+		blast_status->tv = 128.0f * 1 / 2048.f;
+		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, BLAST);
 		break;
 	case UP:
 		blast_status->x = char_me->x;
 		blast_status->y = char_me->y - 96.0f;
-		blast_status->tu = 0.0f;
-		blast_status->tv = 0.0f;
+		blast_status->tu = 128.0f * 1 / 2048.f;
+		blast_status->tv = 128.0f * 2 / 2048.f;
 		char_me->m_gravity = 5;
-		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, U_BLAST);
+		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, BLAST);
 		break;
 	case DOWN:
 		blast_status->x = char_me->x;
 		blast_status->y = char_me->y + 192.0f;
-		blast_status->tu = 0.0f;
-		blast_status->tv = 0.0f;
-		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, D_BLAST);
-
+		blast_status->tu = 128.0f * 1 / 2048.f;
+		blast_status->tv = 128.0f * 3 / 2048.f;
+		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, BLAST);
 		break;
 	}
 
-	draw.Draw(blast_status->x, blast_status->y, 0xffffffff, blast_status->tu, blast_status->tv, blast_status->size, blast_status->size,0.25f, 0.25f, BLAST);
+	draw.Draw(blast_status->x, blast_status->y, 0xffffffff, blast_status->tu, blast_status->tv, blast_status->size, blast_status->size,128.0f/ 2048, 128.0f/2048, BLAST);
 
 	if (BlastHitCheck(*char_you, *blast_status) == TRUE)
 	{
@@ -659,9 +658,10 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						char_->tu = 0.5f;
 						char_->tv = 0.03125f * 16;
 					}
+					char_->m_direction = DOWN;
 				}
 
-				char_->m_direction = DOWN;
+				
 			}else if (directx.KeyState[DIK_DOWN] == directx.RELEASE)
 				{
 				if (char_->m_action == NO_JUMP || char_->m_action == FALL)
