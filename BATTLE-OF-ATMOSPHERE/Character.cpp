@@ -168,26 +168,36 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 	case RIGHT:
 		blast_status->x = char_me->x + 96.0f;
 		blast_status->y = char_me->y + 48.0f;
-		draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, R_BLAST);
+		blast_status->tu = 0.0f;
+		blast_status->tv = 0.0f;
+		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, R_BLAST);
 		break;
 	case LEFT:
 		blast_status->x = char_me->x - 96.0f;
 		blast_status->y = char_me->y + 48.0f;
-		draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, L_BLAST);
+		blast_status->tu = 0.0f;
+		blast_status->tv = 0.0f;
+		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, L_BLAST);
 		break;
 	case UP:
 		blast_status->x = char_me->x;
 		blast_status->y = char_me->y - 96.0f;
+		blast_status->tu = 0.0f;
+		blast_status->tv = 0.0f;
 		char_me->m_gravity = 5;
-		draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, U_BLAST);
+		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, U_BLAST);
 		break;
 	case DOWN:
 		blast_status->x = char_me->x;
 		blast_status->y = char_me->y + 192.0f;
-		draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, D_BLAST);
+		blast_status->tu = 0.0f;
+		blast_status->tv = 0.0f;
+		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, D_BLAST);
 
 		break;
 	}
+
+	draw.Draw(blast_status->x, blast_status->y, 0xffffffff, blast_status->tu, blast_status->tv, blast_status->size, blast_status->size,0.25f, 0.25f, BLAST);
 
 	if (BlastHitCheck(*char_you, *blast_status) == TRUE)
 	{

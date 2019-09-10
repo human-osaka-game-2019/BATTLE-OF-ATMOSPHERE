@@ -21,6 +21,9 @@ public:
 
 	VOID HitBlockItem(BLOCK block, ITEMSTATE* item_state);
 
+	VOID Get_Item(CHAR_* char_, ITEMSTATE* item_state);
+
+
 };
 
 #endif

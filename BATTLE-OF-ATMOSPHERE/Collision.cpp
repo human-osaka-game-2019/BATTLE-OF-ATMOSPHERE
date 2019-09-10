@@ -147,3 +147,36 @@ VOID COLLISION::HitBlockItem(BLOCK block, ITEMSTATE* item_state)
 		item_state->y += item_state->height;
 	}
 };
+
+
+VOID COLLISION::Get_Item(CHAR_* char_,ITEMSTATE* item_state)
+{
+	if ((char_->x < item_state->x + item_state->width) && (char_->x + char_->width > item_state->x) && (char_->y < item_state->y + item_state->height) && (char_->y + char_->height > item_state->y))
+	{
+		//クリエイト
+		if (item_state->tu == 0.0f && item_state->tv == 0.0f)
+		{
+			char_->tu = 0.0f;
+			char_->tv = 0.0f;
+		}
+		//アイス
+		if (item_state->tu == 0.0f && item_state->tv == 0.0f)
+		{
+			char_->tu = 0.0f;
+			char_->tv = 0.0f;
+		}
+		//ジェット
+		if (item_state->tu == 0.0f && item_state->tv == 0.0f)
+		{
+			char_->tu = 0.0f;
+			char_->tv = 0.0f;
+		}
+		//インパクト
+		if (item_state->tu == 0.0f && item_state->tv == 0.0f)
+		{
+			char_->tu = 0.0f;
+			char_->tv = 0.0f;
+		}
+
+	}
+}

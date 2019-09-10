@@ -37,7 +37,7 @@ enum ITEM
 
 typedef struct
 {
-	FLOAT x, y;
+	FLOAT x, y,tu,tv;
 	FLOAT blast_power_x, blast_power_y = 0.0f;
 	FLOAT size;
 }BLAST_STATUS;
@@ -77,6 +77,9 @@ typedef struct
 	BOOL is_ice = FALSE;
 	DIRECTION side_direction;
 	
+
+	//持っているアイテムのtuとtv
+	FLOAT m_item_tu, m_item_tv;
 }CHAR_;
 
 

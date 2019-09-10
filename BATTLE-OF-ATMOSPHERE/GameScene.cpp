@@ -49,11 +49,8 @@ VOID GAME::Loading()
 	draw.LoadTexture("spaceman_one.png", CHARCTER);
 	draw.LoadTexture("spaceman_two.png", CHARCTER_TWO);
 	draw.LoadTexture("block.png", GAME_STAGE);
-	draw.LoadTexture("RIGHT_BLAST.png", R_BLAST);
-	draw.LoadTexture("LEFT_BLAST.png", L_BLAST);
-	draw.LoadTexture("UP_BLAST.png", U_BLAST);
-	draw.LoadTexture("DOWN_BLAST.png", D_BLAST);
-	draw.LoadTexture("ice_ball.png", ICE_BALL);
+	draw.LoadTexture("blast.png", BLAST);
+	draw.LoadTexture("item.png",ITEM);
 
 	stage.InitBlock();
 
@@ -173,24 +170,24 @@ VOID GAME::Process()
 	if (ice.ice_shot_one.is_ice_move == TRUE)
 	{
 		if (spaceman.char_one.m_direction == RIGHT) {
-			draw.Draw(ice.ice_shot_one.x, ice.ice_shot_one.y, 0xffffffff, 0.0f, 0.0f, ice.ice_shot_one.width, ice.ice_shot_one.height, 1.0f, 1.0f, ICE_BALL);
+			draw.Draw(ice.ice_shot_one.x, ice.ice_shot_one.y, 0xffffffff, 0.0f, 0.0f, ice.ice_shot_one.width, ice.ice_shot_one.height, 1.0f, 1.0f, ITEM);
 			ice.MoveIce(&spaceman.char_one, &ice.ice_shot_one);
 		}
 		else 
 		{
-			draw.Draw(ice.ice_shot_one.x, ice.ice_shot_one.y, 0xffffffff, 0.0f, 0.0f, ice.ice_shot_one.width, ice.ice_shot_one.height, 1.0f, 1.0f, ICE_BALL,180);
+			draw.Draw(ice.ice_shot_one.x, ice.ice_shot_one.y, 0xffffffff, 0.0f, 0.0f, ice.ice_shot_one.width, ice.ice_shot_one.height, 1.0f, 1.0f, ITEM,180);
 			ice.MoveIce(&spaceman.char_one, &ice.ice_shot_one);
 		}
 	}
 	if (ice.ice_shot_two.is_ice_move == TRUE)
 	{
 		if (spaceman.char_two.m_direction == RIGHT) {
-			draw.Draw(ice.ice_shot_two.x, ice.ice_shot_two.y, 0xffffffff, 0.0f, 0.0f, ice.ice_shot_two.width, ice.ice_shot_two.height, 1.0f, 1.0f, ICE_BALL);
+			draw.Draw(ice.ice_shot_two.x, ice.ice_shot_two.y, 0xffffffff, 0.0f, 0.0f, ice.ice_shot_two.width, ice.ice_shot_two.height, 1.0f, 1.0f, ITEM);
 			ice.MoveIce(&spaceman.char_two, &ice.ice_shot_two);
 		}
 		else
 		{
-			draw.Draw(ice.ice_shot_two.x, ice.ice_shot_two.y, 0xffffffff, 0.0f, 0.0f, ice.ice_shot_two.width, ice.ice_shot_two.height, 1.0f, 1.0f, ICE_BALL,180);
+			draw.Draw(ice.ice_shot_two.x, ice.ice_shot_two.y, 0xffffffff, 0.0f, 0.0f, ice.ice_shot_two.width, ice.ice_shot_two.height, 1.0f, 1.0f, ITEM,180);
 			ice.MoveIce(&spaceman.char_two, &ice.ice_shot_two);
 		}
 	}
@@ -274,7 +271,7 @@ VOID GAME::Process()
 			}
 			stage.ItemReset(&spaceman.item_state[i]);
 			spaceman.item_state[i].y += spaceman.item_state[i].item_gravity;
-			draw.Draw(spaceman.item_state[i].x, spaceman.item_state[i].y, 0xffffffff, 0, 0, spaceman.item_state[i].width, spaceman.item_state[i].height, 1, 1, ICE_BALL);
+			draw.Draw(spaceman.item_state[i].x, spaceman.item_state[i].y, 0xffffffff, 0, 0, spaceman.item_state[i].width, spaceman.item_state[i].height, 96.f/ 2048.f, 96.f, ITEM);
 			spaceman.item_state[i].item_gravity += 0.1f;
 		}
 	}
@@ -324,6 +321,15 @@ VOID GAME::Process()
 	draw.Draw(spaceman.char_one.x, spaceman.char_one.y, 0xffffffff, spaceman.char_one.tu, spaceman.char_one.tv, spaceman.char_one.width, spaceman.char_one.height, 0.25f, 0.03125f, CHARCTER);
 	//自機の描画2p
 	draw.Draw(spaceman.char_two.x, spaceman.char_two.y, 0xffffffff, spaceman.char_two.tu, spaceman.char_two.tv, spaceman.char_two.width, spaceman.char_two.height, 0.25f,0.03125f , CHARCTER_TWO);
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	draw.Draw(0.0f,0.0f,0xffffffff,96.0f/ 2048.f,96.0f/2048.f,100.f,100.f, 96.0f / 2048.f, 96.0f / 2048.f,ITEM);
+	draw.Draw(WINDOW_WIDTH - 100.f,0.0f,0xffffffff,96.0f/ 2048.f,96.0f/2048.f,100.f,100.f, 96.0f / 2048.f, 96.0f / 2048.f,ITEM);
+
+	draw.Draw(0.0f, 0.0f, 0xffffffff, spaceman.char_one.tu,spaceman.char_one.tv, 100.f, 100.f, 96.0f / 2048.f, 96.0f / 2048.f, ITEM);
+	draw.Draw(WINDOW_WIDTH - 100.f, 0.0f, 0xffffffff,spaceman.char_two.tu,spaceman.char_two.tv, 100.f, 100.f, 96.0f / 2048.f, 96.0f / 2048.f, ITEM);
+
+
 
 	//どちらが勝利したか判断している
 	if (spaceman.char_one.y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))
