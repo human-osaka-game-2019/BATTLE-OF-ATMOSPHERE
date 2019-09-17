@@ -25,8 +25,8 @@ public:
  * @fn
  * 右にブロックを生成する
  * @brief ブロックを３つ右側に生成する
- * @param (char_) 引数の説明
- * @param (block) 引数の説明
+ * @param (char_) キャラの情報を渡す 
+ * @param (block) ブロックの情報を渡す
  * @param (i) アイテムの番号を渡す
  * @sa VOID MakeBlock_Change(CHAR_* char_, BLOCK* block, INT ite);
  * @detail 右側に３つの画面外に描画してあったブロックの位置を移動させる
@@ -36,8 +36,8 @@ public:
  * @fn
  * 左にブロックを生成する
  * @brief ブロックを３つ左側に生成する
- * @param (char_) 引数の説明
- * @param (block) 引数の説明
+ * @param (char_) キャラの情報を渡す 
+ * @param (block) ブロックの情報を渡す
  * @param (i) アイテムの番号を渡す
  * @sa VOID MakeBlock_Change(CHAR_* char_, BLOCK* block, INT ite);
  * @detail 左側に３つの画面外に描画してあったブロックの位置を移動させる
@@ -47,8 +47,8 @@ public:
  * @fn
  * 上にブロックを生成する
  * @brief ブロックを３つ上側に生成する
- * @param (char_) 引数の説明
- * @param (block) 引数の説明
+ * @param (char_) キャラの情報を渡す 
+ * @param (block) ブロックの情報を渡す
  * @param (i) アイテムの番号を渡す
  * @sa VOID MakeBlock_Change(CHAR_* char_, BLOCK* block, INT ite);
  * @detail 上側に３つの画面外に描画してあったブロックの位置を移動させる
@@ -58,8 +58,8 @@ public:
  * @fn
  * 下にブロックを生成する
  * @brief ブロックを３つ下側に生成する
- * @param (char_) 引数の説明
- * @param (block) 引数の説明
+ * @param (char_) キャラの情報を渡す 
+ * @param (block) ブロックの情報を渡す
  * @param (i) アイテムの番号を渡す
  * @sa VOID MakeBlock_Change(CHAR_* char_, BLOCK* block, INT ite);
  * @detail 下側に３つの画面外に描画してあったブロックの位置を移動させる

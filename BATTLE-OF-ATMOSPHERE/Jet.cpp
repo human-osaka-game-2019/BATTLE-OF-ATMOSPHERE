@@ -94,21 +94,21 @@ VOID JET::UseJet(CHAR_* char_)
 		if (char_->m_jet_right == TRUE)
 		{
 			char_->m_jet_speed -= 1.f;
-			char_->x += char_->m_jet_speed;
-			char_->y -= char_->m_gravity;
+			char_->m_x += char_->m_jet_speed;
+			char_->m_y -= char_->m_gravity;
 		}
 
 		if (char_->m_jet_left == TRUE)
 		{
 			char_->m_jet_speed -= 1.f;
-			char_->x -= char_->m_jet_speed;
-			char_->y -= char_->m_gravity;
+			char_->m_x -= char_->m_jet_speed;
+			char_->m_y -= char_->m_gravity;
 		}
 
 		if (char_->m_jet_up == TRUE)
 		{
 			char_->m_jet_speed -= 1.f;
-			char_->y -= char_->m_jet_speed;
+			char_->m_y -= char_->m_jet_speed;
 		}
 
 	}

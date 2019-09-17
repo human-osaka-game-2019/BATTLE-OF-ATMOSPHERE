@@ -197,8 +197,8 @@ VOID GAME::Process()
 					spaceman.char_one.m_is_create = FALSE;
 					for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++)
 					{
-						stage.create_block[i].x = -10000;
-						stage.create_block[i].y = -10000;
+						stage.create_block[i].m_x = -10000;
+						stage.create_block[i].m_y = -10000;
 					}
 				}
 			}
@@ -212,8 +212,8 @@ VOID GAME::Process()
 					spaceman.char_two.m_is_create = FALSE;
 					for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++)
 					{
-						stage.create_block[i].x = -10000;
-						stage.create_block[i].y = -10000;
+						stage.create_block[i].m_x = -10000;
+						stage.create_block[i].m_y = -10000;
 					}
 				}
 			}
@@ -400,7 +400,7 @@ VOID GAME::Process()
 			//ブロックを上に移動する処理
 			for (INT i = 0; i < BLOCK_QUANTITY; i++)
 			{
-				if (stage.block[i].y >= BLOCK_SIZE * 2)
+				if (stage.block[i].m_y >= BLOCK_SIZE * 2)
 				{
 					for (INT j = 0; j < BLOCK_QUANTITY; j++)
 					{
@@ -413,14 +413,14 @@ VOID GAME::Process()
 			}
 
 
-			if (stage.fc_item_pop <= 0)
+			if (stage.m_fc_item_pop <= 0)
 			{
 				for (INT i = 0; i < 10; i++)
 				{
 					if (spaceman.item_state[i].m_is_pop == FALSE)
 					{
 						stage.PopItem(&spaceman.item_state[i]);
-						stage.fc_item_pop = 6 * 60;
+						stage.m_fc_item_pop = 6 * 60;
 						break;
 					}
 
@@ -428,7 +428,7 @@ VOID GAME::Process()
 			}
 			else
 			{
-				stage.fc_item_pop--;
+				stage.m_fc_item_pop--;
 			}
 
 			for (INT i = 0; i < 10; i++)
