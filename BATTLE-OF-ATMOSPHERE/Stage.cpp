@@ -5,7 +5,7 @@
 
 
 
-VOID STAGE::SlotChange(CHAR_ char_one, CHAR_ char_two)
+VOID STAGE::SlotChange(CHAR_ char_)
 {
 
 }

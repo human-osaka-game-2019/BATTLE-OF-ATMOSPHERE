@@ -120,6 +120,10 @@ VOID JET::UseJet(CHAR_* char_)
 		char_->m_jet_right = false;
 		char_->m_jet_left = false;
 		char_->m_jet_up = false;
+
+		char_->m_item_tu = 0.0f;
+		char_->m_item_tv = 0.0f;
+
 	}
 
 }

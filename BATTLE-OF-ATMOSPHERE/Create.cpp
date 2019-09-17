@@ -34,11 +34,6 @@ VOID CREATE::MakeBlock_Change(CHAR_* char_, BLOCK* create_block, INT ite)
 
 		break;
 	}
-
-
-
-
-
 }
 
 VOID CREATE::Right_MakeBlock(CHAR_* char_, BLOCK* block, INT i)

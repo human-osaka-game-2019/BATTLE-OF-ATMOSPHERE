@@ -94,12 +94,9 @@ VOID GAME::Process()
 			fc_left_finish_move++;
 			if (fc_finish <= 60 * 6)
 			{
-				/*for (INT i = 0; i < BLOCK_QUANTITY; i++)
-				{
-					stage.StopBlock(&stage.block[i]);
-				}*/
 				draw.Draw(finish_left_y, 390, 0xffffffff, 0.0f, 0.0f, 600, 150, 1.0f, 0.5f, FINISH);
 				draw.Draw(finish_right_y, 540, 0xffffffff, 0.0f, 0.5f, 600, 150, 1.0f, 0.5f, FINISH);
+				//Finishの左の画像
 				if (fc_left_finish_move >= 2)
 				{
 					finish_left_y += left_scr;
@@ -110,7 +107,7 @@ VOID GAME::Process()
 						left_scr = 0;
 					}
 				}
-
+				//Finishの右の画像
 				if (fc_right_finish_move <= 2)
 				{
 					finish_right_y -= right_scr;
@@ -139,10 +136,6 @@ VOID GAME::Process()
 			fc_left_finish_move++;
 			if (fc_finish <= 60 * 4)
 			{
-				/*for (INT i = 0; i < BLOCK_QUANTITY; i++)
-				{
-					stage.StopBlock(&stage.block[i]);
-				}*/
 				draw.Draw(finish_left_y, 390, 0xffffffff, 0.0f, 0.0f, 600, 150, 1.0f, 0.5f, FINISH);
 				draw.Draw(finish_right_y, 540, 0xffffffff, 0.0f, 0.5f, 600, 150, 1.0f, 0.5f, FINISH);
 				if (fc_left_finish_move >= 2)

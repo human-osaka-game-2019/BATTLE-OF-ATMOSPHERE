@@ -3,20 +3,45 @@
 #include "Main.h"
 
 VOID SPACEMAN::SpaceManInit(CHAR_* char_)
-{
+{//x,tu,tv,方向
 	if (char_->player == ONE_PLAYER)
 	{
 		char_->x = 96 * 5;
+		char_->tu = 0.0f;
+		char_->tv = 0.0f;
+		char_->m_direction = RIGHT;
+		char_->side_direction = RIGHT;
 	}
 	if (char_->player == TWO_PLAYER)
 	{
 		char_->x = 96 * 14;
+		char_->tu = 0.0f;
+		char_->tv = 0.0f;
+		char_->m_direction = LEFT;
+		char_->side_direction = LEFT;
 	}
+	//y,wiwdth,height,ジャンプの状態
 	char_->y = 96 * 6;
+	char_->width = 75;
+	char_->height = 150;
+	char_->m_action = FALL;
+	
+	char_->m_gravity = 1.0f;
 
 
+	///アイテム
+	//使えるかどうか
+	char_->is_create = FALSE;
+	char_->is_jet = FALSE;
 	char_->is_ice = FALSE;
+	char_->m_charge = TRUE;
 	char_->is_ice_hit = FALSE;
+	//フレームカウント
+	char_->fc_ice = 0;
+	char_->m_fc_charge = 0;
+	char_->m_fc_jet = 0;
+	char_->m_fc_push = 0;
+	
 
 }
 
@@ -73,7 +98,6 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 		if (char_->m_direction == RIGHT) {
 			char_->tu = 0.0f;
 			char_->tv = 0.03125f * 1;
-			//    draw.Animetion(&fc_right_jump_one, 8, &char_->tu, &char_->tv, 0.25f, 0.0f, 0.0f, 0.03125f * 20, 0.5f, 0.0f);
 		}
 		else if (char_->m_direction == LEFT)
 		{
@@ -89,7 +113,6 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 		if (char_->m_direction == RIGHT) {
 			char_->tu = 0.0f;
 			char_->tv = 0.03125f * 1;
-			//    draw.Animetion(&fc_right_jump_one, 8, &char_->tu, &char_->tv, 0.25f, 0.0f, 0.0f, 0.03125f * 20, 0.5f, 0.0f);
 		}
 		else if (char_->m_direction == LEFT)
 		{
@@ -106,13 +129,11 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 		if (char_->side_direction == RIGHT) {
 			char_->tu = 0.25f;
 			char_->tv = 0.03125f * 20;
-			//    draw.Animetion(&fc_right_jump_one, 8, &char_->tu, &char_->tv, 0.25f, 0.0f, 0.0f, 0.03125f * 20, 0.5f, 0.0f);
 		}
 		else if (char_->side_direction == LEFT)
 		{
 			char_->tu = 0.25f;
 			char_->tv = 0.03125f * 21;
-			//    draw.Animetion(&fc_left_jump_one, 8, &left_jump_one_tu, &left_jump_one_tv, 0.25f, 0.0f, 0.0f, 0.03125f * 21, 0.5f, 0.0f);
 		}
 
 		break;
@@ -129,13 +150,11 @@ VOID SPACEMAN::SpaceManSwitchJump(CHAR_* char_)
 		if (char_->side_direction == RIGHT) {
 			char_->tu = 0.25f;
 			char_->tv = 0.03125f * 20;
-			//    draw.Animetion(&fc_right_jump_one, 8, &char_->tu, &char_->tv, 0.25f, 0.0f, 0.0f, 0.03125f * 20, 0.5f, 0.0f);
 		}
 		else if (char_->side_direction == LEFT)
 		{
 			char_->tu = 0.25f;
 			char_->tv = 0.03125f * 21;
-			//    draw.Animetion(&fc_left_jump_one, 8, &left_jump_one_tu, &left_jump_one_tv, 0.25f, 0.0f, 0.0f, 0.03125f * 21, 0.5f, 0.0f);
 		}
 
 
@@ -170,14 +189,12 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 		blast_status->y = char_me->y + 48.0f;
 		blast_status->tu = 128.0f * 1 / 2048.f;
 		blast_status->tv = 128.0f * 0 / 2048.f;
-		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, BLAST);
 		break;
 	case LEFT:
 		blast_status->x = char_me->x - 96.0f;
 		blast_status->y = char_me->y + 48.0f;
 		blast_status->tu = 128.0f * 1 / 2048.f;
 		blast_status->tv = 128.0f * 1 / 2048.f;
-		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, BLAST);
 		break;
 	case UP:
 		blast_status->x = char_me->x;
@@ -185,14 +202,12 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 		blast_status->tu = 128.0f * 1 / 2048.f;
 		blast_status->tv = 128.0f * 2 / 2048.f;
 		char_me->m_gravity = 5;
-		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, BLAST);
 		break;
 	case DOWN:
 		blast_status->x = char_me->x;
 		blast_status->y = char_me->y + 192.0f;
 		blast_status->tu = 128.0f * 1 / 2048.f;
 		blast_status->tv = 128.0f * 3 / 2048.f;
-		//draw.Draw(blast_status->x, blast_status->y, 0xffffffff, 0.0f, 0.0f, blast_status->size, blast_status->size, 1.0f, 1.0f, BLAST);
 		break;
 	}
 
@@ -326,12 +341,11 @@ VOID SPACEMAN::SpaceManDash(CHAR_* char_)
 }
 
 VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_status)
-{	/*FLOAT save_x = char_->x;
-	FLOAT save_y = char_->y;*/
+{	
 
 	char_->save_x = char_->x;
 	char_->save_y = char_->y;
-
+	//1p用
 	if (char_->player == ONE_PLAYER) {
 
 		if (char_->m_direction == RIGHT || char_->m_direction == LEFT)
@@ -393,7 +407,6 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 					char_->x += (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
 
 					char_->m_direction = RIGHT;
-					/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					if (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP)
 					{
 						char_->tu = 0.25f;
@@ -404,13 +417,11 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						char_->tu = 0.0f;
 						char_->tv = 0.03125f * 1;
 					}
-					//draw.Animetion(&fc_right_slide_one, 8, &char_->tu, &char_->tv, 0.25f, 0.0f, 0.0f, 0.03125f * 17, 0.5f, 0.0f);
 				}
 				else if (directx.KeyState[DIK_A] == directx.ON)
 				{
 					char_->x -= (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
 					char_->m_direction = LEFT;
-					/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					if (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP)
 					{
 						char_->tu = 0.25f;
@@ -421,7 +432,6 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						char_->tu = 0.0f;
 						char_->tv = 0.03125f * 0;
 					}
-					//draw.Animetion(&fc_left_slide_one, 8, &char_->tu, &char_->tv, 0.25f, 0.0f, 0.0f, 0.03125f * 18, 0.5f, 0.0f);
 				}
 
 				SpaceManDash(char_);
@@ -433,7 +443,6 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 					if (char_->m_fc_push <= 0)
 					{
 						SpaceManPush(char_, char_you, blast_status);
-						/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						if (char_->m_direction == RIGHT && (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP))
 						{
 							char_->tu = 0.5f;
@@ -472,7 +481,6 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 					{
 						char_->m_is_dash = FALSE;
 						char_->m_is_guard = TRUE;
-						/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						if (char_->side_direction == RIGHT) {
 							char_->tu = 0.5f;
 							char_->tv = 0.03125f * 15;
@@ -483,10 +491,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 							char_->tv = 0.03125f * 16;
 						}
 					}
-				
 					char_->m_direction = DOWN;
-					
-
 				}
 				else if (directx.KeyState[DIK_S] == directx.RELEASE)
 				{
@@ -509,68 +514,86 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 			}
 		}
 	}
-
+	//２p用
 	if (char_->player == TWO_PLAYER) {
-
+		//今どっちの方向を向いているか→side
 		if (char_->m_direction == RIGHT || char_->m_direction == LEFT)
 		{
 			char_->side_direction = char_->m_direction;
 		}
+		//ジャンプの状態を変える
 		SpaceManSwitchJump(char_);
 
+		//押し出しが当たったか
 		if (char_you->m_is_hit == TRUE)
 		{
+			//押し出しが当たった
 			SpaceManBlastHit(char_you, blast_status);
 		}
+		//アイスが当たっているか
 		else if (char_->is_ice_hit == TRUE)
 		{
+			//方向が上
 			if (char_->m_direction == UP)
-			{
-				if (char_->side_direction == RIGHT) {
+			{//方向が上で右の時
+				if (char_->side_direction == RIGHT)
+				{
 					char_->tu = 0.0f;
 					char_->tv = 0.03125f * 22;
 				}
-				else if (char_->side_direction == LEFT) {
+				//方向が上で左の時
+				else if (char_->side_direction == LEFT)
+				{
 					char_->tu = 0.0f;
 					char_->tv = 0.03125f * 23;
 				}
 			}
+			//方向が下
 			if (char_->m_direction == DOWN)
 			{
-				if (char_->side_direction == RIGHT) {
+				//方向が下で右の時
+				if (char_->side_direction == RIGHT)
+				{
 					char_->tu = 0.0f;
 					char_->tv = 0.03125f * 22;
 				}
-				else if (char_->side_direction == LEFT) {
+				//方向が下で左の時
+				else if (char_->side_direction == LEFT)
+				{
 					char_->tu = 0.0f;
 					char_->tv = 0.03125f * 23;
 				}
 			}
-
-			if (char_->m_direction == RIGHT) {
+			//方向が右の時
+			if (char_->m_direction == RIGHT)
+			{
 				char_->tu = 0.0f;
 				char_->tv = 0.03125f * 22;
 			}
-			else if (char_->m_direction == LEFT) {
+			//方向が左の時
+			else if (char_->m_direction == LEFT)
+			{
 				char_->tu = 0.0f;
 				char_->tv = 0.03125f * 23;
 			}
-
+			//アイスの凍っている時間のフレームカウント
 			char_->fc_ice--;
-			if (char_->fc_ice <= 0) 
+			//フレームカウントが０以下になったら解除
+			if (char_->fc_ice <= 0)
 			{
 				char_->is_ice_hit = FALSE;
 			}
 		}
 		else
 		{
-			if (directx.KeyState[DIK_DOWN] == directx.OFF) {
-
+			//下キー
+			if (directx.KeyState[DIK_DOWN] == directx.OFF) 
+			{
+				//右キー
 				if (directx.KeyState[DIK_RIGHT] == directx.ON)
 				{
 					char_->x += (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
 					char_->m_direction = RIGHT;
-					/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					if (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP)
 					{
 						char_->tu = 0.25f;
@@ -581,13 +604,12 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						char_->tu = 0.0f;
 						char_->tv = 0.03125f * 1;
 					}
-					//draw.Animetion(&fc_right_slide_one, 8, &char_->tu, &char_->tv, 0.25f, 0.0f, 0.0f, 0.03125f * 17, 0.5f, 0.0f);
 				}
+				//左キー
 				else if (directx.KeyState[DIK_LEFT] == directx.ON)
 				{
 					char_->x -= (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
 					char_->m_direction = LEFT;
-					/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					if (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP)
 					{
 						char_->tu = 0.25f;
@@ -598,20 +620,18 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						char_->tu = 0.0f;
 						char_->tv = 0.03125f * 0;
 					}
-					//draw.Animetion(&fc_left_slide_one, 8, &char_->tu, &char_->tv, 0.25f, 0.0f, 0.0f, 0.03125f * 18, 0.5f, 0.0f);
 
 				}
 
 				SpaceManDash(char_);
 
 				char_->m_fc_push--;
-
+				//押し出し
 				if (directx.KeyState[DIK_RCONTROL] == directx.PRESS)
 				{
 					if (char_->m_fc_push <= 0)
 					{
 						SpaceManPush(char_, char_you, blast_status);
-						/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						if (char_->m_direction == RIGHT && (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP))
 						{
 							char_->tu = 0.5f;
@@ -635,6 +655,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 					}
 				}
 			}
+			//上キー
 			if ((directx.KeyState[DIK_UP] == directx.PRESS) && (char_->m_is_call == FALSE))
 			{
 				char_->m_gravity = -30;
@@ -642,27 +663,33 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 
 				char_->m_direction = UP;
 			}
-
-			if (char_->m_action == NO_JUMP || char_->m_action == FALL) {
-				if (directx.KeyState[DIK_DOWN] == directx.ON)
+			if (char_->m_action == NO_JUMP || char_->m_action == FALL) 
+			{
+				if (directx.KeyState[DIK_DOWN] == directx.PRESS)
+				{
+					char_->m_direction = DOWN;
+				}
+				//下キー押しているとき
+				else if (directx.KeyState[DIK_DOWN] == directx.ON)
 				{
 					char_->m_is_dash = FALSE;
 					char_->m_is_guard = TRUE;
-					/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					if (char_->side_direction == RIGHT) {
+					char_->m_direction = DOWN;
+
+					if (char_->side_direction == RIGHT)
+					{
 						char_->tu = 0.5f;
 						char_->tv = 0.03125f * 15;
 					}
-					else if (char_->side_direction == LEFT)
+					else
+					if (char_->side_direction == LEFT)
 					{
 						char_->tu = 0.5f;
 						char_->tv = 0.03125f * 16;
 					}
-					char_->m_direction = DOWN;
 				}
-
-				
-			}else if (directx.KeyState[DIK_DOWN] == directx.RELEASE)
+				//下キー離したとき
+				}else if (directx.KeyState[DIK_DOWN] == directx.RELEASE)
 				{
 				if (char_->m_action == NO_JUMP || char_->m_action == FALL)
 				{
@@ -693,12 +720,6 @@ VOID SPACEMAN::Move(CHAR_* char_, FLOAT save_x, FLOAT save_y)
 
 	//重力移動
 	char_->y += char_->m_gravity;
-
-
-
-	//キー入力
-
-
 
 	//当たり判定用の処理（毎フレームごとに更新）
 	char_->vec_x = save_x - char_->x;

@@ -29,6 +29,7 @@ public:
 	INT right_scr = 10;
 	INT fc_right_finish_move = 0;
 	INT fc_left_finish_move = 0;
+
 	INT fc_cereate_one = 0;
 	INT fc_cereate_two = 0;
 	INT fc_ice_time_one = 0;
