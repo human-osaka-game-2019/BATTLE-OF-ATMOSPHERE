@@ -69,9 +69,9 @@ VOID GAME::Process()
 	
 
 		//ゲーム背景の描画
-		draw.Draw(0, 0, 0xffffffff, 0.0f, game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
+		draw.Draw(0, 0, 0xffffffff, 0.0f, m_game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
 
-		if (fc_count >= 245)
+		if (m_fc_count >= 245)
 		{
 
 			//ブロックの描画
@@ -90,41 +90,41 @@ VOID GAME::Process()
 		//どちらが勝利したか判断している
 		if (spaceman.char_one.m_y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))
 		{
-			fc_finish++;
-			fc_left_finish_move++;
-			if (fc_finish <= 60 * 6)
+			m_fc_finish++;
+			m_fc_left_finish_move++;
+			if (m_fc_finish <= 60 * 6)
 			{
-				draw.Draw(finish_left_y, 390, 0xffffffff, 0.0f, 0.0f, 600, 150, 1.0f, 0.5f, FINISH);
-				draw.Draw(finish_right_y, 540, 0xffffffff, 0.0f, 0.5f, 600, 150, 1.0f, 0.5f, FINISH);
+				draw.Draw(m_finish_left_y, 390, 0xffffffff, 0.0f, 0.0f, 600, 150, 1.0f, 0.5f, FINISH);
+				draw.Draw(m_finish_right_y, 540, 0xffffffff, 0.0f, 0.5f, 600, 150, 1.0f, 0.5f, FINISH);
 				//Finishの左の画像
-				if (fc_left_finish_move >= 2)
+				if (m_fc_left_finish_move >= 2)
 				{
-					finish_left_y += left_scr;
-					fc_left_finish_move = 0;
+					m_finish_left_y += m_left_scr;
+					m_fc_left_finish_move = 0;
 
-					if (finish_left_y >= 660)
+					if (m_finish_left_y >= 660)
 					{
-						left_scr = 0;
+						m_left_scr = 0;
 					}
 				}
 				//Finishの右の画像
-				if (fc_right_finish_move <= 2)
+				if (m_fc_right_finish_move <= 2)
 				{
-					finish_right_y -= right_scr;
-					fc_right_finish_move = 0;
+					m_finish_right_y -= m_right_scr;
+					m_fc_right_finish_move = 0;
 
-					if (finish_right_y <= 660)
+					if (m_finish_right_y <= 660)
 					{
-						right_scr = 0;
+						m_right_scr = 0;
 					}
 				}
 
 
-				fc_background = 0;
+				m_fc_background = 0;
 			}
 			else
 			{
-				winner.is_two_win = TRUE;
+				winner.m_is_two_win = TRUE;
 				phase = RELEASES;
 			}
 
@@ -132,67 +132,67 @@ VOID GAME::Process()
 		else if (spaceman.char_two.m_y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))
 		{
 
-			fc_finish++;
-			fc_left_finish_move++;
-			if (fc_finish <= 60 * 4)
+			m_fc_finish++;
+			m_fc_left_finish_move++;
+			if (m_fc_finish <= 60 * 4)
 			{
-				draw.Draw(finish_left_y, 390, 0xffffffff, 0.0f, 0.0f, 600, 150, 1.0f, 0.5f, FINISH);
-				draw.Draw(finish_right_y, 540, 0xffffffff, 0.0f, 0.5f, 600, 150, 1.0f, 0.5f, FINISH);
-				if (fc_left_finish_move >= 2)
+				draw.Draw(m_finish_left_y, 390, 0xffffffff, 0.0f, 0.0f, 600, 150, 1.0f, 0.5f, FINISH);
+				draw.Draw(m_finish_right_y, 540, 0xffffffff, 0.0f, 0.5f, 600, 150, 1.0f, 0.5f, FINISH);
+				if (m_fc_left_finish_move >= 2)
 				{
-					finish_left_y += left_scr;
-					fc_left_finish_move = 0;
+					m_finish_left_y += m_left_scr;
+					m_fc_left_finish_move = 0;
 
-					if (finish_left_y >= 660)
+					if (m_finish_left_y >= 660)
 					{
-						left_scr = 0;
+						m_left_scr = 0;
 					}
 				}
 
-				if (fc_right_finish_move <= 2)
+				if (m_fc_right_finish_move <= 2)
 				{
-					finish_right_y -= right_scr;
-					fc_right_finish_move = 0;
+					m_finish_right_y -= m_right_scr;
+					m_fc_right_finish_move = 0;
 
-					if (finish_right_y <= 660)
+					if (m_finish_right_y <= 660)
 					{
-						right_scr = 0;
+						m_right_scr = 0;
 					}
 				}
 
 
-				fc_background = 0;
+				m_fc_background = 0;
 			}
 			else
 			{
-				winner.is_one_win = TRUE;
+				winner.m_is_one_win = TRUE;
 				phase = RELEASES;
 			}
 		}
 		else
 		{
 
-			fc_ice_time_one++;
-			fc_ice_time_two++;
+			m_fc_ice_time_one++;
+			m_fc_ice_time_two++;
 
-			fc_background++;
+			m_fc_background++;
 			//縦スクロールのアニメーション
-			if (fc_background >= 2)
+			if (m_fc_background >= 2)
 			{
-				game_bg_tu += SCROLL_SPEED;
-				fc_background = 0;
-				if (game_bg_tu <= -1.0f)
+				m_game_bg_tu += SCROLL_SPEED;
+				m_fc_background = 0;
+				if (m_game_bg_tu <= -1.0f)
 				{
-					game_bg_tu = 0.0f;
+					m_game_bg_tu = 0.0f;
 				}
 			}
 
 
 			if (spaceman.char_one.m_is_create == TRUE)
 			{
-				fc_cereate_one--;
+				m_fc_cereate_one--;
 
-				if (fc_cereate_one == 0)
+				if (m_fc_cereate_one == 0)
 				{
 					spaceman.char_one.m_is_create = FALSE;
 					for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++)
@@ -205,9 +205,9 @@ VOID GAME::Process()
 
 			if (spaceman.char_two.m_is_create == TRUE)
 			{
-				fc_cereate_two--;
+				m_fc_cereate_two--;
 
-				if (fc_cereate_two == 0)
+				if (m_fc_cereate_two == 0)
 				{
 					spaceman.char_two.m_is_create = FALSE;
 					for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++)
@@ -313,7 +313,7 @@ VOID GAME::Process()
 			}
 
 
-			/*if (fc_ice_time_one >= 60 * 5) {
+			/*if (m_fc_ice_time_one >= 60 * 5) {
 				spaceman.char_one.m_is_ice = FALSE;
 			}
 			if (fc_ice_time_two >= 60 * 5) {
@@ -323,7 +323,7 @@ VOID GAME::Process()
 				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.m_is_ice == FALSE))
 				{
 					ice.UseIce(&spaceman.char_one, &ice.ice_shot_one);
-					fc_ice_time_one = 0;
+					m_fc_ice_time_one = 0;
 					spaceman.char_one.m_item_tu = 0.0f;
 					spaceman.char_one.m_item_tv = 0.0f;
 				}
@@ -332,7 +332,7 @@ VOID GAME::Process()
 				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.m_is_ice == FALSE))
 				{
 					ice.UseIce(&spaceman.char_two, &ice.ice_shot_two);
-					fc_ice_time_two = 0;
+					m_fc_ice_time_two = 0;
 					spaceman.char_two.m_item_tu = 0.0f;
 					spaceman.char_two.m_item_tv = 0.0f;
 				}
@@ -466,7 +466,7 @@ VOID GAME::Process()
 				{
 					for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
 						create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
-						fc_cereate_one = 5 * 60;
+						m_fc_cereate_one = 5 * 60;
 						spaceman.char_one.m_item_tu = 0.0f;
 						spaceman.char_one.m_item_tv = 0.0f;
 					}
@@ -477,7 +477,7 @@ VOID GAME::Process()
 				{
 					for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
 						create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);
-						fc_cereate_two = 5 * 60;
+						m_fc_cereate_two = 5 * 60;
 						spaceman.char_two.m_item_tu = 0.0f;
 						spaceman.char_two.m_item_tv = 0.0f;
 					}
@@ -515,30 +515,30 @@ VOID GAME::Process()
 	}
 	else
 	{
-		fc_count++;
-		if (count_tv < 1.0f)
+		m_fc_count++;
+		if (m_count_tv < 1.0f)
 		{
-			draw.Draw(460, 40, 0xffffffff, 0.0f, count_tv, 1000, 1000, 1.0f, 0.25f, COUNTDOWN);
+			draw.Draw(460, 40, 0xffffffff, 0.0f, m_count_tv, 1000, 1000, 1.0f, 0.25f, COUNTDOWN);
 		}
-		if (fc_count == 60)
+		if (m_fc_count == 60)
 		{
-			count_tv += 0.25f;
+			m_count_tv += 0.25f;
 		}
-		if (fc_count == 120)
+		if (m_fc_count == 120)
 		{
-			count_tv += 0.25f;
+			m_count_tv += 0.25f;
 		}
-		if (fc_count == 180)
+		if (m_fc_count == 180)
 		{
-			count_tv += 0.25f;
+			m_count_tv += 0.25f;
 		}
-		if (fc_count == 240)
+		if (m_fc_count == 240)
 		{
-			count_tv += 0.25f;
+			m_count_tv += 0.25f;
 		}
-		if (fc_count >= 241)
+		if (m_fc_count >= 241)
 		{
-			fc_count = 245;
+			m_fc_count = 245;
 		}
 		//ブロックの描画
 		for (INT i = 0; i < BLOCK_QUANTITY; i++)
