@@ -35,9 +35,9 @@ VOID SPACEMAN::SpaceManInit(CHAR_* char_)
 	char_->m_is_jet = FALSE;
 	char_->m_is_ice = FALSE;
 	char_->m_charge = TRUE;
-	char_->m_m_is_ice_hit = FALSE;
+	char_->m_is_ice_hit = FALSE;
 	//フレームカウント
-	char_->m_m_fc_ice = 0;
+	char_->m_fc_ice = 0;
 	char_->m_fc_charge = 0;
 	char_->m_fc_jet = 0;
 	char_->m_fc_push = 0;
