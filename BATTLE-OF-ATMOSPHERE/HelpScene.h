@@ -9,8 +9,8 @@ public:
 	INT m_scroll_x = 0;
 	INT m_scroll_y = 0;
 	INT m_scroll_speed = 30;
-	BOOL help_front = TRUE;
-	BOOL scroll_move = FALSE;
+	BOOL m_help_front = TRUE;
+	BOOL m_scroll_move = FALSE;
 
 	VOID Help_Scene();
 	enum SCENE_PAHSE

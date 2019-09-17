@@ -69,7 +69,7 @@ BOOL ICE::IceHitCharCheck(CHAR_ char_, ICE_SHOT ice_shot)
 }
 BOOL ICE::IceHitBlockCheck(BLOCK block, ICE_SHOT ice_shot)
 {
-	if ((ice_shot.m_x < block.m_x + block.width && ice_shot.m_y < block.m_y + block.height) && (ice_shot.m_x + ice_shot.m_width > block.m_x && ice_shot.m_y + ice_shot.m_height > block.m_y))
+	if ((ice_shot.m_x < block.m_x + block.m_width && ice_shot.m_y < block.m_y + block.m_height) && (ice_shot.m_x + ice_shot.m_width > block.m_x && ice_shot.m_y + ice_shot.m_height > block.m_y))
 	{
 		return TRUE;
 	}
