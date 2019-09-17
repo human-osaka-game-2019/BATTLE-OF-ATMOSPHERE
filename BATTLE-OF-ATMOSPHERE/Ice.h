@@ -6,10 +6,10 @@
 #include"Stage.h"
 typedef struct
 {
-	DIRECTION ice_direction;
-	BOOL is_ice_move = FALSE;
-	FLOAT x, y;//適当な値で初期化
-	FLOAT width, height;
+	DIRECTION m_ice_direction;
+	BOOL m_is_ice_move = FALSE;
+	FLOAT m_x, m_y;//適当な値で初期化
+	FLOAT m_width, m_height;
 }ICE_SHOT;
 class ICE
 {
@@ -39,7 +39,7 @@ public:
  * アイスを初期化
  * @brief アイスの情報を初期化
  * @param (ice_shot) アイスの情報を渡す
- * @detail アイスのx,y,width,heightを初期化する
+ * @detail アイスのm_x,m_y,width,heightを初期化する
  */
 	VOID Init_Ice(ICE_SHOT* ice_shot);
 	/**
