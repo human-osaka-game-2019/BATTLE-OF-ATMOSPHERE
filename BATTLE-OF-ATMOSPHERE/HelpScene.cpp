@@ -33,10 +33,10 @@ VOID HELP::Process()
 	
 	if (directx.KeyState[DIK_C] <= directx.PRESS)
 	{
-		scroll_move = TRUE;
+		m_scroll_move = TRUE;
 	}
 
-	if (scroll_move == TRUE)
+	if (m_scroll_move == TRUE)
 	{
 	
 		m_scroll_x += m_scroll_speed;
@@ -44,22 +44,22 @@ VOID HELP::Process()
 
 	if (m_scroll_x == 0)
 	{
-		scroll_move = FALSE;
+		m_scroll_move = FALSE;
 	}
 
 	if (m_scroll_x == 960) 
 	{
-		help_front = FALSE;
+		m_help_front = FALSE;
 		m_scroll_speed = -30;
 	}
 	else if (m_scroll_x == -960)
 	{
-		help_front = TRUE;
+		m_help_front = TRUE;
 		m_scroll_speed = 30;
 
 	}
 
-	if (help_front == TRUE) {
+	if (m_help_front == TRUE) {
 		draw.Draw(-m_scroll_x, -m_scroll_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG);
 		draw.Draw(m_scroll_x, m_scroll_y, 0xffffffff, 0.0f, 0.0f, 1920, 1020, 1.0f, 1.0f, HELP_BG2);
 	}

@@ -38,23 +38,23 @@ enum ITEM_
 
 typedef struct
 {
-	FLOAT x, y,tu,tv;
-	FLOAT blast_power_x, blast_power_y = 0.0f;
-	FLOAT size;
+	FLOAT m_x, m_y,m_tu,m_tv;
+	FLOAT m_blast_power_x, m_blast_power_y = 0.0f;
+	FLOAT m_size;
 }BLAST_STATUS;
 
 typedef struct
 {
 	///プレイヤー
 	PLAYER player;                                   //! playerの１pか２ｐ保存している関数
-	FLOAT x, y, tu, tv, width, height;               //! キャラクターのx, y, tu, tv, width, height
-	FLOAT vec_x, vec_y;                              //! 今移動している方向を割り出す
+	FLOAT m_x, m_y, m_tu, m_tv, m_width, m_height;               //! キャラクターのx, y, tu, tv, width, height
+	FLOAT m_vec_x, m_vec_y;                              //! 今移動している方向を割り出す
 	JUMP m_action = FALL;                            //! 今のジャンプ状態
 	DIRECTION m_direction;                           //! 向いている方向→全方向
-	DIRECTION side_direction;                        //! 向いている方向->横方向
+	DIRECTION m_side_direction;                        //! 向いている方向->横方向
 	FLOAT m_gravity = 0.0f;                          //! 自機にかかる重力
-	FLOAT save_x;                                    //! 移動前のｘ
-	FLOAT save_y;                                    //! 移動前のｙ
+	FLOAT m_save_x;                                    //! 移動前のｘ
+	FLOAT m_save_y;                                    //! 移動前のｙ
 	// 歩行関係変数
 	FLOAT m_spaceman_speed = 5.0F;                   //! 自機の移動速度
 	//押し出し関係
@@ -73,9 +73,9 @@ typedef struct
 	FLOAT m_item_tu, m_item_tv;
 
 	//使えるか判断するためのフラグ
-	BOOL is_create = FALSE;                          //!クリエイトを使えるか判断するフラグ
-	BOOL is_ice = FALSE;                             //!アイスを使えるか判断するフラグ
-	BOOL is_jet = FALSE;                             //!ジェットを使えるか判断するフラグ
+	BOOL m_is_create = FALSE;                          //!クリエイトを使えるか判断するフラグ
+	BOOL m_is_ice = FALSE;                             //!アイスを使えるか判断するフラグ
+	BOOL m_is_jet = FALSE;                             //!ジェットを使えるか判断するフラグ
 	//ジェット関係
 	BOOL m_jet_right = FALSE;
 	BOOL m_jet_left = FALSE;
@@ -85,20 +85,20 @@ typedef struct
 	FLOAT m_jet_speed = 20.0f;
 	BOOL m_charge = FALSE;
 	//アイス関係
-	BOOL is_ice_hit = FALSE;
-	FLOAT fc_ice = 0.0f;
+	BOOL m_is_ice_hit = FALSE;
+	FLOAT m_fc_ice = 0.0f;
 
 }CHAR_;
 
 
 typedef struct
 {
-	BOOL is_pop = FALSE;
-	FLOAT x, y;
-	FLOAT width = 96.0f;
-	FLOAT height = 96.0f;
-	FLOAT item_gravity = 0.1f;
-	ITEM_ item_kind;
+	BOOL m_is_pop = FALSE;
+	FLOAT m_x, m_y;
+	FLOAT m_width = 96.0f;
+	FLOAT m_height = 96.0f;
+	FLOAT m_item_gravity = 0.1f;
+	ITEM_ m_item_kind;
 }ITEMSTATE;
 
 /**
