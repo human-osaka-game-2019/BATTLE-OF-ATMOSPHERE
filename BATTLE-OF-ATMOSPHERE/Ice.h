@@ -53,112 +53,88 @@ public:
 	VOID UseIce(CHAR_* char_, ICE_SHOT* ice_shot);
 /**
  * @fn
- * アイスの使う方向を割り出す
- * @brief アイスの使う方向をm_directionから割り出し
+ * アイスを出す方向判断する関数
+ * @brief 向いている方向からアイスを発射する方向を決める関数
  * @param (chra_) キャラクターの情報を渡す
  * @param (ice_shot) アイスの情報を渡す
- * @detail 
+ * @detail キャラのm_directionで方向を割り出し呼び出す関数を変える
  */
 	VOID ShotIce_Change(CHAR_* char_, ICE_SHOT* ice_shot);
 /**
 * @fn
-* ここに関数の説明を書く
-* @brief 要約説明
-* @param (引数名) 引数の説明
-* @param (引数名) 引数の説明
-* @return 戻り値の説明
+* 
+* @brief 
+* @param (char_) キャラクターの情報を渡す
+* @param (ice_shot) アイスの情報を渡す
 * @sa 参照すべき関数を書けばリンクが貼れる
-* @detail 詳細な説明
+* @detail 
 */
 	VOID EvaporatingIce(CHAR_* char_, ICE_SHOT* ice_shot);
 /**
  * @fn
- * ここに関数の説明を書く
- * @brief 要約説明
- * @param (引数名) 引数の説明
- * @param (引数名) 引数の説明
- * @return 戻り値の説明
- * @sa 参照すべき関数を書けばリンクが貼れる
- * @detail 詳細な説明
+ * 右にアイスを発射する
+ * @brief アイスを右側に発射する
+ * @param (char_) キャラの情報を渡す
+ * @param (ice_shot) アイスの情報渡す
+ * @sa VOID ShotIce_Change(CHAR_* char_, ICE_SHOT* ice_shot);
+ * @detail 
  */
 	VOID Right_ShotIce(CHAR_* char_, ICE_SHOT* ice_shot);
 /**
  * @fn
- * ここに関数の説明を書く
- * @brief 要約説明
- * @param (引数名) 引数の説明
- * @param (引数名) 引数の説明
- * @return 戻り値の説明
- * @sa 参照すべき関数を書けばリンクが貼れる
- * @detail 詳細な説明
+ * 左にアイスを発射する
+ * @brief アイスを左側に発射する
+ * @param (char_) キャラの情報を渡す
+ * @param (ice_shot) アイスの情報渡す
+ * @sa VOID ShotIce_Change(CHAR_* char_, ICE_SHOT* ice_shot);
+ * @detail 
  */
 	VOID Left_ShotIce(CHAR_* char_, ICE_SHOT* ice_shot);
 /**
  * @fn
- * ここに関数の説明を書く
- * @brief 要約説明
- * @param (引数名) 引数の説明
- * @param (引数名) 引数の説明
- * @return 戻り値の説明
- * @sa 参照すべき関数を書けばリンクが貼れる
- * @detail 詳細な説明
+ * 上にアイスを発射する
+ * @brief アイスを上側に発射する
+ * @param (char_) キャラの情報を渡す
+ * @param (ice_shot) アイスの情報渡す
+ * @sa VOID ShotIce_Change(CHAR_* char_, ICE_SHOT* ice_shot);
+ * @detail
  */
 	VOID Up_ShotIce(CHAR_* char_, ICE_SHOT* ice_shot);
 /**
  * @fn
- * ここに関数の説明を書く
- * @brief 要約説明
- * @param (引数名) 引数の説明
- * @param (引数名) 引数の説明
- * @return 戻り値の説明
- * @sa 参照すべき関数を書けばリンクが貼れる
- * @detail 詳細な説明
+ * 下にアイスを発射する
+ * @brief アイスを下側に発射する
+ * @param (char_) キャラの情報を渡す
+ * @param (ice_shot) アイスの情報渡す
+ * @sa VOID ShotIce_Change(CHAR_* char_, ICE_SHOT* ice_shot);
+ * @detail 
  */
 	VOID Down_ShotIce(CHAR_* char_, ICE_SHOT* ice_shot);
 /**
 * @fn
-* ここに関数の説明を書く
-* @brief 要約説明
-* @param (引数名) 引数の説明
-* @param (引数名) 引数の説明
+* 
+* @brief 
+* @param (char_) キャラの情報を渡す
+* @param (ice_shot) アイスの情報渡す
 * @return 戻り値の説明
 * @sa 参照すべき関数を書けばリンクが貼れる
-* @detail 詳細な説明
+* @detail 
 */
 	VOID MoveIce(CHAR_* char_, ICE_SHOT* ice_shot);
 	
- /**
+/**
 * @fn
-* ここに関数の説明を書く
-* @brief 要約説明
-* @param (引数名) 引数の説明
-* @param (引数名) 引数の説明
-* @return 戻り値の説明
+* キャラクターとアイスが当たったの関数
+* @brief キャラクターとアイスが当たった時の関数
+* @param (char_) キャラクターの情報を渡す
+* @param (ice_shot) アイスの情報を渡す
 * @sa 参照すべき関数を書けばリンクが貼れる
-* @detail 詳細な説明
+* @detail 
 */
 	VOID HitIceChar(CHAR_* char_, ICE_SHOT* ice_shot);
-/**
-* @fn
-* ここに関数の説明を書く
-* @brief 要約説明
-* @param (引数名) 引数の説明
-* @param (引数名) 引数の説明
-* @return 戻り値の説明
-* @sa 参照すべき関数を書けばリンクが貼れる
-* @detail 詳細な説明
-*/
+
 	ICE_SHOT ice_shot_one = { RIGHT,FALSE,100000,100000,96.0f,96.0f };
-/**
-* @fn
-* ここに関数の説明を書く
-* @brief 要約説明
-* @param (引数名) 引数の説明
-* @param (引数名) 引数の説明
-* @return 戻り値の説明
-* @sa 参照すべき関数を書けばリンクが貼れる
-* @detail 詳細な説明
-*/
+
 	ICE_SHOT ice_shot_two = { LEFT,FALSE,-100000,-100000,96.0f,96.0f };
 };
 

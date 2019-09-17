@@ -44,8 +44,8 @@ public:
 	VOID SlotChange(CHAR_ char_);
 	/**
  * @fn
- * ここに関数の説明を書く
- * @brief 要約説明
+ * アイテムをポップする
+ * @brief 
  * @param (引数名) 引数の説明
  * @param (引数名) 引数の説明
  * @return 戻り値の説明

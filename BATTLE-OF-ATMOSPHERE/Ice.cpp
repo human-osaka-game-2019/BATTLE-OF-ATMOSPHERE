@@ -78,6 +78,7 @@ BOOL ICE::IceHitBlockCheck(BLOCK block, ICE_SHOT ice_shot)
 		return FALSE;
 	}
 }
+
 VOID ICE::EvaporatingIce(CHAR_* char_, ICE_SHOT* ice_shot)
 {
 	if (ice_shot->x < 0 || ice_shot->x>1920 || ice_shot->y < 0 || ice_shot->y>1080)
@@ -87,8 +88,8 @@ VOID ICE::EvaporatingIce(CHAR_* char_, ICE_SHOT* ice_shot)
 		ice_shot->x = -10000000;
 		ice_shot->y = -10000000;
 	}
-
 }
+
 VOID ICE::HitIceChar(CHAR_* char_, ICE_SHOT* ice_shot)
 {
 	char_->is_ice_hit = TRUE;
