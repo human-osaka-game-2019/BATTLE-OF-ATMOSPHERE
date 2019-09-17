@@ -47,14 +47,15 @@ typedef struct
 {
 	///プレイヤー
 	PLAYER player;                                   //! playerの１pか２ｐ保存している関数
-	FLOAT m_x, m_y, m_tu, m_tv, m_width, m_height;               //! キャラクターのx, y, tu, tv, width, height
-	FLOAT m_vec_x, m_vec_y;                              //! 今移動している方向を割り出す
+	FLOAT m_x, m_y, m_tu, m_tv, m_width, m_height;   //! キャラクターのx, y, tu, tv, width, height
+	FLOAT m_vec_x, m_vec_y;                          //! 今移動している方向を割り出す
 	JUMP m_action = FALL;                            //! 今のジャンプ状態
 	DIRECTION m_direction;                           //! 向いている方向→全方向
-	DIRECTION m_side_direction;                        //! 向いている方向->横方向
+	DIRECTION m_side_direction;                      //! 向いている方向->横方向
+	DIRECTION m_item_direction;                      //!アイテムを使った時の向いている方向
 	FLOAT m_gravity = 0.0f;                          //! 自機にかかる重力
-	FLOAT m_save_x;                                    //! 移動前のｘ
-	FLOAT m_save_y;                                    //! 移動前のｙ
+	FLOAT m_save_x;                                  //! 移動前のｘ
+	FLOAT m_save_y;                                  //! 移動前のｙ
 	// 歩行関係変数
 	FLOAT m_spaceman_speed = 5.0F;                   //! 自機の移動速度
 	//押し出し関係

@@ -339,25 +339,47 @@ VOID GAME::Process()
 			}
 			if (ice.ice_shot_one.m_is_ice_move == TRUE)
 			{
-				if (spaceman.char_one.m_direction == RIGHT) {
+				if (ice.ice_shot_one.m_ice_direction == RIGHT) 
+				{
 					draw.Draw(ice.ice_shot_one.m_x, ice.ice_shot_one.m_y, 0xffffffff, 0.75f, 0.25f, ice.ice_shot_one.m_width, ice.ice_shot_one.m_height, 0.25f, 0.25f, ITEM);
 					ice.MoveIce(&spaceman.char_one, &ice.ice_shot_one);
 				}
-				else
+				else if(ice.ice_shot_one.m_ice_direction == LEFT)
 				{
 					draw.Draw(ice.ice_shot_one.m_x, ice.ice_shot_one.m_y, 0xffffffff, 0.75f, 0.25f, ice.ice_shot_one.m_width, ice.ice_shot_one.m_height, 0.25f, 0.25f, ITEM, 180);
+					ice.MoveIce(&spaceman.char_one, &ice.ice_shot_one);
+				}
+				else if (ice.ice_shot_one.m_ice_direction == UP)
+				{
+					draw.Draw(ice.ice_shot_one.m_x, ice.ice_shot_one.m_y, 0xffffffff, 0.75f, 0.25f, ice.ice_shot_one.m_width, ice.ice_shot_one.m_height, 0.25f, 0.25f, ITEM, 270);
+					ice.MoveIce(&spaceman.char_one, &ice.ice_shot_one);
+				}
+				else if (ice.ice_shot_one.m_ice_direction == DOWN)
+				{
+					draw.Draw(ice.ice_shot_one.m_x, ice.ice_shot_one.m_y, 0xffffffff, 0.75f, 0.25f, ice.ice_shot_one.m_width, ice.ice_shot_one.m_height, 0.25f, 0.25f, ITEM, 90);
 					ice.MoveIce(&spaceman.char_one, &ice.ice_shot_one);
 				}
 			}
 			if (ice.ice_shot_two.m_is_ice_move == TRUE)
 			{
-				if (spaceman.char_two.m_direction == RIGHT) {
+				if (ice.ice_shot_one.m_ice_direction == RIGHT)
+				{
 					draw.Draw(ice.ice_shot_two.m_x, ice.ice_shot_two.m_y, 0xffffffff, 0.75f, 0.25f, ice.ice_shot_two.m_width, ice.ice_shot_two.m_height, 0.25f, 0.25f, ITEM);
 					ice.MoveIce(&spaceman.char_two, &ice.ice_shot_two);
 				}
-				else
+				else if(ice.ice_shot_one.m_ice_direction == LEFT)
 				{
 					draw.Draw(ice.ice_shot_two.m_x, ice.ice_shot_two.m_y, 0xffffffff, 0.75f, 0.25f, ice.ice_shot_two.m_width, ice.ice_shot_two.m_height, 0.25f, 0.25f, ITEM, 180);
+					ice.MoveIce(&spaceman.char_two, &ice.ice_shot_two);
+				}
+				else if (ice.ice_shot_one.m_ice_direction == UP)
+				{
+					draw.Draw(ice.ice_shot_two.m_x, ice.ice_shot_two.m_y, 0xffffffff, 0.75f, 0.25f, ice.ice_shot_two.m_width, ice.ice_shot_two.m_height, 0.25f, 0.25f, ITEM, 270);
+					ice.MoveIce(&spaceman.char_two, &ice.ice_shot_two);
+				}
+				else if (ice.ice_shot_one.m_ice_direction == DOWN)
+				{
+					draw.Draw(ice.ice_shot_two.m_x, ice.ice_shot_two.m_y, 0xffffffff, 0.75f, 0.25f, ice.ice_shot_two.m_width, ice.ice_shot_two.m_height, 0.25f, 0.25f, ITEM, 90);
 					ice.MoveIce(&spaceman.char_two, &ice.ice_shot_two);
 				}
 			}

@@ -663,19 +663,19 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 
 				char_->m_direction = UP;
 			}
-			if (char_->m_action == NO_JUMP || char_->m_action == FALL) 
+			
+			if (directx.KeyState[DIK_DOWN] == directx.PRESS)
 			{
-				if (directx.KeyState[DIK_DOWN] == directx.PRESS)
+				char_->m_direction = DOWN;
+			}
+			//下キー押しているとき
+			else if (directx.KeyState[DIK_DOWN] == directx.ON)
+			{
+				
+				if (char_->m_action == NO_JUMP || char_->m_action == FALL)
 				{
-					char_->m_direction = DOWN;
-				}
-				//下キー押しているとき
-				else if (directx.KeyState[DIK_DOWN] == directx.ON)
-				{
-					char_->m_is_dash = FALSE;
 					char_->m_is_guard = TRUE;
-					char_->m_direction = DOWN;
-
+					char_->m_is_dash = FALSE;
 					if (char_->m_side_direction == RIGHT)
 					{
 						char_->m_tu = 0.5f;
@@ -687,27 +687,28 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						char_->m_tu = 0.5f;
 						char_->m_tv = 0.03125f * 16;
 					}
+					char_->m_direction = DOWN;
 				}
-				//下キー離したとき
-				}else if (directx.KeyState[DIK_DOWN] == directx.RELEASE)
+			//下キー離したとき
+				}
+				else if (directx.KeyState[DIK_DOWN] == directx.RELEASE)
 				{
-				if (char_->m_action == NO_JUMP || char_->m_action == FALL)
-				{
-					char_->m_is_guard = FALSE;
-					char_->m_is_dash = TRUE;
-					if (char_->m_side_direction == RIGHT)
+					if (char_->m_action == NO_JUMP || char_->m_action == FALL)
 					{
-						char_->m_tu = 0.0f;
-						char_->m_tv = 0.03125f * 1;
-					}
-					else if (char_->m_side_direction == LEFT)
-					{
-						char_->m_tu = 0.0f;
-						char_->m_tv = 0.03125f * 0;
+						char_->m_is_guard = FALSE;
+						char_->m_is_dash = TRUE;
+						if (char_->m_side_direction == RIGHT)
+						{
+							char_->m_tu = 0.0f;
+							char_->m_tv = 0.03125f * 1;
+						}
+						else if (char_->m_side_direction == LEFT)
+						{
+							char_->m_tu = 0.0f;
+							char_->m_tv = 0.03125f * 0;
+						}
 					}
 				}
-			}
-			
 		}
 	}
 	Move(char_, char_->m_save_x, char_->m_save_y);

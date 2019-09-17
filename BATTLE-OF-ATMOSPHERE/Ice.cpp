@@ -17,7 +17,7 @@ VOID ICE::UseIce(CHAR_* char_, ICE_SHOT* ice_shot)
 }
 VOID ICE::ShotIce_Change(CHAR_* char_, ICE_SHOT* ice_shot)
 {
-	switch (char_->m_direction)
+	switch (ice_shot->m_ice_direction)
 	{
 	case RIGHT:
 		Right_ShotIce(char_, ice_shot);
