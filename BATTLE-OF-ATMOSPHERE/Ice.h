@@ -14,6 +14,8 @@ typedef struct
 class ICE
 {
 public:
+
+	CONST FLOAT m_ice_speed = 10.0f;
 /**
  * @fn
  * アイスが当たったか当たっていないかを判断する関数

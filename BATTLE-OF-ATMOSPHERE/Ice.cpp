@@ -39,19 +39,19 @@ VOID ICE::MoveIce(CHAR_* char_, ICE_SHOT* ice_shot)
 	switch (ice_shot->m_ice_direction)
 	{
 	case RIGHT:
-		ice_shot->m_x += 10;
+		ice_shot->m_x += m_ice_speed;
 		ice_shot->m_y += SCROLL_SPEED_BLOCK;
 		break;
 	case LEFT:
-		ice_shot->m_x -= 10;
+		ice_shot->m_x -= m_ice_speed;
 		ice_shot->m_y += SCROLL_SPEED_BLOCK;
 		break;
 	case UP:
-		ice_shot->m_y -= 10;
+		ice_shot->m_y -= m_ice_speed;
 		ice_shot->m_y += SCROLL_SPEED_BLOCK;
 		break;
 	case DOWN:
-		ice_shot->m_y += 10;
+		ice_shot->m_y += m_ice_speed;
 		ice_shot->m_y += SCROLL_SPEED_BLOCK;
 		break;
 	}
