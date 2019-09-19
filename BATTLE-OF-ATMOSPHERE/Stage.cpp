@@ -111,6 +111,11 @@ VOID STAGE::ScrollBlock(BLOCK* block)
 	block->m_y += SCROLL_SPEED_BLOCK;
 }
 
+VOID STAGE::ClimbScrollBlock(BLOCK* block,INT plus_speed)
+{
+	block->m_y += SCROLL_SPEED_BLOCK + plus_speed;
+}
+
 VOID STAGE::FallBlock()
 {
 

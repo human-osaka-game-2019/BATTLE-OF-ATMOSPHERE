@@ -56,6 +56,12 @@ VOID RESULT::Process()
 		draw.Draw(1450, 650, 0xffffffff, m_result_ui_tu_c, 0.25f, 370, 170, 0.5f, 0.25f, RESULT_UI);
 
 	}
+	else 
+	{
+		draw.Draw(0, 0, 0xffffffff, 0.0f, 0.0f, 1920, 1080, 1.0f, 1.0f, RESULT_BG);
+		draw.Draw(1450, 300, 0xffffffff, m_result_ui_tu_a, 0.0f, 370, 170, 0.5f, 0.25f, RESULT_UI);
+		draw.Draw(1450, 650, 0xffffffff, m_result_ui_tu_c, 0.25f, 370, 170, 0.5f, 0.25f, RESULT_UI);
+	}
 
 
 	if (directx.KeyState[DIK_DOWN] == directx.PRESS)
@@ -100,9 +106,6 @@ VOID RESULT::Process()
 		}
 
 
-
-
-
 	//エンターでタイトルへ
 	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
 	{
@@ -114,6 +117,8 @@ VOID RESULT::Process()
 //リザルトのテクスチャの解放
 VOID RESULT::Release()
 {
+	winner.m_is_one_win = FALSE;
+	winner.m_is_two_win = FALSE;
 
 	for (INT i = 0; i < TEX_MAX; i++)
 	{

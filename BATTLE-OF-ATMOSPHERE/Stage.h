@@ -106,6 +106,8 @@ public:
  */
 	VOID DrawBlock(BLOCK block);
 
+	VOID ClimbScrollBlock(BLOCK* block,INT plus_speed);
+
 
 	BLOCK block[BLOCK_QUANTITY];
 

@@ -52,6 +52,9 @@
     <ClCompile Include="Main.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="ClimbScene.cpp">
+      <Filter>Feature</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
@@ -104,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="Main.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ClimbScene.h">
+      <Filter>Feature</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

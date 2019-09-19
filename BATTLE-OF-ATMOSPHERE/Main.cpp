@@ -4,6 +4,7 @@
 #include "TitleScene.h"
 #include "HelpScene.h"
 #include "GameScene.h"
+#include"ClimbScene.h"
 #include "ResultScene.h"
 #include "Stage.h"
 #include "Collision.h"
@@ -17,6 +18,7 @@ DRAW draw;
 TITLE title;
 HELP help;
 GAME game;
+CLIMB climb;
 RESULT result;
 STAGE stage;
 SPACEMAN spaceman;
@@ -159,6 +161,9 @@ VOID Mainloop(MSG* msg)
 					break;
 				case GAME_SCENE:
 					game.Game_Scene();
+					break;
+				case CLIMB_SCENE:
+					climb.Climb_Scene();
 					break;
 				case RESULT_SCENE:
 					result.Result_Scene();

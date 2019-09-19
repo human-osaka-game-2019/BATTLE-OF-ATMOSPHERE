@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="ClimbScene.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DiretX.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
+    <ClInclude Include="ClimbScene.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="DirectX.h" />
     <ClInclude Include="GameScene.h" />

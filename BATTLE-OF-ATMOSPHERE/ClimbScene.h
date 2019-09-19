@@ -1,0 +1,50 @@
+﻿#ifndef CLIMB_SCENE_H_
+#define CLIMB_SCENE_H_
+
+#include <Windows.h>
+
+class CLIMB
+{
+public:
+
+	INT m_block_count = 1;
+	FLOAT m_plus_speed = 0;
+
+	//スクロールの可視範囲
+	FLOAT m_game_bg_tu = 0.25f;
+	INT m_fc_background = 0;
+
+	INT m_fc_count = 0;
+
+	FLOAT m_count_tv = 0.0f;
+
+	INT m_fc_finish = 0;
+	INT m_finish_left_y = -600;
+	INT m_finish_right_y = 1920;
+	INT m_left_scr = 20;
+	INT m_right_scr = 10;
+	INT m_fc_right_finish_move = 0;
+	INT m_fc_left_finish_move = 0;
+
+	INT m_fc_cereate_one = 0;
+	INT m_fc_cereate_two = 0;
+
+	//スクロールのスピード
+#define SCROLL_SPEED  -0.001f
+
+	VOID Climb_Scene();
+
+	VOID Loading();
+	VOID Process();
+	VOID Release();
+
+	enum SCENE_PAHSE
+	{
+		LOAD,
+		PROCESSING,
+		RELEASES
+	};
+
+};
+
+#endif

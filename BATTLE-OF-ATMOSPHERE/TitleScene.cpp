@@ -50,6 +50,16 @@ VOID TITLE::Process()
 
 	if (directx.KeyState[DIK_DOWN] == directx.PRESS)
 	{
+		if (m_climb_count == 0)
+		{
+			m_climb_count = 1;
+		}
+
+		if (m_climb_count == 2)
+		{
+			m_climb_count = 3;
+		}
+		
 		// ボタンを押されたら選択UIをいったんリセット
 		m_title_ui_tu_help = 0.0f;
 		m_title_ui_tu_exit = 0.0f;
@@ -80,35 +90,50 @@ VOID TITLE::Process()
 
 	if (directx.KeyState[DIK_UP] == directx.PRESS)
 	{
+		if (m_climb_count == 1)
+		{
+			m_climb_count = 2;
+		}
 		// ボタンを押されたら選択UIをいったんリセット
 		m_title_ui_tu_help = 0.0f;
 		m_title_ui_tu_exit = 0.0f;
 		m_title_ui_tu_start = 0.0f;
 
-		//それぞれのUIがアニメーション、そのシーンへ遷移
-		switch (current_id)
+		if (nextscene != CLIMB_SCENE)
 		{
-			
-		case title_ui_start:
-			current_id = title_ui_start;
-			m_title_ui_tu_start += 0.5f;
-			nextscene = GAME_SCENE;
-			break;
-		case title_ui_help:
-			current_id = title_ui_start;
-			m_title_ui_tu_start += 0.5f;
-			nextscene = GAME_SCENE;
-			break;
-		case title_ui_exit:
-			current_id = title_ui_help;
-			m_title_ui_tu_help += 0.5f;
-			nextscene = HELP_SCENE;
-			
-			break;
-		default:
-			break;
+			//それぞれのUIがアニメーション、そのシーンへ遷移
+			switch (current_id)
+			{
+
+			case title_ui_start:
+				current_id = title_ui_start;
+				m_title_ui_tu_start += 0.5f;
+				nextscene = GAME_SCENE;
+				break;
+			case title_ui_help:
+				current_id = title_ui_start;
+				m_title_ui_tu_start += 0.5f;
+				nextscene = GAME_SCENE;
+				break;
+			case title_ui_exit:
+				current_id = title_ui_help;
+				m_title_ui_tu_help += 0.5f;
+				nextscene = HELP_SCENE;
+
+				break;
+			default:
+				break;
+			}
 		}
 
+	}
+
+	if (directx.KeyState[DIK_RSHIFT] == directx.PRESS)
+	{
+		if (m_climb_count == 3)
+		{
+				scene = CLIMB_SCENE;
+		}
 	}
 
 	//エンターでゲームへ
@@ -125,6 +150,7 @@ VOID TITLE::Process()
 //タイトルのテクスチャの解放
 VOID TITLE::Release()
 {
+
 
 	for (INT i = 0; i < TEX_MAX; i++)
 	{

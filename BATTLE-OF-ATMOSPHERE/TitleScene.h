@@ -9,6 +9,8 @@ class TITLE
 {
 public:
 
+	INT m_climb_count = 0;
+
 	VOID Title_Scene();
 
 	FLOAT m_title_ui_tu_start = 0.5f;
