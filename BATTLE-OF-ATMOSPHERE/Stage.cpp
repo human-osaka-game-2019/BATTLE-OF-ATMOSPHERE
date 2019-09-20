@@ -110,6 +110,38 @@ VOID STAGE::MakeStage(BLOCK* block)
 	}
 }
 
+VOID STAGE::ClimbMakeStage(BLOCK* block)
+{
+	if (block->m_y >= WINDOW_HEIGHT + (BLOCK_SIZE * 8))
+	{
+		do
+		{
+			block->m_x_num = rand() % (BLOCK_X_MAX - 1);
+		} while (m_is_stage[block->m_x_num] == TRUE);
+
+		m_is_stage[block->m_x_num] = TRUE;
+
+		switch (rand()% 3 + 1)
+		{
+		case 1:
+			block->m_x = (block->m_x_num) * BLOCK_SIZE;
+			block->m_y = -(BLOCK_SIZE * 5);
+			break;
+		case 2:
+			block->m_x = (block->m_x_num) * BLOCK_SIZE;
+			block->m_y = -(BLOCK_SIZE * 4);
+			break;
+		case 3:
+			block->m_x = (block->m_x_num) * BLOCK_SIZE;
+			block->m_y = -(BLOCK_SIZE * 3);
+			break;
+		default:
+			block->m_x = (block->m_x_num) * BLOCK_SIZE;
+			block->m_y = -(BLOCK_SIZE * 4);
+			break;
+		}
+	}
+}
 
 VOID STAGE::ScrollBlock(BLOCK* block)
 {

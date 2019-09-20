@@ -88,6 +88,8 @@ public:
  * @detail ブロックのｙ座標がウィンドウから３マス下でブロックの座標を上にする
  */
 	VOID MakeStage(BLOCK* block);
+
+	VOID ClimbMakeStage(BLOCK* block);
 /**
  * @fn
  * ブロックを下げる関数

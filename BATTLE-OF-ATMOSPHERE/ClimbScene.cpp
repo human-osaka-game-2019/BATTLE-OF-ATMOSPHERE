@@ -259,7 +259,7 @@ VOID CLIMB::Process()
 				{
 					for (INT j = 0; j < BLOCK_QUANTITY; j++)
 					{
-						stage.MakeStage(&stage.block[j]);
+						stage.ClimbMakeStage(&stage.block[j]);
 					}
 
 					break;

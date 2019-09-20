@@ -20,7 +20,7 @@ public:
  * @sa 参照すべき関数を書けばリンクが貼れる
  * @detail 詳細な説明
  */
-	VOID Hit_Block(BLOCK block, CHAR_* char_);
+	 VOID Hit_Block(BLOCK block, CHAR_* char_);
 	/**
  * @fn
  * ここに関数の説明を書く
