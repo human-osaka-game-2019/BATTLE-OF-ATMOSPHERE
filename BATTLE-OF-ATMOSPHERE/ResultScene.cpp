@@ -117,8 +117,6 @@ VOID RESULT::Process()
 //リザルトのテクスチャの解放
 VOID RESULT::Release()
 {
-	winner.m_is_one_win = FALSE;
-	winner.m_is_two_win = FALSE;
 
 	for (INT i = 0; i < TEX_MAX; i++)
 	{

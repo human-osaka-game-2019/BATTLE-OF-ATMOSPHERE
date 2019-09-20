@@ -72,6 +72,14 @@ public:
  * @detail ブロックとクリエイトブロックの初期化
  */
 	VOID InitBlock();
+
+/**
+ * @fn
+ * ステージの初期化
+ * @brief ステージの初期化
+ * @detail クライムステージ用のブロックを初期化
+ */
+	VOID InitClimbStageBlock();
 /**
  * @fn
  * ブロックをウィンドウより下でブロックを上に戻す

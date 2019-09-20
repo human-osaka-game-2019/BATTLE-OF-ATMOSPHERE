@@ -3,12 +3,19 @@
 
 #include <Windows.h>
 
+typedef struct
+{
+	INT m_cereate_max_count_one = 5;
+	INT m_cereate_max_count_two = 5;
+}CLIMBSTATE;
+
 class CLIMB
 {
 public:
 
-	INT m_block_count = 1;
-	FLOAT m_plus_speed = 0;
+	CLIMBSTATE climb_state;
+
+	FLOAT m_plus_scroll_speed = 0.5f;
 
 	//スクロールの可視範囲
 	FLOAT m_game_bg_tu = 0.25f;

@@ -43,6 +43,7 @@ public:
  * @detail 詳細な説明
  */
 	VOID Hit_Move(BLOCK block, CHAR_* char_, FLOAT movement_x, FLOAT movement_y);
+
 	/**
  * @fn
  * ここに関数の説明を書く

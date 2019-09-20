@@ -60,13 +60,7 @@ VOID CLIMB::Loading()
 
 VOID CLIMB::Process()
 {
-
-	spaceman.char_one.m_item_tu = 0.25f;
-	spaceman.char_one.m_item_tv = 0.0f;
-
-	spaceman.char_two.m_item_tu = 0.25f;
-	spaceman.char_two.m_item_tv = 0.0f;
-
+	
 	//ゲーム背景の描画
 	draw.Draw(0, 0, 0xffffffff, 0.0f, m_game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
 
@@ -214,16 +208,14 @@ VOID CLIMB::Process()
 				}
 			}
 
-
-
 			//ブロックをスクロールに合わせて落とす処理
 			for (INT i = 0; i < BLOCK_QUANTITY; i++)
 			{
-				stage.ScrollBlock(&stage.block[i]);
+				stage.ClimbScrollBlock(&stage.block[i],m_plus_scroll_speed);
 			}
 			for (INT i = 0; i < CREATE_BLOCK_QUANITITY; i++)
 			{
-				stage.ScrollBlock(&stage.create_block[i]);
+				stage.ClimbScrollBlock(&stage.create_block[i],m_plus_scroll_speed);
 			}
 
 			//重力
@@ -281,24 +273,48 @@ VOID CLIMB::Process()
 
 
 				//クリエイトを使った時の座標移動
+			if (climb_state.m_cereate_max_count_one > 0) 
+			{
+				spaceman.char_one.m_item_tu = 0.25f;
+				spaceman.char_one.m_item_tv = 0.0f;
+
 				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.m_is_create == FALSE))
 				{
 					for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
 						create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
 						m_fc_cereate_one = 5 * 60;
 						spaceman.char_one.m_is_create = TRUE;
-
 					}
+					climb_state.m_cereate_max_count_one--;
 				}
+			}
+			else
+			{
+				spaceman.char_one.m_item_tu = 0.0f;
+				spaceman.char_one.m_item_tv = 0.0f;
+			}
+
+			if (climb_state.m_cereate_max_count_two > 0)
+			{
+				spaceman.char_two.m_item_tu = 0.25f;
+				spaceman.char_two.m_item_tv = 0.0f;
 
 				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.m_is_create == FALSE))
 				{
 					for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
 						create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);
 						m_fc_cereate_two = 5 * 60;
-						spaceman.char_two.m_is_create = TRUE;
+						spaceman.char_two.m_is_create = TRUE;	
 					}
+					climb_state.m_cereate_max_count_two--;
 				}
+			}
+			else
+			{
+				spaceman.char_two.m_item_tu = 0.0f;
+				spaceman.char_two.m_item_tv = 0.0f;
+			}
+
 			//ブロックの描画
 			for (INT i = 0; i < BLOCK_QUANTITY; i++)
 			{
@@ -324,9 +340,7 @@ VOID CLIMB::Process()
 			draw.Draw(0.0f, 0.0f, 0xffffffff, 0.0f, 0.25f, 100.f, 100.f, 0.25f, 0.25f, ITEM);
 			draw.Draw(WINDOW_WIDTH - 100.f, 0.0f, 0xffffffff, 0.0f, 0.25f, 100.f, 100.f, 0.25f, 0.25f, ITEM);
 
-
 		}
-
 
 	}
 	else

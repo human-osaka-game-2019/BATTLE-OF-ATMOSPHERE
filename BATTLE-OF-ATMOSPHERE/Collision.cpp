@@ -11,6 +11,7 @@ VOID COLLISION::Hit_Block(BLOCK block, CHAR_* char_)
 	{
 		char_->m_action = NO_JUMP;
 	}
+
 	Hit_Move(block, char_, char_->m_vec_x, 0);
 	Hit_Move(block, char_, 0, char_->m_vec_y);
 }
@@ -39,12 +40,13 @@ VOID COLLISION::Hit_Move(BLOCK block, CHAR_* char_, FLOAT movement_x, FLOAT move
 
 	if ((block.m_x < char_->m_x + char_->m_width) && (char_->m_x < block.m_x + block.m_width) && (block.m_y < char_->m_y + char_->m_height) && (char_->m_y < block.m_y + block.m_height))
 	{
-		if ((char_->m_save_y + char_->m_height <= block.m_y) || (char_->m_save_y >= block.m_y + block.m_height)) {
+		if ((char_->m_save_y + char_->m_height <= block.m_y) || (char_->m_save_y >= block.m_y + block.m_height)) 
+		{
 			if (movement_y < 0)
 			{
 				char_->m_y = block.m_y - char_->m_height;
 				char_->m_action = NO_JUMP;
-				char_->m_gravity = 0;
+				char_->m_gravity = SCROLL_SPEED_BLOCK;
 				char_->m_is_call = FALSE;
 			}
 			else if (movement_y > 0)
