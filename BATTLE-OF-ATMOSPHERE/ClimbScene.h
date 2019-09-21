@@ -37,7 +37,7 @@ public:
 	INT m_fc_cereate_two = 0;
 
 	//スクロールのスピード
-#define SCROLL_SPEED  -0.001f
+#define SCROLL_SPEED  -0.0015f
 
 	VOID Climb_Scene();
 
