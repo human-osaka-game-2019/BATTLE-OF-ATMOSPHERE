@@ -6,6 +6,14 @@ TITLE::SCENE_PHASE phase = TITLE::LOAD;
 //MapchipLoading Mp;
 //DrawMap map;
 
+TITLE::TITLE()
+{
+	Xinput::Create(2);
+
+	xinput[0] = Xinput::GetInstance(Player::ONE);
+	xinput[1] = Xinput::GetInstance(Player::TWO);
+}
+
 //タイトルのフェーズの移動
 VOID TITLE::Title_Scene()
 {
@@ -48,7 +56,7 @@ VOID TITLE::Process()
 
 	draw.Draw(0, 100, 0xffffffff, 0.0f, 0.0f, 1250, 625, 1.0f, 1.0f, TITLE_LOGO);
 
-	if (directx.KeyState[DIK_DOWN] == directx.PRESS)
+	if (directx.KeyState[DIK_DOWN] == directx.PRESS||xinput[0]->IsKeyStrokePushed(CTRL::LTHUMB_DOWN))
 	{
 		if (m_climb_count == 0)
 		{
@@ -88,7 +96,7 @@ VOID TITLE::Process()
 		}
 	}
 
-	if (directx.KeyState[DIK_UP] == directx.PRESS)
+	if (directx.KeyState[DIK_UP] == directx.PRESS|| xinput[0]->IsKeyStrokePushed(CTRL::LTHUMB_UP))
 	{
 		if (m_climb_count == 1)
 		{
@@ -128,7 +136,7 @@ VOID TITLE::Process()
 
 	}
 
-	if (directx.KeyState[DIK_RSHIFT] == directx.PRESS)
+	if (directx.KeyState[DIK_RSHIFT] == directx.PRESS|| xinput[0]->IsKeyStrokePushed(CTRL::TRIGGER_RIGHT))
 	{
 		if (m_climb_count == 3)
 		{
@@ -137,7 +145,7 @@ VOID TITLE::Process()
 	}
 
 	//エンターでゲームへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS|| xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A))
 	{
 		m_title_ui_tu_start = 0.5f;
 		m_title_ui_tu_help = 0.0f;

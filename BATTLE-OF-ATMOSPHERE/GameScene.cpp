@@ -23,6 +23,13 @@ WINNER winner;
 
 GAME::SCENE_PAHSE phase = GAME::LOAD;
 
+GAME::GAME()
+{
+	Xinput::Create(2);
+
+	xinput[0] = Xinput::GetInstance(Player::ONE);
+	xinput[1] = Xinput::GetInstance(Player::TWO);
+}
 
 //ゲームのフェーズの移動
 VOID GAME::Game_Scene()
@@ -45,6 +52,7 @@ VOID GAME::Game_Scene()
 //ゲームのテクスチャの読み込み
 VOID GAME::Loading()
 {
+
 	draw.LoadTexture("game_bg.png", GAME_BG);
 	draw.LoadTexture("spaceman_one.png", CHARCTER);
 	draw.LoadTexture("spaceman_two.png", CHARCTER_TWO);
@@ -312,15 +320,9 @@ VOID GAME::Process()
 				spaceman.char_two.m_is_jet = TRUE;
 			}
 
-
-			/*if (m_fc_ice_time_one >= 60 * 5) {
-				spaceman.char_one.m_is_ice = FALSE;
-			}
-			if (fc_ice_time_two >= 60 * 5) {
-				spaceman.char_two.m_is_ice = FALSE;
-			}*/
 			if (spaceman.char_one.m_is_ice_hit == FALSE) {
-				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.m_is_ice == FALSE))
+				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS||xinput[0]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT)) 
+					&& (spaceman.char_one.m_is_ice == FALSE))
 				{
 					ice.UseIce(&spaceman.char_one, &ice.ice_shot_one);
 					m_fc_ice_time_one = 0;
@@ -329,7 +331,8 @@ VOID GAME::Process()
 				}
 			}
 			if (spaceman.char_two.m_is_ice_hit == FALSE) {
-				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.m_is_ice == FALSE))
+				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS|| xinput[1]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT)) 
+					&& (spaceman.char_two.m_is_ice == FALSE))
 				{
 					ice.UseIce(&spaceman.char_two, &ice.ice_shot_two);
 					m_fc_ice_time_two = 0;
@@ -484,7 +487,8 @@ VOID GAME::Process()
 
 			if (spaceman.char_one.m_is_ice_hit == FALSE) {
 				//クリエイトを使った時の座標移動
-				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.m_is_create == FALSE))
+				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS|| xinput[0]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT)) 
+					&& (spaceman.char_one.m_is_create == FALSE))
 				{
 					for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
 						create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
@@ -495,7 +499,8 @@ VOID GAME::Process()
 				}
 			}
 			if (spaceman.char_two.m_is_ice_hit == FALSE) {
-				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.m_is_create == FALSE))
+				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS|| xinput[1]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT)) 
+					&& (spaceman.char_two.m_is_create == FALSE))
 				{
 					for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
 						create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);

@@ -55,6 +55,9 @@
     <ClCompile Include="ClimbScene.cpp">
       <Filter>Feature</Filter>
     </ClCompile>
+    <ClCompile Include="Xinput.cpp">
+      <Filter>Feature</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
@@ -109,6 +112,9 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="ClimbScene.h">
+      <Filter>Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="Xinput.h">
       <Filter>Feature</Filter>
     </ClInclude>
   </ItemGroup>

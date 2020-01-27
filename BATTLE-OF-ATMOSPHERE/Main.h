@@ -5,6 +5,7 @@
 #include <d3d9.h>
 
 #include "Draw.h"
+#include "Xinput.h"
 
 enum TEX
 {

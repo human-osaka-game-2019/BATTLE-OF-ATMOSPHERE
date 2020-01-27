@@ -13,6 +13,8 @@ public:
 
 	VOID Title_Scene();
 
+	TITLE();
+
 	FLOAT m_title_ui_tu_start = 0.5f;
 	FLOAT m_title_ui_tu_help = 0.0f;
 	FLOAT m_title_ui_tu_exit = 0.0f;
@@ -33,6 +35,7 @@ private:
 		title_ui_exit,
 	};
 
+	Xinput* xinput[2];
 
 	SelectUI_ID current_id = title_ui_start;
 	SCENE nextscene = GAME_SCENE;

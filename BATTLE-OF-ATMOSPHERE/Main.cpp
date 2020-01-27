@@ -27,8 +27,6 @@ CREATE create;
 JET jet;
 ICE ice;
 
-
-
 SCENE scene = TITLE_SCENE;
 
 //メイン
@@ -40,6 +38,7 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	MSG msg;
 	hWnd = GenerateWindow(&hWnd, &hInstance, api_name);
 	directx.BuildDxDevice(hWnd, _T("Blank.jpg"));
+
 
 	Mainloop(&msg);
 
@@ -150,6 +149,9 @@ VOID Mainloop(MSG* msg)
 
 				directx.UpdateKeyState();
 
+				Xinput::GetInstance(Player::ONE)->UpdateController();
+				Xinput::GetInstance(Player::TWO)->UpdateController();
+
 				//ここからゲーム処理
 				switch (scene)
 				{
@@ -178,6 +180,7 @@ VOID Mainloop(MSG* msg)
 
 				if (directx.KeyState[DIK_ESCAPE] == directx.PRESS)
 				{
+					Xinput::Destroy();
 					PostQuitMessage(0);
 				}
 			}

@@ -3,6 +3,8 @@
 
 #include <Windows.h>
 
+#include "Xinput.h"
+
 typedef struct 
 {
 	BOOL m_is_one_win = FALSE;
@@ -11,6 +13,10 @@ typedef struct
 
 class GAME
 {
+private:
+
+	Xinput* xinput[2];
+
 public:
 
 
@@ -37,6 +43,8 @@ public:
 
 	//スクロールのスピード
 #define SCROLL_SPEED  -0.001f
+
+	GAME();
 
 	VOID Game_Scene();
 

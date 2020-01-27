@@ -3,6 +3,8 @@
 
 #include <Windows.h>
 
+#include "Xinput.h"
+
 enum JUMP
 {
 	FALL,       //! 
@@ -107,10 +109,14 @@ typedef struct
 */
 class SPACEMAN
 {
-public:
+private:
 
 	CONST FLOAT m_max_plus_spaceman_power = 5.0F;    //! ダッシュ時の最大加速量
 	CONST FLOAT m_plus_dash_power = 0.05F;           //! ダッシュの加速度
+
+	Xinput* xinput[2];
+
+public:
 
 	// 歩行関係変数
 	CONST FLOAT m_max_gravity = 0.2F;				
@@ -127,6 +133,8 @@ public:
 	* @fn VOID SpaceManRelease()
 	*/
 	VOID SpaceManInit(CHAR_* char_);
+
+	SPACEMAN();
 
 	BOOL BlastHitCheck(CHAR_ char_, BLAST_STATUS blast_status);
 
