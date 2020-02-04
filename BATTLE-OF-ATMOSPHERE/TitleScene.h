@@ -4,6 +4,7 @@
 #include <Windows.h>
 
 #include "Main.h"
+#include"Xinput.h"
 
 class TITLE
 {

@@ -3,10 +3,13 @@
 
 #include <Windows.h>
 
+#include"Xinput.h"
 
 class RESULT
 {
 public:
+
+	RESULT();
 
 	VOID Result_Scene();
 
@@ -20,10 +23,9 @@ public:
 	//リザルトのフェーズの宣言
 	RESULT::SCENE_PHASE phase = RESULT::LOAD;
 
-
-
-
 private:
+
+	Xinput* xinput[2];
 
 	VOID Loading();
 	VOID Process();

@@ -1,5 +1,12 @@
 ﻿#include "HelpScene.h"
 #include <time.h>
+
+HELP::HELP()
+{
+	xinput[0] = Xinput::GetInstance(Player::ONE);
+	xinput[1] = Xinput::GetInstance(Player::TWO);
+}
+
 //リザルトのフェーズの移動
 VOID HELP::Help_Scene()
 {
@@ -31,7 +38,7 @@ VOID HELP::Process()
 
 	//エンターでタイトルへ
 	
-	if (directx.KeyState[DIK_C] <= directx.PRESS)
+	if (directx.KeyState[DIK_C] <= directx.PRESS||xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A)|| xinput[1]->IsKeyStrokePushed(CTRL::BUTTON_A))
 	{
 		m_scroll_move = TRUE;
 	}
@@ -72,7 +79,7 @@ VOID HELP::Process()
 	
 
 
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_B) || xinput[1]->IsKeyStrokePushed(CTRL::BUTTON_B))
 	{
 		phase = RELEASES;
 	}

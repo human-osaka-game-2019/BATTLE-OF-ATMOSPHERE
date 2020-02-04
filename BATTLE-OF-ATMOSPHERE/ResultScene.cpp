@@ -5,6 +5,12 @@
 
 extern WINNER winner;
 
+RESULT::RESULT()
+{
+	xinput[0] = Xinput::GetInstance(Player::ONE);
+	xinput[1] = Xinput::GetInstance(Player::TWO);
+}
+
 //リザルトのフェーズの移動
 VOID RESULT::Result_Scene()
 {
@@ -64,7 +70,7 @@ VOID RESULT::Process()
 	}
 
 
-	if (directx.KeyState[DIK_DOWN] == directx.PRESS)
+	if (directx.KeyState[DIK_DOWN] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::LTHUMB_DOWN) || xinput[1]->IsKeyStrokePushed(CTRL::LTHUMB_DOWN))
 	{
 		switch (Result_ID)
 		{
@@ -81,7 +87,7 @@ VOID RESULT::Process()
 			break;
 		}
 	}
-	if (directx.KeyState[DIK_UP] == directx.PRESS)
+	if (directx.KeyState[DIK_UP] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::LTHUMB_UP) || xinput[1]->IsKeyStrokePushed(CTRL::LTHUMB_UP))
 		switch (Result_ID)
 		{
 		case select_ui_title:
@@ -92,7 +98,7 @@ VOID RESULT::Process()
 		default:
 			break;
 		}
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A) || xinput[1]->IsKeyStrokePushed(CTRL::BUTTON_A))
 
 		switch (Result_ID)
 		{
@@ -107,7 +113,7 @@ VOID RESULT::Process()
 
 
 	//エンターでタイトルへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS)
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A) || xinput[1]->IsKeyStrokePushed(CTRL::BUTTON_A))
 	{
 		phase = RELEASES;
 	}
