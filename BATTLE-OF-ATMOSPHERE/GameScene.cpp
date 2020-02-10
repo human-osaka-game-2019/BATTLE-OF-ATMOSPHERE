@@ -321,7 +321,7 @@ VOID GAME::Process()
 			}
 
 			if (spaceman.char_one.m_is_ice_hit == FALSE) {
-				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS||xinput[0]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT)) 
+				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS||xinput[0]->IsKeyStrokePushed(CTRL::RSHOULDER)) 
 					&& (spaceman.char_one.m_is_ice == FALSE))
 				{
 					ice.UseIce(&spaceman.char_one, &ice.ice_shot_one);
@@ -331,7 +331,7 @@ VOID GAME::Process()
 				}
 			}
 			if (spaceman.char_two.m_is_ice_hit == FALSE) {
-				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS|| xinput[1]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT)) 
+				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS|| xinput[1]->IsKeyStrokePushed(CTRL::RSHOULDER)) 
 					&& (spaceman.char_two.m_is_ice == FALSE))
 				{
 					ice.UseIce(&spaceman.char_two, &ice.ice_shot_two);
@@ -487,7 +487,7 @@ VOID GAME::Process()
 
 			if (spaceman.char_one.m_is_ice_hit == FALSE) {
 				//クリエイトを使った時の座標移動
-				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS|| xinput[0]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT)) 
+				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS|| xinput[0]->IsKeyStrokePushed(CTRL::RSHOULDER)) 
 					&& (spaceman.char_one.m_is_create == FALSE))
 				{
 					for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
@@ -499,7 +499,7 @@ VOID GAME::Process()
 				}
 			}
 			if (spaceman.char_two.m_is_ice_hit == FALSE) {
-				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS|| xinput[1]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT)) 
+				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS|| xinput[1]->IsKeyStrokePushed(CTRL::RSHOULDER)) 
 					&& (spaceman.char_two.m_is_create == FALSE))
 				{
 					for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
