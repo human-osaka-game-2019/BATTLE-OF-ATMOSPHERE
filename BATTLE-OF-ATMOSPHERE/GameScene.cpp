@@ -88,11 +88,6 @@ VOID GAME::Process()
 				stage.DrawBlock(stage.block[i]);
 			}
 
-			//自機の描画1p
-			draw.Draw(spaceman.char_one.m_x, spaceman.char_one.m_y, 0xffffffff, spaceman.char_one.m_tu, spaceman.char_one.m_tv, spaceman.char_one.m_width, spaceman.char_one.m_height, 0.25f, 0.03125f, CHARCTER);
-			//自機の描画2p
-			draw.Draw(spaceman.char_two.m_x, spaceman.char_two.m_y, 0xffffffff, spaceman.char_two.m_tu, spaceman.char_two.m_tv, spaceman.char_two.m_width, spaceman.char_two.m_height, 0.25f, 0.03125f, CHARCTER_TWO);
-
 
 
 		//どちらが勝利したか判断している
@@ -521,11 +516,6 @@ VOID GAME::Process()
 				stage.DrawBlock(stage.create_block[i]);
 			}
 
-			//自機の描画1p
-			draw.Draw(spaceman.char_one.m_x, spaceman.char_one.m_y, 0xffffffff, spaceman.char_one.m_tu, spaceman.char_one.m_tv, spaceman.char_one.m_width, spaceman.char_one.m_height, 0.25f, 0.03125f, CHARCTER);
-			//自機の描画2p
-			draw.Draw(spaceman.char_two.m_x, spaceman.char_two.m_y, 0xffffffff, spaceman.char_two.m_tu, spaceman.char_two.m_tv, spaceman.char_two.m_width, spaceman.char_two.m_height, 0.25f, 0.03125f, CHARCTER_TWO);
-
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			//中のアイコン
@@ -535,6 +525,11 @@ VOID GAME::Process()
 			draw.Draw(0.0f, 0.0f, 0xffffffff, 0.0f, 0.25f, 100.f, 100.f, 0.25f, 0.25f, ITEM);
 			draw.Draw(WINDOW_WIDTH - 100.f, 0.0f, 0xffffffff, 0.0f, 0.25f, 100.f, 100.f, 0.25f, 0.25f, ITEM);
 
+
+			//自機の描画1p
+			draw.Draw(spaceman.char_one.m_x, spaceman.char_one.m_y, 0xffffffff, spaceman.char_one.m_tu, spaceman.char_one.m_tv, spaceman.char_one.m_width, spaceman.char_one.m_height, 0.25f, 0.03125f, CHARCTER);
+			//自機の描画2p
+			draw.Draw(spaceman.char_two.m_x, spaceman.char_two.m_y, 0xffffffff, spaceman.char_two.m_tu, spaceman.char_two.m_tv, spaceman.char_two.m_width, spaceman.char_two.m_height, 0.25f, 0.03125f, CHARCTER_TWO);
 
 		}
 

@@ -47,7 +47,7 @@ VOID SPACEMAN::SpaceManInit(CHAR_* char_)
 	char_->m_fc_charge = 0;
 	char_->m_fc_jet = 0;
 	char_->m_fc_push = 0;
-	
+	char_->m_is_guard = false;
 
 }
 
@@ -246,8 +246,13 @@ VOID SPACEMAN::SpaceManPush(CHAR_* char_me, CHAR_* char_you, BLAST_STATUS* blast
 			}
 		}
 	}
-
-	char_me->m_fc_push = 30;
+	if (char_me->blast_count >= 5)
+	{
+		char_me->m_fc_push = 30;
+		char_me->blast_count = -1;
+		char_me->blast = false;
+	}
+	char_me->blast_count++;
 
 }
 
@@ -407,7 +412,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 		}
 		else
 		{
-			if (directx.KeyState[DIK_S] == directx.OFF&&xinput[0]->IsKeyStrokePressed(CTRL::LTHUMB_DOWN)==FALSE) {
+			if (directx.KeyState[DIK_S] == directx.OFF&&xinput[0]->IsKeyStrokePressed(CTRL::TRIGGER_LEFT)==FALSE) {
 				if (directx.KeyState[DIK_D] == directx.ON||xinput[0]->IsKeyStrokePressed(CTRL::LTHUMB_RIGHT))
 				{
 					char_->m_x += (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
@@ -448,7 +453,15 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 				{
 					if (char_->m_fc_push <= 0)
 					{
-						SpaceManPush(char_, char_you, blast_status);
+						char_->blast = true;
+					}
+				}
+
+				if (char_->blast)
+				{
+					SpaceManPush(char_, char_you, blast_status);
+					if (char_->m_fc_push <= 0)
+					{
 						if (char_->m_direction == RIGHT && (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP))
 						{
 							char_->m_tu = 0.5f;
@@ -462,7 +475,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						else if (char_->m_direction == RIGHT)
 						{
 							char_->m_tu = 0.5f;
-							char_->m_tv =  0.03125f * 1;
+							char_->m_tv = 0.03125f * 1;
 						}
 						else if (char_->m_direction == LEFT)
 						{
@@ -470,7 +483,9 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 							char_->m_tv = 0.03125f * 0;
 						}
 					}
+					
 				}
+
 			}
 			if ((directx.KeyState[DIK_W] == directx.PRESS||xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A)) && (char_->m_is_call == FALSE))
 			{
@@ -479,7 +494,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 				char_->m_direction = UP;
 			}
 
-			
+			else if (directx.KeyState[DIK_S] == directx.ON || xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_DOWN))
 			{
 				if (directx.KeyState[DIK_S] == directx.ON||xinput[0]->IsKeyStrokePressed(CTRL::TRIGGER_LEFT))
 				{
@@ -593,7 +608,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 		else
 		{
 			//下キー
-			if (directx.KeyState[DIK_DOWN] == directx.OFF && xinput[1]->IsKeyStrokePressed(CTRL::BUTTON_A) == FALSE)
+			if (directx.KeyState[DIK_DOWN] == directx.OFF && xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_DOWN) == FALSE)
 			{
 				//右キー
 				if (directx.KeyState[DIK_RIGHT] == directx.ON || xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_RIGHT))
@@ -637,7 +652,14 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 				{
 					if (char_->m_fc_push <= 0)
 					{
-						SpaceManPush(char_, char_you, blast_status);
+						char_->blast = true;
+					}
+				}
+				if (char_->blast)
+				{
+					SpaceManPush(char_, char_you, blast_status);
+					if (char_->m_fc_push <= 0)
+					{
 						if (char_->m_direction == RIGHT && (char_->m_action == ONE_JUMP || char_->m_action == TWO_JUMP))
 						{
 							char_->m_tu = 0.5f;
@@ -659,6 +681,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 							char_->m_tv = 0.03125f * 0;
 						}
 					}
+
 				}
 			}
 			//上キー
@@ -670,12 +693,12 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 				char_->m_direction = UP;
 			}
 			
-			if (directx.KeyState[DIK_DOWN] == directx.PRESS||xinput[1]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT))
+			if (directx.KeyState[DIK_DOWN] == directx.PRESS||xinput[1]->IsKeyStrokePushed(CTRL::LTHUMB_DOWN) || xinput[1]->IsKeyStrokePushed(CTRL::LSHOULDER))
 			{
 				char_->m_direction = DOWN;
 			}
 			//下キー押しているとき
-			else if (directx.KeyState[DIK_DOWN] == directx.ON|| xinput[1]->IsKeyStrokePressed(CTRL::TRIGGER_LEFT))
+			else if (directx.KeyState[DIK_DOWN] == directx.ON|| xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_DOWN))
 			{
 				
 				if (char_->m_action == NO_JUMP || char_->m_action == FALL)

@@ -59,7 +59,7 @@ typedef struct
 	FLOAT m_save_x;                                  //! 移動前のｘ
 	FLOAT m_save_y;                                  //! 移動前のｙ
 	// 歩行関係変数
-	FLOAT m_spaceman_speed = 5.0F;                   //! 自機の移動速度
+	FLOAT m_spaceman_speed = 8.0F;                   //! 自機の移動速度
 	//押し出し関係
 	BOOL m_is_hit = FALSE;                           //! 押し出しに当たったかどうか判断する関数
 	FLOAT m_fc_push = 0.0f;                          //! 押し出しのクールタイムをカウントするフレームカウント
@@ -91,6 +91,8 @@ typedef struct
 	BOOL m_is_ice_hit = FALSE;
 	FLOAT m_fc_ice = 0.0f;
 
+	INT blast_count = 0;
+	BOOL blast = false;
 }CHAR_;
 
 

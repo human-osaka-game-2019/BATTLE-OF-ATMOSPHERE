@@ -172,6 +172,7 @@ VOID TITLE::Release()
 	if (nextscene == GAME_SCENE)
 	{
 		scene = GAME_SCENE;
+		m_climb_count = 0;
 	}
 	if (nextscene == HELP_SCENE)
 	{
