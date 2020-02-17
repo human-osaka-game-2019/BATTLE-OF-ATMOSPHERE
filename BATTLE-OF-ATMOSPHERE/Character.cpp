@@ -413,7 +413,8 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 		else
 		{
 			if (directx.KeyState[DIK_S] == directx.OFF && xinput[0]->IsKeyStrokePressed(CTRL::TRIGGER_LEFT) == FALSE) {
-				if (directx.KeyState[DIK_D] == directx.ON || xinput[0]->IsKeyStrokePressed(CTRL::LTHUMB_RIGHT))
+
+				if (directx.KeyState[DIK_D] == directx.ON || xinput[0]->IsKeyStrokePressed(CTRL::LTHUMB_RIGHT) || xinput[0]->IsKeyStrokePressed(CTRL::PAD_RIGHT))
 				{
 					char_->m_x += (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
 
@@ -429,7 +430,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 						char_->m_tv = 0.03125f * 1;
 					}
 				}
-				else if (directx.KeyState[DIK_A] == directx.ON || xinput[0]->IsKeyStrokePressed(CTRL::LTHUMB_LEFT))
+				else if (directx.KeyState[DIK_A] == directx.ON || xinput[0]->IsKeyStrokePressed(CTRL::LTHUMB_LEFT) || xinput[0]->IsKeyStrokePressed(CTRL::PAD_LEFT))
 				{
 					char_->m_x -= (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
 					char_->m_direction = LEFT;
@@ -607,10 +608,10 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 		else
 		{
 			//下キー
-			if (directx.KeyState[DIK_DOWN] == directx.OFF && xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_DOWN) == FALSE)
+			if (directx.KeyState[DIK_DOWN] == directx.OFF && xinput[1]->IsKeyStrokePressed(CTRL::TRIGGER_LEFT) == FALSE)
 			{
 				//右キー
-				if (directx.KeyState[DIK_RIGHT] == directx.ON || xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_RIGHT))
+				if (directx.KeyState[DIK_RIGHT] == directx.ON || xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_RIGHT) || xinput[1]->IsKeyStrokePressed(CTRL::PAD_RIGHT))
 				{
 					char_->m_x += (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
 					char_->m_direction = RIGHT;
@@ -626,7 +627,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 					}
 				}
 				//左キー
-				else if (directx.KeyState[DIK_LEFT] == directx.ON || xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_LEFT))
+				else if (directx.KeyState[DIK_LEFT] == directx.ON || xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_LEFT)|| xinput[1]->IsKeyStrokePressed(CTRL::PAD_LEFT))
 				{
 					char_->m_x -= (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
 					char_->m_direction = LEFT;
