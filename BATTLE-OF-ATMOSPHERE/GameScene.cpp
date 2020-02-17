@@ -75,7 +75,6 @@ VOID GAME::Loading()
 VOID GAME::Process()
 {
 	
-
 		//ゲーム背景の描画
 		draw.Draw(0, 0, 0xffffffff, 0.0f, m_game_bg_tu, 1920, 1080, 1.0f, 0.25f, GAME_BG);
 

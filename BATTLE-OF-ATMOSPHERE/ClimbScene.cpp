@@ -18,6 +18,12 @@ extern WINNER winner;
 
 CLIMB::SCENE_PAHSE phase = CLIMB::LOAD;
 
+CLIMB::CLIMB()
+{
+	xinput[0] = Xinput::GetInstance(Player::ONE);
+	xinput[1] = Xinput::GetInstance(Player::TWO);
+}
+
 //ゲームのフェーズの移動
 VOID CLIMB::Climb_Scene()
 {
@@ -177,7 +183,6 @@ VOID CLIMB::Process()
 				}
 			}
 
-
 			if (spaceman.char_one.m_is_create == TRUE)
 			{
 				m_fc_cereate_one--;
@@ -236,13 +241,6 @@ VOID CLIMB::Process()
 				collision.Hit_Block(stage.create_block[i], &spaceman.char_two);
 			}
 
-			/*if (m_fc_ice_time_one >= 60 * 5) {
-				spaceman.char_one.m_is_ice = FALSE;
-			}
-			if (fc_ice_time_two >= 60 * 5) {
-				spaceman.char_two.m_is_ice = FALSE;
-			}*/
-
 			//ウィンドウとの
 			collision.HitWindow(&spaceman.char_one);
 			collision.HitWindow(&spaceman.char_two);
@@ -278,7 +276,7 @@ VOID CLIMB::Process()
 				spaceman.char_one.m_item_tu = 0.25f;
 				spaceman.char_one.m_item_tv = 0.0f;
 
-				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS) && (spaceman.char_one.m_is_create == FALSE))
+				if ((directx.KeyState[DIK_LSHIFT] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::RSHOULDER)) && (spaceman.char_one.m_is_create == FALSE))
 				{
 					for (INT i = 0; i < CREATE_BLOCK_QUANITITY - 3; i++) {
 						create.MakeBlock_Change(&spaceman.char_one, &stage.create_block[i], i);
@@ -299,7 +297,7 @@ VOID CLIMB::Process()
 				spaceman.char_two.m_item_tu = 0.25f;
 				spaceman.char_two.m_item_tv = 0.0f;
 
-				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS) && (spaceman.char_two.m_is_create == FALSE))
+				if ((directx.KeyState[DIK_RSHIFT] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::RSHOULDER)) && (spaceman.char_two.m_is_create == FALSE))
 				{
 					for (INT i = 3; i < CREATE_BLOCK_QUANITITY; i++) {
 						create.MakeBlock_Change(&spaceman.char_two, &stage.create_block[i], i - 3);

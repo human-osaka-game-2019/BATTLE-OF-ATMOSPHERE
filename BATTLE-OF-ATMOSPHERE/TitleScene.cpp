@@ -145,7 +145,7 @@ VOID TITLE::Process()
 	}
 
 	//エンターでゲームへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS|| xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A))
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS|| xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_B))
 	{
 		m_title_ui_tu_start = 0.5f;
 		m_title_ui_tu_help = 0.0f;

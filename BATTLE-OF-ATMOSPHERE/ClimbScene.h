@@ -1,7 +1,12 @@
 ﻿#ifndef CLIMB_SCENE_H_
 #define CLIMB_SCENE_H_
 
+//スクロールのスピード
+#define SCROLL_SPEED  -0.0015f
+
 #include <Windows.h>
+
+#include"Xinput.h"
 
 typedef struct
 {
@@ -14,6 +19,21 @@ class CLIMB
 public:
 
 	CLIMBSTATE climb_state;
+
+	CLIMB();
+
+	VOID Climb_Scene();
+
+	enum SCENE_PAHSE
+	{
+		LOAD,
+		PROCESSING,
+		RELEASES
+	};
+
+private:
+
+	Xinput* xinput[2];
 
 	FLOAT m_plus_scroll_speed = 0.5f;
 
@@ -36,21 +56,9 @@ public:
 	INT m_fc_cereate_one = 0;
 	INT m_fc_cereate_two = 0;
 
-	//スクロールのスピード
-#define SCROLL_SPEED  -0.0015f
-
-	VOID Climb_Scene();
-
 	VOID Loading();
 	VOID Process();
 	VOID Release();
-
-	enum SCENE_PAHSE
-	{
-		LOAD,
-		PROCESSING,
-		RELEASES
-	};
 
 };
 

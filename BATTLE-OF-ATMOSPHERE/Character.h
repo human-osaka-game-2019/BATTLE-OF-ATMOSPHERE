@@ -92,7 +92,7 @@ typedef struct
 	FLOAT m_fc_ice = 0.0f;
 
 	INT blast_count = 0;
-	BOOL blast = false;
+	BOOL blast = FALSE;
 }CHAR_;
 
 
