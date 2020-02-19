@@ -29,6 +29,8 @@ ICE ice;
 
 SCENE scene = TITLE_SCENE;
 
+SoundLib::SoundsManager soundsManager;
+
 //メイン
 INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ PSTR lpCmdline, _In_ INT nCmdShow)
 {
@@ -40,11 +42,33 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	directx.BuildDxDevice(hWnd, _T("Blank.jpg"));
 
 
+	// 初期化
+	// SoundsManagerインスタンス生成後に1度のみ行う。
+	bool isSuccess = soundsManager.Initialize();
+
+	// 音声ファイルオープン
+	// 第2引数は音声ファイルを識別するための任意の文字列をキーとして指定する。
+	// この後の操作関数の呼び出し時には、ここで設定したキーを指定して音声を識別する。
+	const TCHAR* filePath = _T("chime.wav");
+	isSuccess = soundsManager.AddFile(filePath, _T("bgm"));
+
+	// 頭から再生
+// 一時停止中の音声に対して当関数を実行した場合も頭からの再生となる。
+// 第2引数にtrueを渡すとループ再生になる。
+	bool Success = soundsManager.Start(_T("bgm"), true);
+
+	//　ボリューム変更
+// 0(無音)～100(原音量)の間で設定可能
+	soundsManager.SetVolume(_T("bgm"), 50);
+
 	Mainloop(&msg);
 
+	// 再生停止
+	isSuccess = soundsManager.Stop(_T("bgm"));
 
 	//ウィンドウ情報をみて更新
 	ShowWindow(hWnd, SW_SHOW);
+
 	UpdateWindow(hWnd);
 
 	directx.All_Release();

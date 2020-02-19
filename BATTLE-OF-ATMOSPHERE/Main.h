@@ -4,6 +4,8 @@
 #include <windows.h>
 #include <d3d9.h>
 
+#include <SoundsManager.h>
+
 #include "Draw.h"
 #include "Xinput.h"
 
@@ -44,6 +46,8 @@ extern DIRECTX directx;
 extern SCENE scene;
 
 extern DRAW draw;
+
+extern SoundLib::SoundsManager soundsManager;
 
 
 //WinMain関数
