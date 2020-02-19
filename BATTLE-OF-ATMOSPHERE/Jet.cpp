@@ -1,12 +1,18 @@
 ﻿#include "Main.h"
 #include "Jet.h"
 
+JET::JET()
+{
+	xinput[0] = Xinput::GetInstance(Player::ONE);
+	xinput[1] = Xinput::GetInstance(Player::TWO);
+}
+
 VOID JET::UseJet(CHAR_* char_)
 {
 
 	if (char_->player == ONE_PLAYER)
 	{
-		if (directx.KeyState[DIK_S] == directx.ON)
+		if (directx.KeyState[DIK_S] == directx.ON || xinput[0]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT))
 		{
 			char_->m_fc_charge++;
 			if (char_->m_fc_charge >= 120)
@@ -19,7 +25,7 @@ VOID JET::UseJet(CHAR_* char_)
 	}
 	else if (char_->player == TWO_PLAYER)
 	{
-		if (directx.KeyState[DIK_DOWN] == directx.ON)
+		if (directx.KeyState[DIK_DOWN] == directx.ON || xinput[0]->IsKeyStrokePushed(CTRL::TRIGGER_LEFT))
 		{
 			char_->m_fc_charge++;
 			if (char_->m_fc_charge >= 120)
@@ -35,7 +41,7 @@ VOID JET::UseJet(CHAR_* char_)
 		if (char_->m_fc_jet >= 0)
 		{
 			if (char_->player == ONE_PLAYER) {
-				if (directx.KeyState[DIK_LSHIFT] == directx.PRESS)
+				if (directx.KeyState[DIK_LSHIFT] == directx.PRESS||xinput[0]->IsKeyStrokePushed(CTRL::RSHOULDER))
 				{
 					switch (char_->m_direction)
 					{
@@ -56,7 +62,7 @@ VOID JET::UseJet(CHAR_* char_)
 			}
 			else if (char_->player == TWO_PLAYER)
 			{
-				if (directx.KeyState[DIK_RSHIFT] == directx.PRESS)
+				if (directx.KeyState[DIK_RSHIFT] == directx.PRESS || xinput[1]->IsKeyStrokePushed(CTRL::RSHOULDER))
 				{
 					switch (char_->m_direction)
 					{

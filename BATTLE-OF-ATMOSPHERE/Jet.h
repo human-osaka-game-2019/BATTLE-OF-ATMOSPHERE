@@ -4,9 +4,13 @@
 
 #include "Character.h"
 
+#include "Xinput.h"
+
 class JET
 {
 public:
+
+	JET();
 
 /**
 * @fn
@@ -16,6 +20,11 @@ public:
 * @detail 
 */
 	VOID UseJet(CHAR_*);
+
+private:
+
+	Xinput* xinput[2];
+
 };
 
 #endif
