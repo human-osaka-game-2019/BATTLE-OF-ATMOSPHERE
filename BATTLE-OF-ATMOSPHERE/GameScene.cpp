@@ -383,13 +383,11 @@ VOID GAME::Process()
 			{
 				if (ice.IceHitBlockCheck(stage.block[i], ice.ice_shot_one) == TRUE)
 				{
-					//spaceman.char_one.is_ice = FALSE;
-					ice.ice_shot_one.m_is_ice_move = FALSE;
+					ice.IceClear(&ice.ice_shot_one);
 				}
 				if (ice.IceHitBlockCheck(stage.block[i], ice.ice_shot_two) == TRUE)
 				{
-					//spaceman.char_one.is_ice = FALSE;
-					ice.ice_shot_two.m_is_ice_move = FALSE;
+					ice.IceClear(&ice.ice_shot_two);
 				}
 			}
 

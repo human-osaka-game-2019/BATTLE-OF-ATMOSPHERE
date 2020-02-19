@@ -161,6 +161,8 @@ public:
 * @detail 詳細な説明
 */
 	ICE_SHOT ice_shot_two = { LEFT,FALSE,-100000,-100000,96.0f,96.0f };
+
+	VOID IceClear(ICE_SHOT* ice_shot);
 };
 
 #endif

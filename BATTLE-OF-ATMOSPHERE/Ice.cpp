@@ -83,20 +83,16 @@ VOID ICE::EvaporatingIce(CHAR_* char_, ICE_SHOT* ice_shot)
 {
 	if (ice_shot->m_x < 0 || ice_shot->m_x>1920 || ice_shot->m_y < 0 || ice_shot->m_y>1080)
 	{
-		ice_shot->m_is_ice_move = FALSE;
 		char_->m_is_ice = FALSE;
-		ice_shot->m_x = -10000000;
-		ice_shot->m_y = -10000000;
+		IceClear(ice_shot);
 	}
 }
 
 VOID ICE::HitIceChar(CHAR_* char_, ICE_SHOT* ice_shot)
 {
 	char_->m_is_ice_hit = TRUE;
-	ice_shot->m_is_ice_move = FALSE;
 	char_->m_fc_ice = 3 * 60;
-	ice_shot->m_x = -10000000;
-	ice_shot->m_y = -10000000;
+	IceClear(ice_shot);
 }
 VOID ICE::Right_ShotIce(CHAR_* char_, ICE_SHOT* ice_shot)
 {
@@ -119,3 +115,9 @@ VOID ICE::Down_ShotIce(CHAR_* char_, ICE_SHOT* ice_shot)
 	ice_shot->m_y = char_->m_y + char_->m_height;
 }
 
+VOID ICE::IceClear(ICE_SHOT* ice_shot)
+{
+	ice_shot->m_is_ice_move = FALSE;
+	ice_shot->m_x = -10000000;
+	ice_shot->m_y = -10000000;
+}
