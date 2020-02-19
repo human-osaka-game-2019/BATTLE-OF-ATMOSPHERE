@@ -52,6 +52,16 @@ VOID GAME::Game_Scene()
 VOID GAME::Loading()
 {
 
+	soundsManager.AddFile(_T("メインゲーム画面候補１.mp3"), _T("GameBGM"));
+	soundsManager.SetVolume(_T("GameBGM"), 100);
+
+	soundsManager.AddFile(_T("ゲーム開始音.mp3"), _T("GameStart"));
+	soundsManager.SetVolume(_T("GameStart"), 100);
+
+	soundsManager.AddFile(_T("ゲーム終了音.mp3"), _T("GameEnd"));
+	bgm = soundsManager.Start(_T("TitleBGM"), true);
+	soundsManager.SetVolume(_T("GameEnd"), 100);
+
 	draw.LoadTexture("game_bg.png", GAME_BG);
 	draw.LoadTexture("spaceman_one.png", CHARCTER);
 	draw.LoadTexture("spaceman_two.png", CHARCTER_TWO);
@@ -79,6 +89,8 @@ VOID GAME::Process()
 
 		if (m_fc_count >= 245)
 		{
+			bgm = soundsManager.Start(_T("GameBGM"), true);
+
 
 			//ブロックの描画
 			for (INT i = 0; i < BLOCK_QUANTITY; i++)
@@ -91,6 +103,9 @@ VOID GAME::Process()
 		//どちらが勝利したか判断している
 		if (spaceman.char_one.m_y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))
 		{
+			if(sound_count == 0)soundsManager.Start(_T("GameEnd"), false);
+
+			sound_count++;
 			m_fc_finish++;
 			m_fc_left_finish_move++;
 			if (m_fc_finish <= 60 * 6)
@@ -132,6 +147,9 @@ VOID GAME::Process()
 		}
 		else if (spaceman.char_two.m_y > WINDOW_HEIGHT + (BLOCK_SIZE * 3))
 		{
+			if (sound_count == 0)soundsManager.Start(_T("GameEnd"), false);
+
+			sound_count++;
 
 			m_fc_finish++;
 			m_fc_left_finish_move++;
@@ -551,6 +569,7 @@ VOID GAME::Process()
 		if (m_fc_count >= 241)
 		{
 			m_fc_count = 245;
+			bgm = soundsManager.Start(_T("GameStart"), false);
 		}
 		//ブロックの描画
 		for (INT i = 0; i < BLOCK_QUANTITY; i++)
@@ -569,6 +588,9 @@ VOID GAME::Process()
 
 //ゲームのテクスチャの解放
 VOID GAME::Release() {
+
+
+	soundsManager.Stop(_T("GameBGM"));
 
 	m_fc_count = 0.0f;
 	m_count_tv = 0.0f;

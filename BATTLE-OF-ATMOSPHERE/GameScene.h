@@ -52,6 +52,9 @@ public:
 	VOID Process();
 	VOID Release();
 
+	BOOL bgm = false;
+	INT sound_count = 0;
+
 	enum SCENE_PAHSE
 	{
 		LOAD,

@@ -36,6 +36,13 @@ VOID TITLE::Title_Scene()
 //タイトルのテクスチャの読み込み
 VOID TITLE::Loading()
 {
+
+
+	soundsManager.AddFile(_T("タイトル画面候補１.mp3"), _T("TitleBGM"));
+	bgm = soundsManager.Start(_T("TitleBGM"), true);
+	soundsManager.SetVolume(_T("TitleBGM"), 100);
+
+
 	draw.LoadTexture("title_bg.png", TITLE_BG);
 	draw.LoadTexture("title_ui.png", TITLE_UI);
 	draw.LoadTexture("title_logo.png", TITLE_LOGO);
@@ -158,6 +165,7 @@ VOID TITLE::Process()
 //タイトルのテクスチャの解放
 VOID TITLE::Release()
 {
+	soundsManager.Stop(_T("TitleBGM"));
 
 
 	for (INT i = 0; i < TEX_MAX; i++)

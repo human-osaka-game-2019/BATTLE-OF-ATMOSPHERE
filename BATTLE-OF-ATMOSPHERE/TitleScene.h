@@ -41,6 +41,8 @@ private:
 	SelectUI_ID current_id = title_ui_start;
 	SCENE nextscene = GAME_SCENE;
 
+	BOOL bgm = false;
+
 	//プロトタイプ宣言
 	VOID Loading();
 	VOID Process();
