@@ -177,6 +177,8 @@ public:
 	VOID SpaceManSwitchJump(CHAR_* char_);
 
 	VOID Move(CHAR_* char_, FLOAT save_x, FLOAT save_y);
+
+	VOID ItemRelease(CHAR_* char_one, CHAR_* char_two);
 };
 
 #endif // !CHARACTER_H_

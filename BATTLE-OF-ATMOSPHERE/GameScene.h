@@ -1,6 +1,9 @@
 ﻿#ifndef GAME_SCENE_H
 #define GAME_SCENE_H
 
+//スクロールのスピード
+#define SCROLL_SPEED  -0.001f
+
 #include <Windows.h>
 
 #include "Xinput.h"
@@ -40,9 +43,6 @@ public:
 	INT m_fc_cereate_two = 0;
 	INT m_fc_ice_time_one = 0;
 	INT m_fc_ice_time_two = 0;
-
-	//スクロールのスピード
-#define SCROLL_SPEED  -0.001f
 
 	GAME();
 

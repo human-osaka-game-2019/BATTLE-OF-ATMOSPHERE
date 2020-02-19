@@ -26,7 +26,6 @@ VOID RESULT::Result_Scene()
 	case RELEASES:
 		Release();
 		phase = LOAD;
-
 		break;
 	}
 }
@@ -88,6 +87,7 @@ VOID RESULT::Process()
 		}
 	}
 	if (directx.KeyState[DIK_UP] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::LTHUMB_UP) || xinput[1]->IsKeyStrokePushed(CTRL::LTHUMB_UP))
+	{
 		switch (Result_ID)
 		{
 		case select_ui_title:
@@ -98,8 +98,10 @@ VOID RESULT::Process()
 		default:
 			break;
 		}
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A) || xinput[1]->IsKeyStrokePushed(CTRL::BUTTON_A))
+	}
 
+	if (directx.KeyState[DIK_RETURN] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A) || xinput[1]->IsKeyStrokePushed(CTRL::BUTTON_A))
+	{
 		switch (Result_ID)
 		{
 		case select_ui_title:
@@ -111,10 +113,6 @@ VOID RESULT::Process()
 			break;
 		}
 
-
-	//エンターでタイトルへ
-	if (directx.KeyState[DIK_RETURN] == directx.PRESS || xinput[0]->IsKeyStrokePushed(CTRL::BUTTON_A) || xinput[1]->IsKeyStrokePushed(CTRL::BUTTON_A))
-	{
 		phase = RELEASES;
 	}
 }
@@ -123,7 +121,6 @@ VOID RESULT::Process()
 //リザルトのテクスチャの解放
 VOID RESULT::Release()
 {
-
 	for (INT i = 0; i < TEX_MAX; i++)
 	{
 		if (directx.pTexture[i] != nullptr)

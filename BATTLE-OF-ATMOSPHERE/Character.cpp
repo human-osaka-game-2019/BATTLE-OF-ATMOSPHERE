@@ -732,3 +732,20 @@ VOID SPACEMAN::Move(CHAR_* char_, FLOAT m_save_x, FLOAT m_save_y)
 	char_->m_vec_x = m_save_x - char_->m_x;
 	char_->m_vec_y = m_save_y - char_->m_y;
 }
+
+VOID SPACEMAN::ItemRelease(CHAR_* char_one, CHAR_* char_two)
+{
+	char_one->m_is_create = FALSE;
+	char_one->m_is_ice = FALSE;
+	char_one->m_is_jet = FALSE;
+
+	char_two->m_is_create = FALSE;
+	char_two->m_is_ice = FALSE;
+	char_two->m_is_jet = FALSE;
+
+	char_one->m_item_tu = 0.0f;
+	char_one->m_item_tv = 0.0f;
+
+	char_two->m_item_tu = 0.0f;
+	char_two->m_item_tv = 0.0f;
+}

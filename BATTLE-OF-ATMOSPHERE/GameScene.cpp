@@ -18,7 +18,6 @@ extern CREATE create;
 extern JET jet;
 extern ICE ice;
 
-
 WINNER winner;
 
 GAME::SCENE_PAHSE phase = GAME::LOAD;
@@ -394,8 +393,6 @@ VOID GAME::Process()
 				}
 			}
 
-
-
 			if (ice.IceHitCharCheck(spaceman.char_two, ice.ice_shot_one) == TRUE)
 			{
 				//spaceman.char_one.is_ice = FALSE;
@@ -431,7 +428,6 @@ VOID GAME::Process()
 
 			}
 
-
 			if (stage.m_fc_item_pop <= 0)
 			{
 				for (INT i = 0; i < 10; i++)
@@ -466,8 +462,6 @@ VOID GAME::Process()
 					spaceman.item_state[i].m_item_gravity += 0.1f;
 				}
 			}
-
-
 
 			//キャラとアイテムの当たり判定
 			for (INT i = 0; i < 10; i++)
@@ -532,7 +526,6 @@ VOID GAME::Process()
 
 		}
 
-
 	}
 	else
 	{
@@ -572,16 +565,23 @@ VOID GAME::Process()
 		//自機の描画2p
 		draw.Draw(spaceman.char_two.m_x, spaceman.char_two.m_y, 0xffffffff, spaceman.char_two.m_tu, spaceman.char_two.m_tv, spaceman.char_two.m_width, spaceman.char_two.m_height, 0.25f, 0.03125f, CHARCTER_TWO);
 
-
 	}
-
-
-
 
 }
 
 //ゲームのテクスチャの解放
 VOID GAME::Release() {
+
+	m_fc_count = 0.0f;
+	m_count_tv = 0.0f;
+
+	m_fc_finish = 0.0f;
+	m_fc_left_finish_move = 0.0f;
+	m_fc_right_finish_move = 0.0f;
+	m_left_scr = 20;
+	m_right_scr = 10;
+	m_finish_left_y = -600;
+	m_finish_right_y = 1920;
 
 	//テクスチャの開放
 	for (INT i = 0; i < TEX_MAX; i++)
@@ -592,6 +592,9 @@ VOID GAME::Release() {
 			directx.pTexture[i] = nullptr;
 		}
 	}
+
+	spaceman.ItemRelease(&spaceman.char_one,&spaceman.char_two);
+
 	//リザルトシーンへ
 	scene = RESULT_SCENE;
 }
