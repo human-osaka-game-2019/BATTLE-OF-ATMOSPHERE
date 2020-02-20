@@ -407,7 +407,8 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 		}
 		else
 		{
-			if (directx.KeyState[DIK_S] == directx.OFF && xinput[0]->IsKeyStrokePressed(CTRL::LTHUMB_DOWN) == FALSE) {
+			if (directx.KeyState[DIK_S] == directx.OFF && xinput[0]->IsKeyStrokePressed(CTRL::TRIGGER_LEFT) == FALSE) {
+
 				if (directx.KeyState[DIK_D] == directx.ON || xinput[0]->IsKeyStrokePressed(CTRL::LTHUMB_RIGHT))
 				{
 					char_->m_x += (char_->m_spaceman_speed + char_->m_plus_spaceman_speed);
@@ -590,7 +591,7 @@ VOID SPACEMAN::SpaceManMove(CHAR_* char_, CHAR_* char_you, BLAST_STATUS* blast_s
 		else
 		{
 			//下キー
-			if (directx.KeyState[DIK_DOWN] == directx.OFF && xinput[1]->IsKeyStrokePressed(CTRL::BUTTON_A) == FALSE)
+			if (directx.KeyState[DIK_DOWN] == directx.OFF && xinput[1]->IsKeyStrokePressed(CTRL::TRIGGER_LEFT) == FALSE)
 			{
 				//右キー
 				if (directx.KeyState[DIK_RIGHT] == directx.ON || xinput[1]->IsKeyStrokePressed(CTRL::LTHUMB_RIGHT))
